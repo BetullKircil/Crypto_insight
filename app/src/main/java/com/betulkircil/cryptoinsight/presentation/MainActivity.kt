@@ -14,8 +14,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
+import com.betulkircil.cryptoinsight.presentation.view.entryScreen.EntryScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
+import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +46,9 @@ fun NavigationComponent() {
         }
         composable(Screen.HomeScreen.route){
             HomeScreen(navController = navController)
+        }
+        composable(Screen.EntryScreen.route){
+            EntryScreen(navController = navController)
         }
     }
 }
