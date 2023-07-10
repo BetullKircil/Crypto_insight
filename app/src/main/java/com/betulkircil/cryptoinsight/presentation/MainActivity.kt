@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
+import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
 
 class MainActivity : ComponentActivity() {
@@ -33,13 +34,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Composable
 fun NavigationComponent() {
@@ -49,7 +43,7 @@ fun NavigationComponent() {
             SplashScreen(navController = navController)
         }
         composable(Screen.HomeScreen.route){
-
+            HomeScreen(navController = navController)
         }
     }
 }

@@ -14,12 +14,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.Screen
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true){
-        delay(3000L)
+        delay(2900L)
+        navController.navigate(Screen.HomeScreen.route)
     }
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Black),
