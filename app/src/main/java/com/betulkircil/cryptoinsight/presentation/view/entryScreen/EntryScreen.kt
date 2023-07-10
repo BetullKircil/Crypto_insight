@@ -39,6 +39,8 @@ import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.Screen.EntryScreen.route
 import com.betulkircil.cryptoinsight.presentation.view.entryScreen.components.ButtonWithBorder
+import com.betulkircil.cryptoinsight.presentation.view.entryScreen.components.EntryIconTextBox
+import com.betulkircil.cryptoinsight.presentation.view.entryScreen.components.LogoText
 import java.nio.ByteOrder
 
 @Composable
@@ -46,17 +48,13 @@ fun EntryScreen(navController: NavController) {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceEvenly) {
-        Image(painter = painterResource(id = R.drawable.logo_text), contentDescription =null )
-        Box(modifier = Modifier.padding(20.dp)) {
-            Image(painter = painterResource(id = R.drawable.entry_icon), contentDescription = null, )
-            Image(painter = painterResource(id = R.drawable.stay_ahead_text), contentDescription = null, modifier = Modifier.padding(
-                top = 300.dp
-            ))
-        }
+        LogoText()
+        EntryIconTextBox()
         Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally){
-            ButtonWithBorder(route = Screen.SplashScreen.route, navController = navController, buttonText = "Login", textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent
+            ButtonWithBorder(route = Screen.LoginScreen.route, navController = navController, buttonText = "Login", textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent
             )
             ButtonWithBorder(route = Screen.HomeScreen.route, navController = navController, buttonText = "Create an account", )
         }
     }
 }
+

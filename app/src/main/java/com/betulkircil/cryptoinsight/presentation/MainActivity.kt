@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.entryScreen.EntryScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,6 +50,9 @@ fun NavigationComponent() {
         }
         composable(Screen.EntryScreen.route){
             EntryScreen(navController = navController)
+        }
+        composable(Screen.LoginScreen.route){
+            LoginScreen(navController = navController)
         }
     }
 }
