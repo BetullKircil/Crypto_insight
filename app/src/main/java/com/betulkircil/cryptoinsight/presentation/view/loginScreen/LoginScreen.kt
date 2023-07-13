@@ -75,7 +75,7 @@ fun LoginScreen(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AppBarSection()
-                LinkText(firstText = "Not a member?", linkText = "Create an Account")
+                LinkText(firstText = "Not a member?", linkText = "Create an Account", navController = navController, route = Screen.SignUpMailScreen.route)
                 Column(modifier = Modifier
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
@@ -169,7 +169,7 @@ fun LoginScreen(navController: NavController) {
                     }
                 }
                 LogoGroup(navController = navController)
-                }
+            }
         }
     }
 }

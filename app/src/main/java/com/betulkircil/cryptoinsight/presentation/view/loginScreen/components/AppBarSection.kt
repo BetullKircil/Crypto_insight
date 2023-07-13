@@ -29,7 +29,7 @@ import com.betulkircil.cryptoinsight.presentation.view.entryScreen.components.Lo
 fun AppBarSection() {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .height(60.dp)
+        .height(60.dp).padding(top = 10.dp)
         .background(Color.Transparent), horizontalArrangement = Arrangement.Start, verticalAlignment = Alignment.CenterVertically) {
         Icon(imageVector = Icons.Default.KeyboardArrowLeft, tint = Color.White, contentDescription = "back", modifier = Modifier
             .size(50.dp)

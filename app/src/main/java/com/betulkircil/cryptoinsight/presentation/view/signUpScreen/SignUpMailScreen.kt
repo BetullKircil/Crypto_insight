@@ -40,11 +40,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LogoGroup
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.LogoGroupSignUp
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,7 +64,7 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 AppBarSection()
                 SignUpText()
-                Column(modifier = Modifier
+                Column(modifier = Modifier.padding(vertical = 20.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
                     var email = remember { mutableStateOf("") }
@@ -87,7 +90,6 @@ fun SignUpScreen(navController: NavController) {
                             Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
                             ))
                         } },
-                        //trailingIcon = { Icon(imageVector = Icons.Default.Add, contentDescription = null) },
                         onValueChange = {
                             email.value = it
                         },
@@ -140,7 +142,7 @@ fun SignUpScreen(navController: NavController) {
                         placeholder = { Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
                     )
                 }
-                LogoGroup(navController = navController)
+                LogoGroupSignUp(navController = navController)
             }
         }
     }
