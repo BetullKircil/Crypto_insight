@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.sp
 import com.betulkircil.cryptoinsight.R
 
 @Composable
-fun CreateAccountText() {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+fun LinkText(firstText : String, linkText : String) {
+    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 25.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = "Login",
             style = MaterialTheme.typography.headlineMedium,
@@ -31,9 +31,9 @@ fun CreateAccountText() {
             letterSpacing = 1.3.sp, modifier = Modifier.padding(12.dp)
         )
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(text = "Not a member?", color = Color.White)
+            Text(text = firstText, color = Color.White)
             Spacer(modifier = Modifier.width(5.dp))
-            Text(modifier = Modifier.clickable { print("Tiklandi") }, text = "Create an Account Now", color = colorResource(id = R.color.purple_protest), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+            Text(modifier = Modifier.clickable { print("Tiklandi") }, text = linkText, color = colorResource(id = R.color.purple_protest), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
         }
     }
 }

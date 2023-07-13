@@ -53,7 +53,7 @@ fun EntryScreen(navController: NavController) {
         Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.SpaceBetween, horizontalAlignment = Alignment.CenterHorizontally){
             ButtonWithBorder(route = Screen.LoginScreen.route, navController = navController, buttonText = "Login", textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent
             )
-            ButtonWithBorder(route = Screen.HomeScreen.route, navController = navController, buttonText = "Create an account", )
+            ButtonWithBorder(route = Screen.SignUpScreen.route, navController = navController, buttonText = "Create an account", )
         }
     }
 }
