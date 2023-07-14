@@ -40,7 +40,7 @@ fun ButtonWithIcon(
             shape = RoundedCornerShape(40),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(23.dp, 0.dp)
+                .padding(17.dp, 0.dp)
                 .height(50.dp),
             border = BorderStroke(2.dp, colorResource(id = borderColor)),
             colors = ButtonDefaults.elevatedButtonColors(containerColor = backgroundColor)

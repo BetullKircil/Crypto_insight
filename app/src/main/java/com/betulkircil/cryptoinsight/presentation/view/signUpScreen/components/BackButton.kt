@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.entryScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,25 +15,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 
 @Composable
-fun ButtonWithBorder(
+fun BackButton(
     route: String, navController: NavController, borderColor: Int = R.color.purple_protest, buttonText: String, textColor: Color = Color.White, backgroundColor: Color = colorResource(
-    id = R.color.purple_protest
-)
+        id = R.color.purple_protest
+    )
 ) {
     Button(
         onClick = {
             navController.navigate(route)
         },
         shape = RoundedCornerShape(40),
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(23.dp, 9.dp)
+        modifier = Modifier.width(165.dp)
             .height(50.dp),
         border = BorderStroke(2.dp, colorResource(id = borderColor)),
         colors = ButtonDefaults.elevatedButtonColors(containerColor = backgroundColor)
