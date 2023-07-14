@@ -139,7 +139,8 @@ fun SignUpScreen(navController: NavController) {
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Next
                         ),
-                        placeholder = { Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
+                        placeholder = {
+                            Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier.padding(horizontal = 5.dp).padding(top = 2.dp)) }
                     )
                 }
                 LogoGroupSignUp(navController = navController)
