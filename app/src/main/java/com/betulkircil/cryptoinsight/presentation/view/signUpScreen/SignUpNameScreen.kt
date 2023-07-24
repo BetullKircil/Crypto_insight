@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,20 +16,25 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -90,52 +96,6 @@ fun SignUpNameScreen(navController : NavController) {
                             .padding(horizontal = 20.dp, vertical = 15.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                             Column(modifier = Modifier.width(170.dp)) {
                                 Text(text = "Date of Birth", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Light, modifier = Modifier.padding(horizontal = 20.dp))
-                                TextField(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .border(
-                                            width = 2.5.dp,
-                                            color = colorResource(id = R.color.purple_protest),
-                                            shape = RoundedCornerShape(22.dp)
-                                        ),
-                                    value = pickedDate.value.toString(),
-                                    leadingIcon = {
-                                        Row {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.calender),
-                                                contentDescription = "calender",
-                                                modifier = Modifier
-                                                    .padding(start = 15.dp)
-                                                    .clickable { dateTimeDialogState.show() },
-                                                tint = Color.Gray
-                                            )
-                                            Image(
-                                                painter = painterResource(id = R.drawable.line),
-                                                contentDescription = "line",
-                                                modifier = Modifier.padding(
-                                                    horizontal = 7.dp
-                                                )
-                                            )
-                                        }
-                                    },
-                                    onValueChange = {
-                                    },
-                                    shape = RoundedCornerShape(22.dp),
-                                    colors = TextFieldDefaults.textFieldColors(
-                                        focusedIndicatorColor = Color.Transparent,
-                                        unfocusedIndicatorColor = Color.Transparent,
-                                        cursorColor = colorResource(id = R.color.purple_protest),
-                                        containerColor = Color.White
-                                    ), keyboardOptions = KeyboardOptions(
-                                        capitalization = KeyboardCapitalization.None,
-                                        autoCorrect = true,
-                                        imeAction = ImeAction.Next
-                                    ),
-                                    readOnly = true,
-                                )
-                            }
-                            Column(modifier = Modifier.width(170.dp)) {
-                                Text(text = "Country", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Light, modifier = Modifier.padding(horizontal = 20.dp))
                                 TextField(
                                     modifier = Modifier
                                         .fillMaxWidth()
