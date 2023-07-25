@@ -16,10 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.components.LogoText
 
 @Composable
-fun AppBarSection() {
+fun AppBarSection(navController: NavController, route : String, backStackRoute : String? = null) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(60.dp).padding(top = 10.dp)
@@ -27,7 +28,12 @@ fun AppBarSection() {
         Icon(imageVector = Icons.Default.KeyboardArrowLeft, tint = Color.White, contentDescription = "back", modifier = Modifier
             .size(50.dp)
             .clickable {
-                //TODO
+                navController.navigate(route){
+                    if (backStackRoute != null) {
+                        popUpTo(backStackRoute){inclusive = true}
+                    }
+                }
+
             }.padding(start = 15.dp))
         LogoText()
     }

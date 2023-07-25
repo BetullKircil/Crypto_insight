@@ -62,7 +62,7 @@ fun SignUpScreen(navController: NavController) {
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                AppBarSection()
+                AppBarSection(navController, "homeScreen" ,"signUpMailScreen")
                 SignUpText()
                 Column(modifier = Modifier.padding(vertical = 20.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center

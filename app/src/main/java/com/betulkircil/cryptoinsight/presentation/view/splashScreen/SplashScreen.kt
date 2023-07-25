@@ -21,7 +21,7 @@ import kotlinx.coroutines.delay
 fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true){
         delay(1000L)
-        navController.navigate(Screen.EntryScreen.route)
+        navController.navigate(Screen.HomeScreen.route)
     }
     Box(
         modifier = Modifier.fillMaxSize().background(Color.Black),

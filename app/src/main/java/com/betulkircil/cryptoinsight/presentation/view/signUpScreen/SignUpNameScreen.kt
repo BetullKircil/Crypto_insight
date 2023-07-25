@@ -70,7 +70,7 @@ fun SignUpNameScreen(navController : NavController) {
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                AppBarSection()
+                AppBarSection(navController, "signUpMailScreen")
                 SignUpText()
                 Column(
                     modifier = Modifier
