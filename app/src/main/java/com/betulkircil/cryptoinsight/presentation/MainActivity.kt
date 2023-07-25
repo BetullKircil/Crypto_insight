@@ -18,7 +18,10 @@ import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

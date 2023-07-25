@@ -17,9 +17,12 @@ import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.components.ButtonWithBorder
 
 @Composable
-fun LogoGroup(navController : NavController) {
+fun LogoGroup(
+    navController : NavController
+) {
     Column(modifier = Modifier
-        .fillMaxSize().padding(vertical = 30.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween) {
+        .fillMaxSize()
+        .padding(vertical = 30.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween) {
         Column(modifier = Modifier) {
             Image(painter = painterResource(id = R.drawable.sign_up_line), contentDescription = null)
             Row(modifier = Modifier
@@ -29,6 +32,6 @@ fun LogoGroup(navController : NavController) {
                 Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
             }
         }
-        ButtonWithBorder(navController = navController, buttonText = "Login", route = Screen.HomeScreen.route)
+        LoginButton(navController = navController, buttonText = "Login", route = Screen.HomeScreen.route)
     }
 }

@@ -6,6 +6,7 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.tasks.await
@@ -20,6 +21,8 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Loading())
             val signInResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
             emit(Resource.Success(signInResult))
+        }.catch {
+            emit(Resource.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
     }
 
@@ -31,6 +34,8 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Loading())
             val signUpResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
             emit(Resource.Success(signUpResult))
+        }.catch {
+            emit(Resource.Error(it.message.toString()))
         }.flowOn(Dispatchers.IO)
     }
 }

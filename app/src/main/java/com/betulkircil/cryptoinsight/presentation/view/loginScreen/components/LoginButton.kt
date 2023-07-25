@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.homeScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.loginScreen.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,15 +17,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
-import kotlinx.coroutines.Job
-
 
 @Composable
-fun ButtonWithBorder(
+fun LoginButton(
     route: String, navController: NavController, borderColor: Int = R.color.purple_protest, buttonText: String, textColor: Color = Color.White,
     backgroundColor: Color = colorResource(
-    id = R.color.purple_protest
-)
+        id = R.color.purple_protest
+    )
 ) {
     Button(
         onClick = {
