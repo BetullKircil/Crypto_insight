@@ -1,6 +1,7 @@
 package com.betulkircil.cryptoinsight.di
 
 import com.betulkircil.cryptoinsight.data.repository.AuthRepositoryImpl
+import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -19,5 +20,11 @@ object AppModule {
     @Singleton
     fun provideAuthRepositoryImpl(firebaseAuth: FirebaseAuth) : AuthRepositoryImpl{
         return AuthRepositoryImpl(firebaseAuth)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(firebaseAuth: FirebaseAuth) : AuthRepository{
+        return AuthRepositoryImpl(firebaseAuth = firebaseAuth)
     }
 }
