@@ -1,7 +1,6 @@
-package com.betulkircil.cryptoinsight.presentation.view.entryScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.homeScreen.components
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment

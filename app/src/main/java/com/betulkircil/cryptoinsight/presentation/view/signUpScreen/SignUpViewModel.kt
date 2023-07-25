@@ -3,7 +3,6 @@ package com.betulkircil.cryptoinsight.presentation.view.signUpScreen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.useCase.signUp.SignUpUserUseCase
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginState
 import com.betulkircil.cryptoinsight.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

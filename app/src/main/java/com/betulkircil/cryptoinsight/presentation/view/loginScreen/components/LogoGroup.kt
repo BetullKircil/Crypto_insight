@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
-import com.betulkircil.cryptoinsight.presentation.view.entryScreen.components.ButtonWithBorder
+import com.betulkircil.cryptoinsight.presentation.view.homeScreen.components.ButtonWithBorder
 
 @Composable
 fun LogoGroup(navController : NavController) {

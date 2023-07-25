@@ -6,21 +6,18 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
-import com.betulkircil.cryptoinsight.presentation.view.entryScreen.EntryScreen
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,11 +44,11 @@ fun NavigationComponent() {
         composable(Screen.SplashScreen.route){
             SplashScreen(navController = navController)
         }
+        composable(Screen.CoinScreen.route){
+            CoinScreen(navController = navController)
+        }
         composable(Screen.HomeScreen.route){
             HomeScreen(navController = navController)
-        }
-        composable(Screen.EntryScreen.route){
-            EntryScreen(navController = navController)
         }
         composable(Screen.LoginScreen.route){
             LoginScreen(navController = navController)
