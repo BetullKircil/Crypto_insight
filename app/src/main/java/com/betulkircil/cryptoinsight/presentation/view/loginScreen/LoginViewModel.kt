@@ -1,9 +1,14 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
+import com.betulkircil.cryptoinsight.domain.repository.SignInResponse
 import com.betulkircil.cryptoinsight.domain.useCase.signIn.SignInUserUseCase
 import com.betulkircil.cryptoinsight.utils.Resource
+import com.betulkircil.cryptoinsight.utils.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -12,9 +17,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val signInUserUseCase: SignInUserUseCase
+    private val repository: AuthRepository
 ) : ViewModel(){
+    var signInResponse =  mutableStateOf<SignInResponse>(Response.Success(false))
+        private set
 
+    fun signInWithEmailAndPassword(email: String, password: String) = viewModelScope.launch {
+        signInResponse.value = Response.Loading
+        signInResponse.value = repository.firebaseSignInWithEmailAndPassword(email, password)
+    }
 
 
 
