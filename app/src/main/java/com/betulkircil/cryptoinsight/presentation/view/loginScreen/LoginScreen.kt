@@ -5,7 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,15 +21,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -52,15 +47,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
-import com.betulkircil.cryptoinsight.presentation.view.homeScreen.components.ButtonWithBorder
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginButton
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LogoGroup
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.Login
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.flow
+import com.betulkircil.cryptoinsight.utils.ShowMessageUtil.Companion.showMessage
 import kotlinx.coroutines.launch
 
 
@@ -215,6 +207,9 @@ fun LoginScreen(
             }
         }
     }
+    Login(showErrorMessage = { errorMessage ->
+        showMessage(context, errorMessage)
+    })
 }
 
 @Composable

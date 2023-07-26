@@ -5,12 +5,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.betulkircil.cryptoinsight.presentation.ProgressBar
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
-import com.betulkircil.cryptoinsight.utils.Resource
 import com.betulkircil.cryptoinsight.utils.Response
-import com.google.android.play.core.integrity.e
 
 @Composable
-fun LoginState(
+fun Login(
     viewModel: LoginViewModel = hiltViewModel(),
     showErrorMessage: (errorMessage: String?) -> Unit
 ) {
