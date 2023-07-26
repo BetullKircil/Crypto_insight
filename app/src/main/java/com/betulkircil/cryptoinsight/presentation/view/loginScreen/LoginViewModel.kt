@@ -22,7 +22,7 @@ class LoginViewModel @Inject constructor(
     var signInResponse =  mutableStateOf<SignInResponse>(Response.Success(false))
         private set
 
-    fun signInWithEmailAndPassword(email: String, password: String) = viewModelScope.launch {
+    fun loginUser(email: String, password: String) = viewModelScope.launch {
         signInResponse.value = Response.Loading
         signInResponse.value = repository.firebaseSignInWithEmailAndPassword(email, password)
     }

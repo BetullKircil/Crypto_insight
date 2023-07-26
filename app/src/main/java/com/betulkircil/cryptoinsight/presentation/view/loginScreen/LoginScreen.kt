@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -69,6 +70,8 @@ fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel()
     ) {
+
+    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
@@ -191,7 +194,7 @@ fun LoginScreen(
                             onClick = {
                                 if(email.value.isNotBlank() || password.value.isNotBlank()){
                                     coroutineScope.launch {
-                                        //viewModel.loginUser(email.value, password.value)
+                                        viewModel.loginUser(email.value, password.value)
                                     }
                                     navController.navigate(Screen.HomeScreen.route)
                                 }
