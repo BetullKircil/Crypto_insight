@@ -14,7 +14,15 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val signInUserUseCase: SignInUserUseCase
 ) : ViewModel(){
-    val _loginState = Channel<LoginState>()
+
+
+
+
+
+
+
+
+    /*val _loginState = Channel<LoginState>()
     val loginState = _loginState.receiveAsFlow()
 
     fun loginUser(email: String, password: String) = viewModelScope.launch {
@@ -31,5 +39,5 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
-    }
+    }*/
 }

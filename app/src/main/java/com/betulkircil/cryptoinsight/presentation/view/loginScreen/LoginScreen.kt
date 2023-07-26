@@ -191,7 +191,7 @@ fun LoginScreen(
                             onClick = {
                                 if(email.value.isNotBlank() || password.value.isNotBlank()){
                                     coroutineScope.launch {
-                                        viewModel.loginUser(email.value, password.value)
+                                        //viewModel.loginUser(email.value, password.value)
                                     }
                                     navController.navigate(Screen.HomeScreen.route)
                                 }
