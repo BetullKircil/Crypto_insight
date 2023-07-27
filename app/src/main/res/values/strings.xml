@@ -5,7 +5,8 @@
     <string name="mailPlaceHolder">example@gmail.com</string>
     <string name="email">Email</string>
     <string name="telephoneNumber">Telephone Number</string>
-    <string name="name">Full Name</string>
+    <string name="name">Name</string>
+    <string name="fullName">Full Name</string>
     <string name="password">Password</string>
     <string name="passwordAgain">Password (Again)</string>
     <string name="gender">Gender</string>
@@ -20,5 +21,8 @@
     <string name="nextButtonText">Next</string>
     <string name="signUpText">Sign Up</string>
     <string name="yourPasswordText">Your password</string>
+    <string name="pickDate">Pick a Date</string>
+    <string name="ok">Ok</string>
+    <string name="cansel">Cansel</string>
 
 </resources>
