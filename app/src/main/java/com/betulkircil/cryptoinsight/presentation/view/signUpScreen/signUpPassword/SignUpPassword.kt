@@ -31,9 +31,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -41,14 +44,20 @@ import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.LogoGroupSignUp
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpPasswordScreen(navController: NavController) {
+    var password = remember {
+        mutableStateOf("")
+    }
+    var passwordAgain = remember {
+        mutableStateOf("")
+    }
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -61,14 +70,20 @@ fun SignUpPasswordScreen(navController: NavController) {
                 AppBarSection(navController, "homeScreen" ,"signUpMailScreen")
                 SignUpText()
                 Column(modifier = Modifier
-                    .padding(vertical = 20.dp)
+                    .padding(vertical = 20.dp).padding(top = 25.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
                     var email = remember { mutableStateOf("") }
                     var phoneNumber = remember { mutableStateOf("") }
                     var isClicked = remember { mutableStateOf(false) }
+                    var isClickedAgain = remember {
+                        mutableStateOf(false)
+                    }
                     var passwordVisibility = remember { mutableStateOf(false) }
-                    TextFieldLabel(text = "Email")
+                    var passwordVisibilityAgain = remember {
+                        mutableStateOf(false)
+                    }
+                    TextFieldLabel(text = "Password")
                     TextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -81,14 +96,22 @@ fun SignUpPasswordScreen(navController: NavController) {
                                 color = colorResource(id = R.color.purple_protest),
                                 shape = RoundedCornerShape(22.dp)
                             ),
-                        value = email.value,
+                        value = password.value,
+                        visualTransformation = if (passwordVisibility.value){
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
+                        },
                         leadingIcon = { Row{
-                            Icon(imageVector = Icons.Default.Email, contentDescription = "emailIcon", modifier = Modifier.padding(start = 15.dp), tint = Color.Gray)
+                            Icon(painter = painterResource(id = R.drawable.off)
+                                , contentDescription = "password", modifier = Modifier.padding(start = 15.dp)
+                            )
                             Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
                             ))
                         } },
+                        trailingIcon = { PasswordVisibilityToggle(isVisible = passwordVisibility.value, onToggle = {passwordVisibility.value = it}) },
                         onValueChange = {
-                            email.value = it
+                            password.value = it
                         },
                         shape = RoundedCornerShape(22.dp),
                         colors = TextFieldDefaults.textFieldColors(
@@ -101,28 +124,36 @@ fun SignUpPasswordScreen(navController: NavController) {
                             autoCorrect = true,
                             imeAction = ImeAction.Next
                         ),
-                        placeholder = { Text(text = "example@gmail.com", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
                     )
-                    TextFieldLabel(text = "Telephone Number")
+                    TextFieldLabel(text = "Password (Again)")
                     TextField(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 20.dp)
+                            .clickable {
+                                isClickedAgain.value = !isClickedAgain.value
+                            }
                             .border(
                                 width = 2.5.dp,
                                 color = colorResource(id = R.color.purple_protest),
                                 shape = RoundedCornerShape(22.dp)
                             ),
-                        value = phoneNumber.value,
-                        leadingIcon = {
-                            Row(modifier = Modifier, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
-                                Icon(painter = painterResource(id = R.drawable.country_code), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
-                                Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier
-                                )
-                            }
+                        value = passwordAgain.value,
+                        visualTransformation = if (passwordVisibilityAgain.value){
+                            VisualTransformation.None
+                        } else {
+                            PasswordVisualTransformation()
                         },
+                        leadingIcon = { Row{
+                            Icon(painter = painterResource(id = R.drawable.off)
+                                , contentDescription = "password again", modifier = Modifier.padding(start = 15.dp)
+                            )
+                            Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
+                            ))
+                        } },
+                        trailingIcon = { PasswordVisibilityToggle(isVisible = passwordVisibilityAgain.value, onToggle = {passwordVisibilityAgain.value = it})},
                         onValueChange = {
-                            phoneNumber.value = it
+                            passwordAgain.value = it
                         },
                         shape = RoundedCornerShape(22.dp),
                         colors = TextFieldDefaults.textFieldColors(
@@ -133,18 +164,13 @@ fun SignUpPasswordScreen(navController: NavController) {
                         ),keyboardOptions = KeyboardOptions(
                             capitalization = KeyboardCapitalization.None,
                             autoCorrect = true,
-                            keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Next
                         ),
-                        placeholder = {
-                            Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier
-                                .padding(horizontal = 5.dp)
-                                .padding(top = 2.dp)) }
                     )
                 }
                 Column(modifier = Modifier
                     .fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = stringResource(id = R.string.signUpPasswordText), style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 20.dp))
+                    Text(text = stringResource(id = R.string.signUpPasswordText), color = Color.White ,style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 20.dp), fontWeight = FontWeight.Light)
                     Box(modifier = Modifier.padding(vertical = 30.dp)) {
                         BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpNameScreen.route, nextRoute = Screen.LoginScreen.route)
                     }

@@ -25,7 +25,7 @@ import com.betulkircil.cryptoinsight.R
 fun SignUpLinkText(firstText : String, linkText : String, navController: NavController, route : String) {
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = 25.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-            Text(text = firstText, color = Color.White, fontSize = 13.sp,fontWeight = FontWeight.Medium)
+            Text(text = firstText, color = Color.White, fontSize = 13.sp,fontWeight = FontWeight.Light)
             Spacer(modifier = Modifier.width(5.dp))
             Text(modifier = Modifier.clickable { navController.navigate(route) }, text = linkText, color = colorResource(id = R.color.purple_protest), style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium, fontSize = 13.sp)
         }

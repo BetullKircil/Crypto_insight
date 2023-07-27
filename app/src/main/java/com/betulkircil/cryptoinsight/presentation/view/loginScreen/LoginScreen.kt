@@ -51,6 +51,7 @@ import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.Ap
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.Login
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.utils.ShowMessageUtil.Companion.showMessage
 import kotlinx.coroutines.launch
@@ -212,21 +213,3 @@ fun LoginScreen(
     })
 }
 
-@Composable
-fun PasswordVisibilityToggle(
-    isVisible: Boolean,
-    onToggle: (Boolean) -> Unit
-) {
-    val icon: Painter = if (isVisible) {
-        painterResource(id = R.drawable.visibility)
-    } else {
-        painterResource(id = R.drawable.visibility_off)
-    }
-
-    IconButton(
-        onClick = { onToggle(!isVisible) },
-        modifier = Modifier.padding(4.dp)
-    ) {
-        Icon(icon, contentDescription = "Toggle password visibility")
-    }
-}
