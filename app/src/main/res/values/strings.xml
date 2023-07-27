@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CryptoInsight</string>
+    <string name="signUpPasswordText">Your password must be a minimum of 8 characters, contain uppercase, lowercase and special characters.</string>
 </resources>

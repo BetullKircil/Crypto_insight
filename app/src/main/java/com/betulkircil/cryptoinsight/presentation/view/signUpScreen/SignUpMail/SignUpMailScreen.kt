@@ -52,7 +52,7 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.S
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpMailScreen(navController: NavController) {
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
         Surface(modifier = Modifier.fillMaxSize()) {

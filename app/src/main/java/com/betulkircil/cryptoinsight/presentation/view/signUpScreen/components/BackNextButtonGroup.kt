@@ -13,11 +13,10 @@ import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
 
 @Composable
-fun BackNextButtonGroup(navController : NavController) {
+fun BackNextButtonGroup(navController : NavController, backRoute: String, nextRoute: String, modifier: Modifier = Modifier) {
     Row(modifier = Modifier
         .fillMaxWidth().padding(start = 25.dp)) {
-        BackButton(route = Screen.LoginScreen.route, navController = navController, buttonText = "Back", textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent
-        )
-        ButtonWithIcon(route = Screen.HomeScreen.route, navController = navController, buttonText = "Next", width = 200)
+        BackButton(route = backRoute, navController = navController, buttonText = "Back", textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent)
+        ButtonWithIcon(route = nextRoute, navController = navController, buttonText = "Next", width = 200)
     }
 }

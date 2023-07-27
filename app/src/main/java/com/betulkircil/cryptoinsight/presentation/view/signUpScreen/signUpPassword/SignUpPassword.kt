@@ -1,9 +1,11 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,21 +30,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.LogoGroupSignUp
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpPasswordScreen(navController: NavController) {
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
         Surface(modifier = Modifier.fillMaxSize()) {
@@ -54,7 +60,8 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 AppBarSection(navController, "homeScreen" ,"signUpMailScreen")
                 SignUpText()
-                Column(modifier = Modifier.padding(vertical = 20.dp)
+                Column(modifier = Modifier
+                    .padding(vertical = 20.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
                     var email = remember { mutableStateOf("") }
@@ -130,10 +137,18 @@ fun SignUpScreen(navController: NavController) {
                             imeAction = ImeAction.Next
                         ),
                         placeholder = {
-                            Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier.padding(horizontal = 5.dp).padding(top = 2.dp)) }
+                            Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier
+                                .padding(horizontal = 5.dp)
+                                .padding(top = 2.dp)) }
                     )
                 }
-                LogoGroupSignUp(navController = navController)
+                Column(modifier = Modifier
+                    .fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
+                    Text(text = stringResource(id = R.string.signUpPasswordText), style = MaterialTheme.typography.bodySmall, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 20.dp))
+                    Box(modifier = Modifier.padding(vertical = 30.dp)) {
+                        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpNameScreen.route, nextRoute = Screen.LoginScreen.route)
+                    }
+                }
             }
         }
     }

@@ -15,8 +15,9 @@ import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpScreen
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.SignUpPasswordScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,10 +57,13 @@ fun NavigationComponent() {
             LoginScreen(navController = navController)
         }
         composable(Screen.SignUpMailScreen.route){
-            SignUpScreen(navController = navController)
+            SignUpMailScreen(navController = navController)
         }
         composable(Screen.SignUpNameScreen.route){
             SignUpNameScreen(navController = navController)
+        }
+        composable(Screen.SignUpPasswordScreen.route){
+            SignUpPasswordScreen(navController = navController)
         }
     }
 }
