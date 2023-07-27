@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
@@ -30,8 +31,8 @@ fun LogoGroupSignUp(navController : NavController) {
             }
         }
         Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-            SignUpLinkText(firstText = "Already a member?", linkText = "Sign In", navController = navController, route = Screen.LoginScreen.route)
-            ButtonWithIcon(route = Screen.SignUpNameScreen.route, navController = navController, buttonText = "Next", width = 500)
+            SignUpLinkText(firstText = stringResource(id = R.string.alreadyMemberText), linkText = stringResource(id = R.string.signInText), navController = navController, route = Screen.LoginScreen.route)
+            ButtonWithIcon(route = Screen.SignUpNameScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 500)
         }
 
     }
