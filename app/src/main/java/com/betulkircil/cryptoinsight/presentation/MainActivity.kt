@@ -15,10 +15,9 @@ import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpNameScreen
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpScreen
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
