@@ -19,7 +19,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,7 +31,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -47,11 +45,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.AppBarSection
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.Login
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.PasswordVisibilityToggle
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.utils.ShowMessageUtil.Companion.showMessage
 import kotlinx.coroutines.launch
@@ -147,7 +145,7 @@ fun LoginScreen(
                             Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
                             ))
                         } },
-                        trailingIcon = { PasswordVisibilityToggle(isVisible = passwordVisibility.value, onToggle = {passwordVisibility.value = it})},
+                        trailingIcon = { PasswordVisibilityToggle(isVisible = passwordVisibility.value, onToggle = {passwordVisibility.value = it}) },
                         onValueChange = {
                             password.value = it
                         },

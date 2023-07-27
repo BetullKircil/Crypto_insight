@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
+import com.betulkircil.cryptoinsight.presentation.view.splashScreen.components.SplashScreenLogo
 import kotlinx.coroutines.delay
 
 @Composable
@@ -23,12 +24,5 @@ fun SplashScreen(navController: NavController) {
         delay(1000L)
         navController.navigate(Screen.HomeScreen.route)
     }
-    Box(
-        modifier = Modifier.fillMaxSize().background(Color.Black),
-        contentAlignment = Alignment.Center,
-    ) {
-        Image(painter = painterResource(id = R.drawable.logo), contentDescription = null)
-
-    }
-
+    SplashScreenLogo()
 }

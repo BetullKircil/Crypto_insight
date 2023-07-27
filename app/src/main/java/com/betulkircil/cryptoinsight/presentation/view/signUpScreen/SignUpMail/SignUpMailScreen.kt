@@ -34,8 +34,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.AppBarSection
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.LogoGroupSignUp
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText

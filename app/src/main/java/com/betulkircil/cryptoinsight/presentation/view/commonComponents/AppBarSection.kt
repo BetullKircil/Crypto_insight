@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.loginScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.commonComponents
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

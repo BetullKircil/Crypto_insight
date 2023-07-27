@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.loginScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.commonComponents
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
-import com.betulkircil.cryptoinsight.presentation.view.homeScreen.components.ButtonWithBorder
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginButton
 
 @Composable
 fun LogoGroup(

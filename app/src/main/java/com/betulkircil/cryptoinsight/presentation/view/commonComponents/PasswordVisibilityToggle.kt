@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.loginScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.commonComponents
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon

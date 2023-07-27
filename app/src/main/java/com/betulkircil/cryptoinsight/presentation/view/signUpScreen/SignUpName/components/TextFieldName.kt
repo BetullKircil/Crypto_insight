@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

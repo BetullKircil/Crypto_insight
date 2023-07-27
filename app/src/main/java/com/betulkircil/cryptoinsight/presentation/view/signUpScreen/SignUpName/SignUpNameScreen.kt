@@ -1,7 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -40,12 +38,12 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.AppBarSection
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.BackgroundImage
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.AppBarSection
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.TextFieldName
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components.TextFieldName
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
