@@ -8,7 +8,7 @@ import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewMode
 import com.betulkircil.cryptoinsight.utils.Response
 
 @Composable
-fun Login(
+fun LoginState(
     viewModel: LoginViewModel = hiltViewModel(),
     showErrorMessage: (errorMessage: String?) -> Unit
 ) {

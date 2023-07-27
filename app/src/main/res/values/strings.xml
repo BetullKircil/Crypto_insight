@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">CryptoInsight</string>
     <string name="signUpPasswordText">Your password must be a minimum of 8 characters, contain uppercase, lowercase and special characters.</string>
+    <string name="numberPlaceHolder">0 555 555 55 55</string>
+    <string name="mailPlaceHolder">example@gmail.com</string>
+    <string name="email">Email</string>
+    <string name="telephoneNumber">Telephone Number</string>
+    <string name="name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="passwordAgain">Password (Again)</string>
+    <string name="gender">Gender</string>
+    <string name="notMemberText">Not a Member</string>
+    <string name="createAccountText">Create an Account</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="loginText">Login</string>
+    <string name="signInText">Sign In</string>
+    <string name="alreadyMemberText">Already a Member</string>
+    <string name="birthdayText">Date of Birth</string>
+    <string name="backButtonText">Back</string>
+    <string name="nextButtonText">Next</string>
+    <string name="signUpText">Sign Up</string>
+    <string name="yourPasswordText">Your password</string>
+
 </resources>

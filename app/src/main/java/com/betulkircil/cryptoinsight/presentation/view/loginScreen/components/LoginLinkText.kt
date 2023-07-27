@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,9 +24,11 @@ import com.betulkircil.cryptoinsight.R
 
 @Composable
 fun LinkText(firstText : String, linkText : String, navController: NavController, route : String) {
-    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(vertical = 5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
-            text = "Login",
+            text = stringResource(id = R.string.loginText),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = Color.White,

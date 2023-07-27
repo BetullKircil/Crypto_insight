@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.Login
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginScreenContent
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginState
 import com.betulkircil.cryptoinsight.utils.ShowMessageUtil.Companion.showMessage
 
 
@@ -27,7 +27,7 @@ fun LoginScreen(
             LoginScreenContent(navController = navController)
         }
     }
-    Login(showErrorMessage = { errorMessage ->
+    LoginState(showErrorMessage = { errorMessage ->
         showMessage(context, errorMessage)
     })
 }

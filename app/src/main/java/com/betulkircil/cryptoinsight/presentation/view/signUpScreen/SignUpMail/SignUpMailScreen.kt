@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
@@ -54,14 +55,15 @@ fun SignUpMailScreen(navController: NavController) {
             ) {
                 AppBarSection(navController, "homeScreen" ,"signUpMailScreen")
                 SignUpText()
-                Column(modifier = Modifier.padding(vertical = 20.dp).padding(top = 25.dp)
+                Column(modifier = Modifier
+                    .padding(vertical = 20.dp)
+                    .padding(top = 25.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
-                    var email = remember { mutableStateOf("") }
-                    var phoneNumber = remember { mutableStateOf("") }
-                    var isClicked = remember { mutableStateOf(false) }
-                    var passwordVisibility = remember { mutableStateOf(false) }
-                    TextFieldLabel(text = "Email")
+                    val email = remember { mutableStateOf("") }
+                    val phoneNumber = remember { mutableStateOf("") }
+                    val isClicked = remember { mutableStateOf(false) }
+                    TextFieldLabel(text = stringResource(id = R.string.email))
                     TextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -94,9 +96,9 @@ fun SignUpMailScreen(navController: NavController) {
                             autoCorrect = true,
                             imeAction = ImeAction.Next
                         ),
-                        placeholder = { Text(text = "example@gmail.com", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
+                        placeholder = { Text(text = stringResource(id = R.string.mailPlaceHolder), style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
                     )
-                    TextFieldLabel(text = "Telephone Number")
+                    TextFieldLabel(text = stringResource(id = R.string.telephoneNumber))
                     TextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -130,7 +132,9 @@ fun SignUpMailScreen(navController: NavController) {
                             imeAction = ImeAction.Next
                         ),
                         placeholder = {
-                            Text(text = "555 555 55 55", style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier.padding(horizontal = 5.dp).padding(top = 2.dp)) }
+                            Text(text = stringResource(id = R.string.numberPlaceHolder), style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier
+                                .padding(horizontal = 5.dp)
+                                .padding(top = 2.dp)) }
                     )
                 }
                 LogoGroupSignUp(navController = navController)

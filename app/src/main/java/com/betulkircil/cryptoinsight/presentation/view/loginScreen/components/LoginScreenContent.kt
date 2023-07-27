@@ -30,9 +30,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -61,13 +61,15 @@ fun LoginScreenContent(navController : NavController, viewModel : LoginViewModel
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AppBarSection(navController, "homeScreen", "loginScreen")
-        LinkText(firstText = "Not a member?", linkText = "Create an Account", navController = navController, route = Screen.SignUpMailScreen.route)
+        LinkText(firstText = stringResource(id = R.string.notMemberText), linkText = stringResource(
+            id = R.string.createAccountText
+        ), navController = navController, route = Screen.SignUpMailScreen.route)
         Column(modifier = Modifier
             , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
         ) {
             var isClicked = remember { mutableStateOf(false) }
             var passwordVisibility = remember { mutableStateOf(false) }
-            TextFieldLabel(text = "Email")
+            TextFieldLabel(text = stringResource(id = R.string.email))
             TextField(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -100,9 +102,9 @@ fun LoginScreenContent(navController : NavController, viewModel : LoginViewModel
                     autoCorrect = true,
                     imeAction = ImeAction.Next
                 ),
-                placeholder = { Text(text = "example@gmail.com", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
+                placeholder = { Text(text = stringResource(id = R.string.mailPlaceHolder), style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
             )
-            TextFieldLabel(text = "Password")
+            TextFieldLabel(text = stringResource(id = R.string.password))
             TextField(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -143,11 +145,10 @@ fun LoginScreenContent(navController : NavController, viewModel : LoginViewModel
                     autoCorrect = true,
                     imeAction = ImeAction.Next
                 ),
-                placeholder = { Text(text = "Sifreniz", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
+                placeholder = { Text(text = stringResource(id = R.string.yourPasswordText), style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
             )
             ForgotPasswordText()
         }
-        //LogoGroup(navController = navController)
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(vertical = 30.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.SpaceBetween) {
@@ -180,7 +181,7 @@ fun LoginScreenContent(navController : NavController, viewModel : LoginViewModel
                 )
                 )
             ) {
-                Text(text = "Login", color = Color.White, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+                Text(text = stringResource(id = R.string.loginText), color = Color.White, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
             }
         }
     }
