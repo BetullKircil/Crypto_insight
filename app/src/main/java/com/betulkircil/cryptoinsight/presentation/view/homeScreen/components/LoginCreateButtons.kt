@@ -34,7 +34,7 @@ fun ButtonWithBorder(
         shape = RoundedCornerShape(40),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(23.dp, 9.dp)
+            .padding(18.dp, 9.dp)
             .height(50.dp),
         border = BorderStroke(2.dp, colorResource(id = borderColor)),
         colors = ButtonDefaults.elevatedButtonColors(containerColor = backgroundColor)

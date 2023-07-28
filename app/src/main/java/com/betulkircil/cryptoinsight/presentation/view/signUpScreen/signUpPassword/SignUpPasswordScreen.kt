@@ -42,8 +42,8 @@ fun SignUpPasswordScreen(navController: NavController) {
                 Column(modifier = Modifier
                     .fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
                     Text(text = stringResource(id = R.string.signUpPasswordText), color = Color.White ,style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 20.dp), fontWeight = FontWeight.Light)
-                    Box(modifier = Modifier.padding(vertical = 30.dp)) {
-                        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpNameScreen.route, nextRoute = Screen.LoginScreen.route)
+                    Box(modifier = Modifier.padding(vertical = 25.dp)) {
+                        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpNameScreen.route, nextRoute = Screen.CoinScreen.route)
                     }
                 }
             }
