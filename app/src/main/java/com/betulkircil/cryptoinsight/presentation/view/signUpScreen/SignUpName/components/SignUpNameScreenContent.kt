@@ -44,6 +44,7 @@ import java.time.LocalDate
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpNameScreenContent(navController: NavController) {
+
     Column(
         modifier = Modifier
             .padding(top = 45.dp, bottom = 25.dp)

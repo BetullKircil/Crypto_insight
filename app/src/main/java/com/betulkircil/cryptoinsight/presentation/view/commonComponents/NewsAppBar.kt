@@ -14,13 +14,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NewsAppBar(content: @Composable () -> Unit) {
+fun NewsAppBar(greetingContent: @Composable () -> Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(50.dp)
         .padding(top = 10.dp).padding(horizontal = 20.dp)
         .background(Color.Transparent), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        content()
+        greetingContent()
         Text(text = "ehehehehe")
     }
 }
