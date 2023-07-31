@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.CustomScrollableTabRow
@@ -26,9 +28,7 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.S
 
 @Composable
 fun CoinScreen(navController: NavController) {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            Column (modifier = Modifier.fillMaxSize()){
+            Column (modifier = Modifier.fillMaxSize().background(color = Color.Blue)){
                 NewsAppBar(greetingContent = { GreetingText(userName = "Betul Kircil")})
                         PageTitle(text = "Coins")
                         Column {
@@ -68,7 +68,4 @@ fun CoinScreen(navController: NavController) {
                         }
                     }
                 }
-
-            }
         }
-    }
