@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun NewsAppBar(greetingContent: @Composable () -> Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
-        .height(50.dp)
+        .height(60.dp)
         .padding(top = 10.dp).padding(horizontal = 20.dp)
         .background(Color.Transparent), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         greetingContent()
