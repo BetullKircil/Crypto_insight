@@ -14,6 +14,6 @@ fun PageTitle(text : String) {
         text = text,
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 5.dp),
         style = MaterialTheme.typography.bodyLarge,
-        color = Color.Red,
+        color = Color.White,
     )
 }

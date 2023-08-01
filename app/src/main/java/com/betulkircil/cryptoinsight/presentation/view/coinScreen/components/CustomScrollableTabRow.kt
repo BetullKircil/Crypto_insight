@@ -52,6 +52,7 @@ fun CustomScrollableTabRow(
                 onClick = { onTabClick(tabIndex) },
                 text = {
                     Text(
+                        color = Color.White,
                         text = tab,
                         style = MaterialTheme.typography.body2,
                         fontWeight = FontWeight.Light,

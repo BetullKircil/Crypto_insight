@@ -21,6 +21,6 @@ fun NewsAppBar(greetingContent: @Composable () -> Unit) {
         .padding(top = 10.dp).padding(horizontal = 20.dp)
         .background(Color.Transparent), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         greetingContent()
-        Text(text = "ehehehehe")
+        Text(text = "ehehehehe", color = Color.White)
     }
 }

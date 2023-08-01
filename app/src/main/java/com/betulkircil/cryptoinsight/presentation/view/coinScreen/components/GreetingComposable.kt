@@ -6,6 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import java.text.SimpleDateFormat
 import java.util.*
@@ -15,7 +16,7 @@ import java.util.*
 fun GreetingText(userName : String) {
     val greeting = getGreeting()
     Row(modifier = Modifier, horizontalArrangement = Arrangement.Center) {
-        Text(text = greeting, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Light)
+        Text(text = greeting, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Light, color = Color.White)
         AppBarText(userName = userName)
     }
 }
