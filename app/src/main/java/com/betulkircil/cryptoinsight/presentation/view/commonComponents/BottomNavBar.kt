@@ -28,7 +28,7 @@ fun BottomNavigationBar(navController: NavController) {
             icon = {
                 IconButton(onClick = {
                     navController.navigate(Screen.LoginScreen.route)}) {
-                    Image(painter = painterResource(id = R.drawable.home_not_clicked), contentDescription = null, modifier = Modifier.size(25.dp))
+                    Image(painter = painterResource(id = R.drawable.home_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }
             },
             selected = true,
@@ -38,7 +38,7 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             icon = {
                 IconButton(onClick = { }) {
-                    Image(painter = painterResource(R.drawable.news_not_clicked), contentDescription = null, modifier = Modifier.size(25.dp))
+                    Image(painter = painterResource(R.drawable.news_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }            },
             selected = false,
             onClick = { /*TODO*/ },
@@ -47,7 +47,7 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             icon = {
                 IconButton(onClick = {  }) {
-                    Image(painter = painterResource(R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier.size(25.dp))
+                    Image(painter = painterResource(R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }
             },
             selected = true,
@@ -56,7 +56,7 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             icon = {
                 IconButton(onClick = {  }) {
-                    Image(painter = painterResource(R.drawable.saved_not_clicked), contentDescription = null, modifier = Modifier.size(25.dp))
+                    Image(painter = painterResource(R.drawable.saved_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }            },
             selected = true,
             onClick = { /*TODO*/ },
@@ -65,7 +65,7 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             icon = {
                 IconButton(onClick = {  }) {
-                    Image(painter = painterResource(R.drawable.profile_not_clicekd), contentDescription = null, modifier = Modifier.size(25.dp))
+                    Image(painter = painterResource(R.drawable.profile_not_clicekd), contentDescription = null, modifier = Modifier.size(20.dp))
                 }            },
             selected = true,
             onClick = { /*TODO*/ },
