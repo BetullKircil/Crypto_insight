@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 fun NavigationComponent() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
-        composable(Screen.SplashScreen.route){
+        composable(Screen.SplashScreen.route){  //Splasch screen cagirilackak
             SplashScreen(navController = navController)
         }
         composable(Screen.CoinScreen.route){
