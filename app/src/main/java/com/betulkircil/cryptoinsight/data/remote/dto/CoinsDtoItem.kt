@@ -31,17 +31,6 @@ data class CoinsDtoItem(
     val total_volume: Double
 )
 
-/*fun mapToModel(coinsDto: CoinsDtoItem) : Coin {
-    return Coin(
-        image = coinsDto.image,
-        name = coinsDto.name,
-        id = coinsDto.id,
-        symbol = coinsDto.symbol,
-        currentPrice = coinsDto.current_price,
-        marketCapChange24 = coinsDto.market_cap_change_24h
-    )
-}*/
-
 fun CoinsDtoItem.toCoin() : Coin{
     return Coin(
         currentPrice = current_price,
