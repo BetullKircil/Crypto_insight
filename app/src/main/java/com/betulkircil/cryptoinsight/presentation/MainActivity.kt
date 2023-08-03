@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.AllCoinsScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
@@ -64,6 +65,9 @@ fun NavigationComponent() {
         }
         composable(Screen.SignUpPasswordScreen.route){
             SignUpPasswordScreen(navController = navController)
+        }
+        composable(Screen.AllCoinsScreen.route){
+            AllCoinsScreen(navController = navController)
         }
     }
 }

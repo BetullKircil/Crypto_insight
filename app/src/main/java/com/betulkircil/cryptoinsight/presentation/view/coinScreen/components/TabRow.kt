@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
@@ -35,7 +36,6 @@ fun TabRow(
         selectedTabIndex = selectedTabIndex,
         contentColor = Color.Black,
         backgroundColor = Color.Transparent,
-        edgePadding = 0.dp,
         indicator = { tabPositions ->
             TabRowDefaults.Indicator(
                 color = colorResource(id = R.color.purple_protest),

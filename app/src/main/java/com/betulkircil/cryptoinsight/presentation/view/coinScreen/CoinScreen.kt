@@ -54,9 +54,7 @@ fun CoinScreen(navController: NavController) {
                     .verticalScroll(scrollState)
                     .background(color = colorResource(id = R.color.grey_black))
                     .fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
-                    LoginScreenContent(navController = navController)
-                    LoginScreenContent(navController = navController)
-                    SignUpNameScreen(navController = navController)
+                    CoinScreenContent(navController = navController)
                 }
             }
         )
