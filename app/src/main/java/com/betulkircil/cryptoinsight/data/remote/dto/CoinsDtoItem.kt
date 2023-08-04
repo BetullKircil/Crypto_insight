@@ -36,7 +36,7 @@ fun CoinsDtoItem.toCoin() : Coin{
         currentPrice = current_price,
         id = id,
         image = image,
-        marketCapChange24 = market_cap_change_24h,
+        marketCapChange24Percentage = market_cap_change_percentage_24h,
         name = name,
         symbol = symbol
     )
