@@ -1,10 +1,12 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen
+package com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.useCase.coinsUseCase.getCoinUseCase
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.CoinsEvent
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenStates.CoinsState
 import com.betulkircil.cryptoinsight.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job

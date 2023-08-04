@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen
+package com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenStates
 
 import com.betulkircil.cryptoinsight.domain.model.Coins
 

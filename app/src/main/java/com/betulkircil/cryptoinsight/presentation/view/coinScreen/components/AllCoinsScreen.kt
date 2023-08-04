@@ -30,7 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
-import com.betulkircil.cryptoinsight.presentation.view.coinScreen.AllCoinsViewModel
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.AllCoinsViewModel
 
 @Composable
 fun AllCoinsScreen(
