@@ -1,3 +1,5 @@
 package com.betulkircil.cryptoinsight.data.remote.dto
 
-class CoinsDto : ArrayList<CoinsDtoItem>()
+data class Coin(
+    val item: Item
+)

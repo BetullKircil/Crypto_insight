@@ -1,7 +1,7 @@
 package com.betulkircil.cryptoinsight.domain.useCase.coinsUseCase
 
 import com.betulkircil.cryptoinsight.data.remote.dto.toCoin
-import com.betulkircil.cryptoinsight.domain.model.Coin
+import com.betulkircil.cryptoinsight.domain.model.Coins
 import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
 import com.betulkircil.cryptoinsight.utils.Resource
 import kotlinx.coroutines.flow.Flow
@@ -12,7 +12,7 @@ import javax.inject.Inject
 class getCoinUseCase @Inject constructor(
     private val repository: CoinRepository
 ){
-    fun getCoin(currencyString : String) : Flow<Resource<List<Coin>>> = flow {
+    fun getCoin(currencyString : String) : Flow<Resource<List<Coins>>> = flow {
         try {
             emit(Resource.Loading())
             val coins = repository.getCoins(currencyString).map {

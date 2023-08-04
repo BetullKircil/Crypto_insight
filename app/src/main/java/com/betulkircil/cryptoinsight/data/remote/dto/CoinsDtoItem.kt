@@ -1,6 +1,6 @@
 package com.betulkircil.cryptoinsight.data.remote.dto
 
-import com.betulkircil.cryptoinsight.domain.model.Coin
+import com.betulkircil.cryptoinsight.domain.model.Coins
 
 data class CoinsDtoItem(
     val ath: Double,
@@ -31,8 +31,8 @@ data class CoinsDtoItem(
     val total_volume: Double
 )
 
-fun CoinsDtoItem.toCoin() : Coin{
-    return Coin(
+fun CoinsDtoItem.toCoin() : Coins{
+    return Coins(
         currentPrice = current_price,
         id = id,
         image = image,

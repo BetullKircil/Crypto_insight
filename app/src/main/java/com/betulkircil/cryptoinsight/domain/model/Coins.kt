@@ -1,6 +1,6 @@
 package com.betulkircil.cryptoinsight.domain.model
 
-data class Coin(
+data class Coins(
     val image: String,
     val id: String,
     val symbol: String,
