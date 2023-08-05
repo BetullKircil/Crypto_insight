@@ -41,13 +41,13 @@ fun CustomScrollableTabRow(navController: NavController) {
          Column(modifier = Modifier
              .fillMaxSize()) {
                                  when (tabs[selectedTabIndex]) {
-                                     "Favorites" -> LoginScreen(navController = navController)
+                                     "Favorites" -> FavoriteCoinsScreen(navController)
                                      "All" -> AllCoinsScreen(navController = navController)
                                      "Metaverse" -> SignUpNameScreen(navController)
                                      "Gaming" -> LoginScreen(navController = navController)
                                      "Defi" -> HomeScreen(navController = navController)
                                      "Innovation" -> LoginScreen(navController = navController)
-                                     "NFT" -> HomeScreen(navController = navController)
+                                     "NFT" -> AllCoinsScreen(navController = navController)
                                  }
                              }
       /*  LazyColumn(modifier = Modifier.fillMaxSize()) {

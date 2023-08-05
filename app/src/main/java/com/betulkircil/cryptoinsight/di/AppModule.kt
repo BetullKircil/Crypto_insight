@@ -2,12 +2,9 @@ package com.betulkircil.cryptoinsight.di
 
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
-import com.betulkircil.cryptoinsight.data.remote.FavoriteCoinsApi
 import com.betulkircil.cryptoinsight.data.repository.AuthRepositoryImpl
-import com.betulkircil.cryptoinsight.data.repository.FavoriteCoinsRepositoryImpl
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
-import com.betulkircil.cryptoinsight.domain.repository.FavoriteCoinsRepository
 import com.betulkircil.cryptoinsight.utils.Constants.COIN_BASE_URL
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
@@ -53,20 +50,4 @@ object AppModule {
         return CoinRepositoryImpl(api)
     }
 
-    @Provides
-    @Singleton
-    fun provideFavoriteCoinsApi() : FavoriteCoinsApi{
-        return Retrofit.Builder()
-            .baseUrl(COIN_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(FavoriteCoinsApi::class.java)
-
-    }
-
-    @Provides
-    @Singleton
-    fun provideFavoriteCoinsRepository(api: FavoriteCoinsApi) : FavoriteCoinsRepository{
-        return FavoriteCoinsRepositoryImpl(api)
-    }
 }

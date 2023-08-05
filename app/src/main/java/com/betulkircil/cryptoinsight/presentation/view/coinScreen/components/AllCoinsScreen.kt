@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,49 +39,105 @@ fun AllCoinsScreen(
     allCoinsViewModel: AllCoinsViewModel = hiltViewModel()
 ) {
     val state = allCoinsViewModel.state.value
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(color = colorResource(id = R.color.grey_black))){
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = colorResource(id = R.color.grey_black))
+    ) {
         Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
-            Row(modifier = Modifier.padding(20.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(text = "Name", style = androidx.compose.material3.MaterialTheme.typography.bodySmall, color = Color.White, fontWeight = FontWeight.Light, fontSize = 10.sp)
+            Row(
+                modifier = Modifier.padding(20.dp).fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Name",
+                    style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                    color = Color.White,
+                    fontWeight = FontWeight.Light,
+                    fontSize = 10.sp
+                )
                 Row(modifier = Modifier) {
-                    Text(text = "Price", style = androidx.compose.material3.MaterialTheme.typography.bodySmall, color = Color.White, modifier = Modifier.padding(horizontal = 10.dp), fontWeight = FontWeight.Light, fontSize = 10.sp)
-                    Text(text = "24h Change", style = androidx.compose.material3.MaterialTheme.typography.bodySmall, color = Color.White, fontWeight = FontWeight.Light, fontSize = 10.sp)
+                    Text(
+                        text = "Price",
+                        style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = 10.dp),
+                        fontWeight = FontWeight.Light,
+                        fontSize = 10.sp
+                    )
+                    Text(
+                        text = "24h Change",
+                        style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                        color = Color.White,
+                        fontWeight = FontWeight.Light,
+                        fontSize = 10.sp
+                    )
                 }
             }
-            LazyColumn(modifier = Modifier.fillMaxSize()){
-                items(state.coins){coin->
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(state.coins) { coin ->
                     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
                         Row(modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 10.dp)
-                            .clickable { /*todo*/ }, horizontalArrangement = Arrangement.SpaceAround) {
-                            Image(painter = rememberImagePainter(data = coin.image), contentDescription = coin.name,
+                            .clickable { /*todo*/ },
+                            horizontalArrangement = Arrangement.SpaceAround
+                        ) {
+                            Image(
+                                painter = rememberImagePainter(data = coin.image),
+                                contentDescription = coin.name,
                                 modifier = Modifier
                                     .padding(horizontal = 20.dp)
                                     .size(20.dp, 20.dp)
-                                    .clip(RoundedCornerShape(20)))
-                            Text(text = coin.symbol.uppercase(), style =  androidx.compose.material3.MaterialTheme.typography.bodyLarge, color = Color.White)
-                            Box(modifier = Modifier
-                                .width(120.dp)
-                                .padding(horizontal = 20.dp)){
-                                Text(text = coin.name.trim(), style =  androidx.compose.material3.MaterialTheme.typography.bodySmall, color = Color.White, fontWeight = FontWeight.Light)
+                                    .clip(RoundedCornerShape(20))
+                            )
+                            Text(
+                                text = coin.symbol.uppercase(),
+                                style = androidx.compose.material3.MaterialTheme.typography.bodyLarge,
+                                color = Color.White
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .width(120.dp)
+                                    .padding(horizontal = 20.dp)
+                            ) {
+                                Text(
+                                    text = coin.name.trim(),
+                                    style = androidx.compose.material3.MaterialTheme.typography.bodySmall,
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Light
+                                )
                             }
-                            Spacer(modifier = Modifier
-                                .width(40.dp)
-                                .background(color = Color.White))
-                            Text(text = "$ " + coin.currentPrice.toString().substring(0, 3), color = Color.White)
-                            Text(text = if(coin.marketCapChange24Percentage > 0) "+" + coin.marketCapChange24Percentage.toString().substring(0, 4) + "%" else coin.marketCapChange24Percentage.toString().substring(0, 5) + "%", color = if(coin.marketCapChange24Percentage < 0) Color.Red else Color.Green, modifier = Modifier.padding(horizontal = 20.dp))
+                            Spacer(
+                                modifier = Modifier
+                                    .width(40.dp)
+                                    .background(color = Color.White)
+                            )
+                            Text(
+                                text = "$ " + coin.currentPrice.toString().substring(0, 3),
+                                color = Color.White
+                            )
+                            Text(
+                                text = if (coin.marketCapChange24Percentage > 0) "+" + coin.marketCapChange24Percentage.toString()
+                                    .substring(
+                                        0,
+                                        4
+                                    ) + "%" else coin.marketCapChange24Percentage.toString()
+                                    .substring(0, 5) + "%",
+                                color = if (coin.marketCapChange24Percentage < 0) Color.Red else Color.Green,
+                                modifier = Modifier.padding(horizontal = 20.dp)
+                            )
                         }
-                        Box(modifier = Modifier
-                            .fillMaxWidth()
-                            .height(0.5.dp)
-                            .background(color = colorResource(id = R.color.purple_protest))) {
-                            
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(0.5.dp)
+                                .background(color = colorResource(id = R.color.purple_protest))
+                        ) {
+
                         }
                     }
-                    
+
                 }
             }
         }
