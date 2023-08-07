@@ -1,12 +1,13 @@
-package com.betulkircil.cryptoinsight.data.remote.dto
+package com.betulkircil.cryptoinsight.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.betulkircil.cryptoinsight.data.remote.dto.Source
 
 @Entity(
     tableName = "articles"
 )
-data class Article(
+data class ArticlesEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val author: String,
