@@ -10,6 +10,7 @@ import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenStates.C
 import com.betulkircil.cryptoinsight.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -40,8 +41,8 @@ class AllCoinsViewModel @Inject constructor(
                     _state.value = CoinsState(error = result.message ?: "An unexpected error occured")
                 }
             }
-
         }.launchIn(viewModelScope)
+
     }
 
     fun onEvent(event: CoinsEvent){

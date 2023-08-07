@@ -43,6 +43,7 @@ fun FavoriteCoinsScreen(
     val minPrice = 1.0
     val maxPrice = 500.0
     val maxChangePercentage = 2.0
+
     val filteredCoins = state.coins.filter { coin ->
         coin.currentPrice >= minPrice && coin.currentPrice <= maxPrice &&
                 coin.marketCapChange24Percentage <= maxChangePercentage
