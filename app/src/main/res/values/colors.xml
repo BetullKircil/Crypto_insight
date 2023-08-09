@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple_protest">#8628DB</color>
     <color name="grey_black">#1c1c1b</color>
+    <color name="grey_black_bg">#171716</color>
 
 </resources>

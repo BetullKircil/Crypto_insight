@@ -1,5 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
 
+import android.os.Build
+import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +20,7 @@ import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun CustomScrollableTabRow(navController: NavController) {
     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
@@ -43,7 +46,7 @@ fun CustomScrollableTabRow(navController: NavController) {
                                  when (tabs[selectedTabIndex]) {
                                      "Favorites" -> FavoriteCoinsScreen(navController)
                                      "All" -> AllCoinsScreen(navController = navController)
-                                     "Metaverse" -> SignUpNameScreen(navController)
+                                     "Metaverse" -> NewsRowScreen(navController)
                                      "Gaming" -> LoginScreen(navController = navController)
                                      "Defi" -> HomeScreen(navController = navController)
                                      "Innovation" -> LoginScreen(navController = navController)
