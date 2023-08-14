@@ -20,6 +20,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,7 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.view.animations.ShimmerLoopEffect
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.AllCoinsViewModel
+import kotlinx.coroutines.delay
 import java.lang.Thread.sleep
 import javax.inject.Inject
 
@@ -39,6 +44,14 @@ fun NewsAppBar(
     greetingContent: @Composable () -> Unit,
     allCoinsViewModel: AllCoinsViewModel = hiltViewModel(),
 ) {
+    var isLoading = remember {
+        mutableStateOf(true)
+    }
+    LaunchedEffect(key1 = true) {
+        delay(1000)
+        isLoading.value = false
+
+    }
     val state = allCoinsViewModel.state.value
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -54,6 +67,37 @@ fun NewsAppBar(
             .width(120.dp)){
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.coins) { coin ->
+                    ShimmerLoopEffect(
+                        isLoading = isLoading.value,
+                        contentAfterLoading = {
+                            Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
+                                Row(modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 10.dp),
+                                    horizontalArrangement = Arrangement.Center,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Image(
+                                        painter = rememberImagePainter(data = coin.image),
+                                        contentDescription = coin.name,
+                                        modifier = Modifier
+                                            .size(20.dp, 20.dp)
+                                            .clip(RoundedCornerShape(20))
+                                    )
+                                    androidx.compose.material.Text(
+                                        text = coin.symbol.uppercase(),
+                                        style = MaterialTheme.typography.titleSmall,
+                                        color = Color.White,
+                                        modifier = Modifier.padding(horizontal = 5.dp)
+                                    )
+                                    androidx.compose.material.Text(
+                                        text = "$ " + coin.currentPrice.toString().substring(0, 4),
+                                        color = if (coin.marketCapChange24Percentage < 0) Color.Red else Color.Green
+                                    )
+                                }
+                            }
+                        }
+                    )
                     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
                         Row(modifier = Modifier
                             .fillMaxWidth()

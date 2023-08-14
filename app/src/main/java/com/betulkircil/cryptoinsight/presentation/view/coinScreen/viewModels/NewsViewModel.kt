@@ -6,7 +6,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.betulkircil.cryptoinsight.domain.useCase.coinsUseCase.getNewsUseCase
+import com.betulkircil.cryptoinsight.domain.useCase.newsUseCase.getNewsUseCase
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.NewsEvent
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenStates.NewsState
 import com.betulkircil.cryptoinsight.utils.Resource

@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.domain.useCase.coinsUseCase
+package com.betulkircil.cryptoinsight.domain.useCase.newsUseCase
 
 import android.net.http.HttpException
 import android.os.Build

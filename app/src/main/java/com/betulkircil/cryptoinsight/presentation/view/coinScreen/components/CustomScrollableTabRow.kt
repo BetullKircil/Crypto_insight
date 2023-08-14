@@ -50,7 +50,7 @@ fun CustomScrollableTabRow(navController: NavController) {
                                      "Gaming" -> LoginScreen(navController = navController)
                                      "Defi" -> HomeScreen(navController = navController)
                                      "Innovation" -> LoginScreen(navController = navController)
-                                     "NFT" -> AllCoinsScreen(navController = navController)
+                                     "NFT" -> NftScreen(navController = navController)
                                  }
                              }
       /*  LazyColumn(modifier = Modifier.fillMaxSize()) {

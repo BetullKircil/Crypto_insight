@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,10 +23,16 @@ fun CoinScreenContent(navController: NavController) {
         Box(modifier = Modifier.height(350.dp)) {
             CustomScrollableTabRow(navController = navController)
         }
-        PageTitle(text = "Important")
+        Box(modifier = Modifier.padding(top = 10.dp)){
+            PageTitle(text = "Important News")
+        }
         Box(modifier = Modifier.height(300.dp)){
             NewsRowScreen(navController = navController)
         }
+        Box(modifier = Modifier.padding(vertical = 10.dp)) {
+            PageTitle(text = "News ->")
+        }
+        NewsColumnScreen(navController = navController)
     }
 }
 
