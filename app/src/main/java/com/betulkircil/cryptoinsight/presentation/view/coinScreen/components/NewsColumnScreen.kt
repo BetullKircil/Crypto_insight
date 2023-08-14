@@ -21,11 +21,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -59,6 +63,7 @@ fun NewsColumnScreen(
     }
     val context = LocalContext.current
     val state = viewModel.state.value
+    var visibleNewsCount = remember { mutableStateOf(5) }
 
     LazyColumn(
         modifier = Modifier
@@ -66,7 +71,7 @@ fun NewsColumnScreen(
             .height(400.dp)
             .padding(horizontal = 20.dp)
     ) {
-        items(state.newsList.reversed().take(5)) { news ->
+        items(state.newsList.reversed().take(visibleNewsCount.value)) { news ->
             NewsColumnShimmerEffect(
                 isLoading = isLoading.value,
                 contentAfterLoading = {
@@ -121,11 +126,27 @@ fun NewsColumnScreen(
                                 .fillMaxWidth()
                                 .height(0.8.dp)
                                 .background(color = colorResource(id = R.color.purple_protest))
-                        ) {
-                        }
+                        )
+
                     }
                 }
             )
+        }
+    }
+    Row(modifier = Modifier, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+        Box(modifier = Modifier.fillMaxSize().height(170.dp), contentAlignment = Alignment.Center){
+            Button(onClick = {
+                visibleNewsCount.value += 5
+            },
+                modifier = Modifier
+                    .fillMaxWidth(0.4f),
+                colors = ButtonDefaults.buttonColors(containerColor = colorResource(
+                    id = R.color.button_color
+                )),
+                shape = RoundedCornerShape(15.dp)
+            ) {
+                Text(text = "See More")
+            }
         }
     }
 }
