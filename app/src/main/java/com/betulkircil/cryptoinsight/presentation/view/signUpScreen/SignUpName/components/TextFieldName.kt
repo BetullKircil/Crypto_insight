@@ -46,7 +46,6 @@ fun TextFieldName() {
             Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
             ))
         } },
-        //trailingIcon = { Icon(imageVector = Icons.Default.Add, contentDescription = null) },
         onValueChange = {
             name.value = it
         },

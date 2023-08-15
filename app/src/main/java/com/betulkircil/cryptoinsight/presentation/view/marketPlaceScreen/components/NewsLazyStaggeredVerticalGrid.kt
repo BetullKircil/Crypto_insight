@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -45,8 +46,10 @@ import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.formatDuration
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.NewsEvent
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NewsViewModel
 import kotlinx.coroutines.delay
+import okhttp3.internal.wait
 import java.time.Duration
 import java.time.Instant
 import java.time.LocalDateTime
@@ -73,6 +76,16 @@ fun NewsLazyStaggeredVerticalGrid(
     val state = viewModel.state.value
         val context = LocalContext.current
 
+    Column(modifier = Modifier.fillMaxHeight()) {
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            , contentAlignment = Alignment.Center){
+            NewsSearchBar(
+                hint = "Search",
+                onSearch = {
+                    viewModel.onEvent(NewsEvent.Search(it))
+                })
+        }
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.Fixed(count = 2),
             modifier = Modifier.fillMaxSize()
@@ -85,9 +98,10 @@ fun NewsLazyStaggeredVerticalGrid(
                         context.startActivity(intent)
                     }
                 }
-                
             }
         }
+    }
+
     }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -98,7 +112,7 @@ fun NewsCard(
 ) {
     val context = LocalContext.current
     val paddingModifier = Modifier.padding(horizontal = 5.dp)
-    val cardHeight = remember { Random.nextInt(200, 250).dp }
+    val cardHeight = remember { Random.nextInt(190, 250).dp }
     Card(modifier = Modifier
         .padding(20.dp)
         .height(cardHeight)
