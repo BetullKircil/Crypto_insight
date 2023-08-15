@@ -1,8 +1,10 @@
 package com.betulkircil.cryptoinsight.presentation
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -15,9 +17,11 @@ import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.AllCoinsScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.FavoriteCoinsScreen
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.NewsLazyStaggeredVerticalGrid
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.NewsRowScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.SignUpPasswordScreen
@@ -26,6 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -43,6 +48,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun NavigationComponent() {
     val navController = rememberNavController()
@@ -76,6 +82,12 @@ fun NavigationComponent() {
         }
         composable(Screen.NewsRowScreen.route){
             NewsRowScreen(navController = navController)
+        }
+        composable(Screen.NewsLazyStaggeredGrid.route){
+            NewsLazyStaggeredVerticalGrid(navController = navController)
+        }
+        composable(Screen.MarketPlaceScreen.route){
+            MarketPlaceScreen(navController = navController)
         }
     }
 }

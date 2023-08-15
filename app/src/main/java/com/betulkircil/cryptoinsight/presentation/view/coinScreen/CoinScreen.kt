@@ -1,5 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen
 
+import android.os.Build
+import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -41,6 +43,7 @@ import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginScreenContent
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 
+@RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun CoinScreen(navController: NavController) {
     Column(modifier = Modifier.background(color = colorResource(id = R.color.grey_black))) {

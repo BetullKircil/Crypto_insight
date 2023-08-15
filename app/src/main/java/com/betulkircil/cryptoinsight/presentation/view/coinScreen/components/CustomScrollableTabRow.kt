@@ -5,20 +5,17 @@ import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitle
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.NewsLazyStaggeredVerticalGrid
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -47,7 +44,7 @@ fun CustomScrollableTabRow(navController: NavController) {
                                      "Favorites" -> FavoriteCoinsScreen(navController)
                                      "All" -> AllCoinsScreen(navController = navController)
                                      "Metaverse" -> NewsRowScreen(navController)
-                                     "Gaming" -> LoginScreen(navController = navController)
+                                     "Gaming" -> NewsLazyStaggeredVerticalGrid(navController = navController)
                                      "Defi" -> HomeScreen(navController = navController)
                                      "Innovation" -> LoginScreen(navController = navController)
                                      "NFT" -> NftScreen(navController = navController)

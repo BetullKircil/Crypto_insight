@@ -37,11 +37,11 @@ fun BottomNavigationBar(navController: NavController) {
         )
         BottomNavigationItem(
             icon = {
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate(Screen.MarketPlaceScreen.route)}) {
                     Image(painter = painterResource(R.drawable.news_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }            },
             selected = false,
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate(Screen.MarketPlaceScreen.route) },
             alwaysShowLabel = false
         )
         BottomNavigationItem(
