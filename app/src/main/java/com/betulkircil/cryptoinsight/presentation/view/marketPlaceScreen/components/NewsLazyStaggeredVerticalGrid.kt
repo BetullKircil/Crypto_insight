@@ -45,6 +45,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
+import com.betulkircil.cryptoinsight.presentation.view.animations.LazyStaggeredShimmerEffect
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.formatDuration
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.NewsEvent
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NewsViewModel
@@ -57,7 +58,6 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import kotlin.random.Random
 
-@OptIn(ExperimentalMaterial3Api::class)
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun NewsLazyStaggeredVerticalGrid(
@@ -91,13 +91,18 @@ fun NewsLazyStaggeredVerticalGrid(
             modifier = Modifier.fillMaxSize()
         ) {
             items(state.newsList){ news ->
-                NewsCard(news = news) {
-                    val url = news.url
-                    if (url.isNotEmpty()) {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        context.startActivity(intent)
+                LazyStaggeredShimmerEffect(
+                    isLoading = isLoading.value,
+                    contentAfterLoading = {
+                        NewsCard(news = news) {
+                            val url = news.url
+                            if (url.isNotEmpty()) {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                context.startActivity(intent)
+                            }
+                        }
                     }
-                }
+                )
             }
         }
     }
