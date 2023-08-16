@@ -12,12 +12,14 @@ import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
@@ -26,6 +28,7 @@ import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.Gre
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.AllCoinsViewModel
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNavigationBar
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.AppBarContent
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.CoinMarketPlaceScreen
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.NewsLazyStaggeredVerticalGrid
 
@@ -35,7 +38,7 @@ fun MarketPlaceAndNewsSearchScreen(
     navController: NavController,
 ) {
     Scaffold(
-        topBar = { NewsAppBar(greetingContent = { GreetingText(userName = "Betul Kircil") }) },
+        topBar = { NewsAppBar(greetingContent = { AppBarContent() }) },
         bottomBar = { BottomNavigationBar(navController = navController) },
         content = {
             it
