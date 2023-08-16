@@ -12,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.TextField
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -69,6 +70,40 @@ fun SearchBar(
                         color = colorResource(id = R.color.purple_protest)
                     )
         )
+
+       /* TextField(
+            value = searchText.value,
+            onValueChange = {
+                searchText.value = it
+            },
+            maxLines = 1,
+            singleLine = true,
+            textStyle = androidx.compose.material3.MaterialTheme.typography.bodyMedium.copy(
+                color = Color.White
+            ),
+            shape = RoundedCornerShape(12.dp),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                imeAction = ImeAction.Done
+            ),
+            colors = TextFieldDefaults.textFieldColors(
+                textColor = Color.White,
+                backgroundColor = Color.Transparent, // Arka plan rengi olarak şeffaf yaparak altındaki çizgiyi gizleyebilirsiniz
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .onFocusChanged {
+                    isHintDisplayed.value = it.isFocused != true && searchText.value.isEmpty()
+                }
+                .border(
+                    width = 1.dp,
+                    shape = RoundedCornerShape(22.dp),
+                    color = colorResource(id = R.color.purple_protest)
+                )
+        )*/
+
         if(isHintDisplayed.value){
                 Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
                     Image(painter = painterResource(id = R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier

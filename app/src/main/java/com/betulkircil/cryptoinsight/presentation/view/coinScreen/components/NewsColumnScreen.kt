@@ -92,7 +92,7 @@ fun NewsColumnScreen(
                             }, horizontalArrangement = Arrangement.SpaceBetween) {
                                 Column(modifier = Modifier.width(270.dp)) {
                                     androidx.compose.material3.Text(
-                                        text = news.title,
+                                        text = news.title ?: "",
                                         modifier = Modifier.padding(horizontal = 10.dp),
                                         style = MaterialTheme.typography.titleSmall,
                                         lineHeight = 18.sp,

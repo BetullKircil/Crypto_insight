@@ -27,7 +27,7 @@ fun BottomNavigationBar(navController: NavController) {
         BottomNavigationItem(
             icon = {
                 IconButton(onClick = {
-                    navController.navigate(Screen.LoginScreen.route)}) {
+                    navController.navigate(Screen.CoinScreen.route)}) {
                     Image(painter = painterResource(id = R.drawable.home_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }
             },

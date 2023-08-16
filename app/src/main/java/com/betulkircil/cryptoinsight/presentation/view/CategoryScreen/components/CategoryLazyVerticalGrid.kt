@@ -18,6 +18,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,10 +32,11 @@ import androidx.compose.ui.unit.dp
 import com.betulkircil.cryptoinsight.R
 
 @Composable
-fun LazyVerticalGridDemo(){
+fun LazyVerticalGridDemo(searchQuery : String) {
     val context = LocalContext.current
-    val list = listOf<String>("Coins", "Blockchain","NFTs", "WEB3","Metaverse","DAO","Finance")
+    val list = listOf<String>("Coins", "Blockchain", "NFTs", "WEB3", "Metaverse", "DAO", "Finance")
 
+    val filteredList = list.filter { it.contains(searchQuery, ignoreCase = true) }
     val imageResIds = listOf(
         R.drawable.coins,
         R.drawable.blockchain,
@@ -61,7 +64,7 @@ fun LazyVerticalGridDemo(){
             vertical = 20.dp
         ),
         content = {
-            items(list.size) { index ->
+            items(filteredList.size) { index ->
                 val url = urls[index]
                 Card(
                     modifier = Modifier
@@ -75,10 +78,17 @@ fun LazyVerticalGridDemo(){
                             }
                         },
                 ) {
-                    Column(modifier = Modifier.background(color = colorResource(id = R.color.grey_black)), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-                        Image(painter = painterResource(id = imageResIds[index]), contentDescription = null)
+                    Column(
+                        modifier = Modifier.background(color = colorResource(id = R.color.grey_black)),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = imageResIds[index]),
+                            contentDescription = null
+                        )
                         Text(
-                            text = list[index],
+                            text = filteredList[index],
                             fontWeight = FontWeight.Light,
                             style = MaterialTheme.typography.bodyMedium,
                             color = Color.White,

@@ -38,7 +38,7 @@ fun MarketPlaceAndNewsSearchScreen(
     navController: NavController,
 ) {
     Scaffold(
-        topBar = { NewsAppBar(greetingContent = { AppBarContent() }) },
+        topBar = { NewsAppBar(greetingContent = { AppBarContent("News/MarketPlace", R.drawable.marketplace) }) },
         bottomBar = { BottomNavigationBar(navController = navController) },
         content = {
             it

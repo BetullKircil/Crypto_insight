@@ -121,7 +121,7 @@ fun NewsRowScreen(
                                         .padding(horizontal = 10.dp), horizontalArrangement = Arrangement.Start) {
                                         Text(text = "$timeDifference ago",  fontSize = 10.sp, modifier = Modifier, color = Color.White)
                                     }
-                                    Text(text = news.title,
+                                    Text(text = news.title ?: "",
                                         modifier = paddingModifier, style = MaterialTheme.typography.titleMedium, lineHeight = 18.sp, color = Color.White ,fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
                                     Text(text = news.description,
                                         color = Color.White,

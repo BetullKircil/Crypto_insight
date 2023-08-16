@@ -10,15 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.betulkircil.cryptoinsight.R
 
 @Composable
-fun AppBarContent() {
+fun AppBarContent(appBarText :String, pngRes: Int) {
+    val painter: Painter = painterResource(id = pngRes)
     Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-        Text(text = "News/MarketPlace", style = MaterialTheme.typography.bodySmall, color = Color.White, fontWeight = FontWeight.Light)
-        Image(painter = painterResource(id = R.drawable.marketplace), contentDescription = null, modifier = Modifier.size(15.dp))
+        Text(text = appBarText, style = MaterialTheme.typography.bodySmall, color = Color.White, fontWeight = FontWeight.Light)
+        Image(painter = painter, contentDescription = null, modifier = Modifier.size(15.dp))
     }
 }
