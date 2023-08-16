@@ -42,35 +42,6 @@ fun SearchBar(
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(20.dp), contentAlignment = Alignment.Center,) {
-           /* TextField(
-            value = searchText.value,
-            onValueChange = {
-                searchText.value = it
-            },
-            maxLines = 1,
-            singleLine = true,
-            textStyle = androidx.compose.material3.MaterialTheme.typography.bodyMedium.copy(
-                color = Color.White
-            ),
-            shape = RoundedCornerShape(12.dp),
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions(onDone = {
-                onSearch(searchText.value)
-            }),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .onFocusChanged {
-                        isHintDisplayed.value = it.isFocused != true && searchText.value.isEmpty()
-                    }
-                    .border(
-                        width = 1.dp,
-                        shape = RoundedCornerShape(22.dp),
-                        color = colorResource(id = R.color.purple_protest)
-                    )
-        )*/
-
         TextField(
             value = searchText.value,
             onValueChange = {
