@@ -13,6 +13,6 @@ sealed class Screen(val route : String){
     object NftsScreen : Screen("nftsScreen")
     object NewsRowScreen : Screen("newsRowScreen")
     object NewsLazyStaggeredGrid : Screen("newsLazyStaggeredGrid")
-    object MarketPlaceScreen : Screen("marketPlaceScreen")
+    object MarketPlaceAndNewsSearchScreen : Screen("marketPlaceScreen")
 
 }

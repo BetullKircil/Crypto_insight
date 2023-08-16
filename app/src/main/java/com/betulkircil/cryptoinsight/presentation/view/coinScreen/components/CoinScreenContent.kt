@@ -29,7 +29,10 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitl
 fun CoinScreenContent(navController: NavController) {
     Column(modifier = Modifier, verticalArrangement = Arrangement.SpaceEvenly) {
         Box(modifier = Modifier.height(350.dp)) {
-            CustomScrollableTabRow(navController = navController)
+            Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
+                PageTitle(text = "Coins")
+                CustomScrollableTabRow(navController = navController)
+            }
         }
         Box(modifier = Modifier.padding(top = 10.dp)){
             PageTitle(text = "Important News")

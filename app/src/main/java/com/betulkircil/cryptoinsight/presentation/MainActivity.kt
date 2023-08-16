@@ -21,7 +21,7 @@ import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.compone
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.NewsRowScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
-import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceScreen
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceAndNewsSearchScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.SignUpPasswordScreen
@@ -85,8 +85,8 @@ fun NavigationComponent() {
         composable(Screen.NewsLazyStaggeredGrid.route){
             NewsLazyStaggeredVerticalGrid(navController = navController)
         }
-        composable(Screen.MarketPlaceScreen.route){
-            MarketPlaceScreen(navController = navController)
+        composable(Screen.MarketPlaceAndNewsSearchScreen.route){
+            MarketPlaceAndNewsSearchScreen(navController = navController)
         }
     }
 }

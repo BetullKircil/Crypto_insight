@@ -19,9 +19,10 @@ import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.compone
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun CustomScrollableTabRow(navController: NavController) {
+fun CustomScrollableTabRow(
+    navController: NavController
+) {
     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-        PageTitle(text = "Coins")
         var selectedTabIndex by remember { mutableIntStateOf(0) }
         val tabs = listOf(
             "Favorites",

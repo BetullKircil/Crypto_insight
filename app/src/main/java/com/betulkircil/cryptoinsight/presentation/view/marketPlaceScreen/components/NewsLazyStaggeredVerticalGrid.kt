@@ -80,7 +80,7 @@ fun NewsLazyStaggeredVerticalGrid(
         Box(modifier = Modifier
             .fillMaxWidth()
             , contentAlignment = Alignment.Center){
-            NewsSearchBar(
+            SearchBar(
                 hint = "Search",
                 onSearch = {
                     viewModel.onEvent(NewsEvent.Search(it))
