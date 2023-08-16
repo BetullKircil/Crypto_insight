@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
+import com.betulkircil.cryptoinsight.presentation.view.CategoryScreen.CategoryScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.AllCoinsScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.FavoriteCoinsScreen
@@ -87,6 +88,9 @@ fun NavigationComponent() {
         }
         composable(Screen.MarketPlaceAndNewsSearchScreen.route){
             MarketPlaceAndNewsSearchScreen(navController = navController)
+        }
+        composable(Screen.CategoryScreen.route){
+            CategoryScreen(navController = navController)
         }
     }
 }

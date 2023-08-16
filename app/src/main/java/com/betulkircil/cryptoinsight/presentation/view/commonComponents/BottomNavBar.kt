@@ -46,7 +46,7 @@ fun BottomNavigationBar(navController: NavController) {
         )
         BottomNavigationItem(
             icon = {
-                IconButton(onClick = {  }) {
+                IconButton(onClick = { navController.navigate(Screen.CategoryScreen.route) }) {
                     Image(painter = painterResource(R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
                 }
             },

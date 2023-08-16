@@ -14,5 +14,6 @@ sealed class Screen(val route : String){
     object NewsRowScreen : Screen("newsRowScreen")
     object NewsLazyStaggeredGrid : Screen("newsLazyStaggeredGrid")
     object MarketPlaceAndNewsSearchScreen : Screen("marketPlaceScreen")
+    object CategoryScreen : Screen("categoryScreen")
 
 }
