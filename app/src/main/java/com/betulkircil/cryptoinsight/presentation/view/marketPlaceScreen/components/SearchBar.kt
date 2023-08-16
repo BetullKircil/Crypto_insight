@@ -42,7 +42,7 @@ fun SearchBar(
     Box(modifier = Modifier
         .fillMaxWidth()
         .padding(20.dp), contentAlignment = Alignment.Center,) {
-            TextField(
+           /* TextField(
             value = searchText.value,
             onValueChange = {
                 searchText.value = it
@@ -69,9 +69,9 @@ fun SearchBar(
                         shape = RoundedCornerShape(22.dp),
                         color = colorResource(id = R.color.purple_protest)
                     )
-        )
+        )*/
 
-       /* TextField(
+        TextField(
             value = searchText.value,
             onValueChange = {
                 searchText.value = it
@@ -85,6 +85,9 @@ fun SearchBar(
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done
             ),
+            keyboardActions = KeyboardActions(onDone = {
+                onSearch(searchText.value)
+            }),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.White,
                 backgroundColor = Color.Transparent, // Arka plan rengi olarak şeffaf yaparak altındaki çizgiyi gizleyebilirsiniz
@@ -102,7 +105,7 @@ fun SearchBar(
                     shape = RoundedCornerShape(22.dp),
                     color = colorResource(id = R.color.purple_protest)
                 )
-        )*/
+        )
 
         if(isHintDisplayed.value){
                 Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
