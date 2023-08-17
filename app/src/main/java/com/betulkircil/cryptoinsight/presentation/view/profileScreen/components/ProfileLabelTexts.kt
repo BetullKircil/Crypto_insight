@@ -11,5 +11,5 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ProfileLabelTexts(text : String) {
-    Text(text = text, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Light, color = Color.White, modifier = Modifier.padding(vertical = 3.dp))
+    Text(text = text, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Light, color = Color.White)
 }
