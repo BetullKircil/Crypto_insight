@@ -100,6 +100,8 @@ dependencies {
 
     // Coil
     implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation("io.coil-kt:coil:2.2.2")
+    implementation("io.coil-kt:coil-gif:2.0.0-rc02")
 
     //firebase
     implementation 'com.google.firebase:firebase-auth-ktx:22.1.0'

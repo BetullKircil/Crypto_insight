@@ -1,5 +1,8 @@
 package com.betulkircil.cryptoinsight.presentation.view.profileScreen
 
+import android.graphics.Insets.add
+import android.os.Build.VERSION.SDK_INT
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,9 +20,17 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.ImageLoader
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNavigationBar
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
@@ -43,7 +54,9 @@ Scaffold(
                 .fillMaxSize()
                 .verticalScroll(scrollState)
                 .background(colorResource(id = R.color.grey_black)), horizontalAlignment = Alignment.CenterHorizontally) {
-                Row(modifier = Modifier.fillMaxWidth().padding(10.dp), horizontalArrangement = Arrangement.Start) {
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp), horizontalArrangement = Arrangement.Start) {
                     PageTitle(text = "Profile")
                 }
                 Column(modifier = Modifier.padding(vertical = 5.dp)) {
@@ -66,3 +79,4 @@ Scaffold(
         }
     )
 }
+

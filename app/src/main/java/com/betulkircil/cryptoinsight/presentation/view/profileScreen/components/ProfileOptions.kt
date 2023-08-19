@@ -26,9 +26,9 @@ fun ProfileOptions(sectionTitle: String, sectionText: String? = null, pngRes: In
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(vertical = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        Row(modifier = Modifier.width(210.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(modifier = Modifier.width(215.dp), horizontalArrangement = Arrangement.SpaceBetween) {
             Image(painter = painter, contentDescription = null, modifier = Modifier.size(50.dp))
-            Column(modifier = Modifier.padding(horizontal = 10.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.Start) {
+            Column(modifier = Modifier.padding(horizontal = 18.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.Start) {
                 SectionTitle(sectionTitle = sectionTitle)
                 ProfileLabelTexts(text = sectionText?:"")
             }
