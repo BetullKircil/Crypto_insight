@@ -2,6 +2,7 @@ package com.betulkircil.cryptoinsight.presentation.view.profileScreen
 
 import android.graphics.Insets.add
 import android.os.Build.VERSION.SDK_INT
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,9 +16,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
@@ -74,9 +78,45 @@ Scaffold(
                     ProfileOptions(sectionTitle = "Feedback", sectionText = "Give us feedback to make your app better", pngRes = R.drawable.pp_feedback)
                     ProfileOptions(sectionTitle = "Privacy Policy", sectionText = "Prşvacy policy and terms of use", pngRes = R.drawable.pp_privacy_policy)
                     ProfileOptions(sectionTitle = "Log Out", sectionText = "Log out from your account", pngRes = R.drawable.pp_logout)
+                    //ToggleIconButton()
+                    //ToggleableIcons()
                 }
             }
         }
     )
 }
+
+@Composable
+fun ToggleIconButton() {
+    var isClicked = remember { mutableStateOf(false) }
+
+    val iconResource: Int = if (isClicked.value) {
+        R.drawable.saved_not_clicked
+    } else {
+        R.drawable.saved_clicked
+    }
+
+    Column(
+        modifier = Modifier.padding(16.dp)
+    ) {
+        IconButton(
+            onClick = { isClicked.value = !isClicked.value }
+        ) {
+            IconImage(iconResource)
+        }
+    }
+}
+
+@Composable
+fun IconImage(@DrawableRes iconResource: Int) {
+    val painter: Painter = painterResource(id = iconResource)
+    Image(
+        painter = painter,
+        contentDescription = null,
+        modifier = Modifier.size(48.dp)
+    )
+}
+
+
+
 
