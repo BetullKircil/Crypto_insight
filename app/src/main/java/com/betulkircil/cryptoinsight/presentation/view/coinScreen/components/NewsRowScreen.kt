@@ -123,7 +123,7 @@ fun NewsRowScreen(
                                     }
                                     Text(text = news.title ?: "",
                                         modifier = paddingModifier, style = MaterialTheme.typography.titleMedium, lineHeight = 18.sp, color = Color.White ,fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
-                                    Text(text = news.description,
+                                    Text(text = news.description ?:"",
                                         color = Color.White,
                                         modifier = paddingModifier, fontWeight = FontWeight.Light , style = MaterialTheme.typography.bodyMedium, maxLines = 2, overflow = TextOverflow.Ellipsis, fontSize = 10.sp)
                                 }

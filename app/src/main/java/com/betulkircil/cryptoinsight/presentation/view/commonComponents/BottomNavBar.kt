@@ -95,7 +95,7 @@ fun ToggleableIcons(navController: NavController) {
 
     Row(
         modifier = Modifier
-            .padding(horizontal = 10.dp).padding(top = 15.dp)
+            .padding(horizontal = 5.dp).padding(top = 17.dp)
             .fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically
     ) {

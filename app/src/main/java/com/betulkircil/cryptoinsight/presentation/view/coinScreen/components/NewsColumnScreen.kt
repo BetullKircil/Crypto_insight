@@ -102,7 +102,7 @@ fun NewsColumnScreen(
                                         overflow = TextOverflow.Ellipsis
                                     )
                                     androidx.compose.material3.Text(
-                                        text = news.description,
+                                        text = news.description?: "",
                                         color = Color.White,
                                         modifier = Modifier.padding(horizontal = 10.dp),
                                         fontWeight = FontWeight.Light,
