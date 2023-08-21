@@ -188,10 +188,12 @@ fun LoginScreen(
                     Button(
                         onClick = {
                             scope.launch {
-                                viewModel.loginUser(email.value, password.value)
-                            }
-                            navController.navigate(Screen.CoinScreen.route)
-                        },
+                                if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
+                                    viewModel.loginUser(email.value, password.value)
+                                        navController.navigate(Screen.CoinScreen.route)
+                                    }
+                                }
+                            },
                         shape = RoundedCornerShape(40),
                         modifier = Modifier
                             .fillMaxWidth()

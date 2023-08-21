@@ -1,6 +1,8 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail
 
+import android.util.Log
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -11,11 +13,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -36,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -49,10 +56,8 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.AppBarSe
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.components.SignUpMailScreenContent
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.ButtonWithIcon
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.LogoGroupSignUp
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpLinkText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 import kotlinx.coroutines.launch
@@ -239,12 +244,32 @@ fun SignUpMailScreen(
                     }
                     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
                         SignUpLinkText(firstText = stringResource(id = R.string.alreadyMemberText), linkText = stringResource(id = R.string.signInText), navController = navController, route = Screen.LoginScreen.route)
-                        Box(modifier = Modifier.clickable {
-                            scope.launch {
-                                viewModel.registerUser(email.value, password.value)
+                        //ButtonWithIcon(route = Screen.SignUpNameScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 500)
+
+                        Box(modifier = Modifier){
+                            Button(
+                                onClick = {
+                                    scope.launch {
+                                        viewModel.registerUser(email.value, password.value)
+                                        Log.d("dşdhfclsfd", "ışhfcıosdh")
+                                    }
+                                    navController.navigate(Screen.SignUpNameScreen.route)
+                                },
+                                shape = RoundedCornerShape(40),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(20.dp, 0.dp).padding(bottom = 2.dp)
+                                    .height(50.dp),
+                                border = BorderStroke(2.dp, colorResource(id = R.color.purple_protest)),
+                                colors = ButtonDefaults.elevatedButtonColors(containerColor = colorResource(
+                                    id = R.color.purple_protest
+                                ))
+                            ) {
+                                Row(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+                                    Text(text = "Next", color = Color.White, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Bold)
+                                    Image(painter = painterResource(id = R.drawable.arrow_right), contentDescription = null, modifier = Modifier.padding(horizontal = 5.dp))
+                                }
                             }
-                        }) {
-                            ButtonWithIcon(route = Screen.SignUpNameScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 500)
                         }
                     }
                 }
