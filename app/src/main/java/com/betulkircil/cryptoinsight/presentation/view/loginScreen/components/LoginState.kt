@@ -12,14 +12,4 @@ fun LoginState(
     viewModel: LoginViewModel = hiltViewModel(),
     showErrorMessage: (errorMessage: String?) -> Unit
 ) {
-    when(val signInResponse = viewModel.signInResponse.value) {
-        is Response.Loading-> ProgressBar()
-        is Response.Success -> Unit
-        is Response.Failure -> signInResponse.apply {
-            LaunchedEffect(e) {
-                print(e)
-                showErrorMessage(e.message)
-            }
-        }
-    }
 }

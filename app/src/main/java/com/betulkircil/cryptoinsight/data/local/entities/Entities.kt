@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
-@Entity(tableName = "savedNewsTable")
-data class SavedNewsEntity(
+@Entity(tableName = "favoriteNewsTable")
+data class FavoriteNewsEntity(
     @PrimaryKey(autoGenerate = true)
     val id : Int? = null,
     @ColumnInfo(name = "description") @NotNull

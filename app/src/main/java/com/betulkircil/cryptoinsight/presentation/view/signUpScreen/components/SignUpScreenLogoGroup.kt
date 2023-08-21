@@ -34,6 +34,5 @@ fun LogoGroupSignUp(navController : NavController) {
             SignUpLinkText(firstText = stringResource(id = R.string.alreadyMemberText), linkText = stringResource(id = R.string.signInText), navController = navController, route = Screen.LoginScreen.route)
             ButtonWithIcon(route = Screen.SignUpNameScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 500)
         }
-
     }
 }

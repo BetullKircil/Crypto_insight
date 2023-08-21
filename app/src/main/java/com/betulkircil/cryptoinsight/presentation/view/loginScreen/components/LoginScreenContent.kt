@@ -163,12 +163,7 @@ fun LoginScreenContent(navController : NavController, viewModel : LoginViewModel
             }
             Button(
                 onClick = {
-                    if(email.value.isNotBlank() || password.value.isNotBlank()){
-                        coroutineScope.launch {
-                            viewModel.loginUser(email.value, password.value)
-                        }
-                        navController.navigate(Screen.HomeScreen.route)
-                    }
+                        navController.navigate(Screen.CoinScreen.route)
                 },
                 shape = RoundedCornerShape(40),
                 modifier = Modifier

@@ -5,17 +5,17 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.betulkircil.cryptoinsight.data.local.entities.SavedNewsEntity
+import com.betulkircil.cryptoinsight.data.local.entities.FavoriteNewsEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteNewsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertFavoriteNews(news: SavedNewsEntity)
+    suspend fun insertFavoriteNews(news: FavoriteNewsEntity)
 
     @Delete
-    suspend fun deleteFavoriteNews(news: SavedNewsEntity)
+    suspend fun deleteFavoriteNews(news: FavoriteNewsEntity)
 
-    @Query("SELECT * FROM savedNewsTable")
-    fun getAllFavoriteNews(): Flow<List<SavedNewsEntity>>
+    @Query("SELECT * FROM favoriteNewsTable")
+    fun getAllFavoriteNews(): Flow<List<FavoriteNewsEntity>>
 }

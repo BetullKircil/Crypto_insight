@@ -94,7 +94,7 @@ fun SignUpPasswordScreenContent() {
                 imeAction = ImeAction.Next
             ),
         )
-        TextFieldLabel(text = "Password (Again)")
+       /* TextFieldLabel(text = "Password (Again)")
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
@@ -135,6 +135,6 @@ fun SignUpPasswordScreenContent() {
                 autoCorrect = true,
                 imeAction = ImeAction.Next
             ),
-        )
+        )*/
     }
 }

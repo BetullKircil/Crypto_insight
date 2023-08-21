@@ -104,7 +104,7 @@ fun ToggleableIcons(navController: NavController) {
                 iconType = IconType.Home,
                 selectedIcon = selectedIcon.value,
                 onIconClick = { selectedIcon.value = it
-                    //navController.navigate(Screen.CoinScreen.route)
+                    navController.navigate(Screen.CoinScreen.route)
                 },
             )
         }
