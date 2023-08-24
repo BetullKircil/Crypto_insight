@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,6 +11,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -22,6 +25,7 @@ import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.compone
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.NewsRowScreen
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceAndNewsSearchScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
@@ -51,10 +55,15 @@ class MainActivity : ComponentActivity() {
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun NavigationComponent() {
+fun NavigationComponent(
+    viewModel: LoginViewModel = hiltViewModel()
+) {
+    val context = LocalContext.current
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
-        composable(Screen.SplashScreen.route){  //Splasch screen cagirilackak
+    var isLoggedIn = isLoggedIn(context)
+
+        NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
+        composable(Screen.SplashScreen.route){
             SplashScreen(navController = navController)
         }
         composable(Screen.CoinScreen.route){
@@ -97,4 +106,16 @@ fun NavigationComponent() {
             ProfileScreen(navController = navController)
         }
     }
+}
+
+fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
+    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putBoolean("isLoggedIn", isLoggedIn)
+    editor.apply()
+}
+
+fun isLoggedIn(context: Context): Boolean {
+    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+    return sharedPreferences.getBoolean("isLoggedIn", false)
 }

@@ -15,7 +15,7 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitl
 
 @Composable
 fun ProfileInfo(name : String, email : String, no : String) {
-    Column(modifier = Modifier, verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
         PageTitle(text = name)
         ProfileLabelTexts(text = email)
         ProfileLabelTexts(text = no)

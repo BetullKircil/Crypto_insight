@@ -31,6 +31,7 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewMo
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.components.SignUpPasswordScreenContent
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.components.SignUpPasswordText
 import kotlinx.coroutines.launch
 
 @Composable
@@ -40,7 +41,7 @@ fun SignUpPasswordScreen(
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val state = viewModel.signUpState.collectAsState(initial = null)
+   // val state = viewModel.signUpState.collectAsState(initial = null)
 
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
@@ -56,27 +57,11 @@ fun SignUpPasswordScreen(
                 SignUpPasswordScreenContent()
                 Column(modifier = Modifier
                     .fillMaxSize(), verticalArrangement = Arrangement.SpaceBetween) {
-                    Text(text = stringResource(id = R.string.signUpPasswordText), color = Color.White ,style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Center, modifier = Modifier.padding(horizontal = 20.dp), fontWeight = FontWeight.Light)
+                    SignUpPasswordText()
                     Box(modifier = Modifier.padding(vertical = 25.dp)) {
                         BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpNameScreen.route, nextRoute = Screen.CoinScreen.route)
                     }
                 }
-            }
-        }
-    }
-    LaunchedEffect(key1 = state.value?.isSuccess) {
-        scope.launch {
-            if (state.value?.isSuccess?.isNotEmpty() == true) {
-                val success = state.value?.isSuccess
-                Toast.makeText(context, "$success", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-    LaunchedEffect(key1 = state.value?.isError) {
-        scope.launch {
-            if (state.value?.isError?.isNotBlank() == true) {
-                val error = state.value?.isError
-                Toast.makeText(context, "$error", Toast.LENGTH_LONG).show()
             }
         }
     }

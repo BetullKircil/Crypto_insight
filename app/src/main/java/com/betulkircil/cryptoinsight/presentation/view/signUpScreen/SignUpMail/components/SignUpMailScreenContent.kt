@@ -51,7 +51,7 @@ fun SignUpMailScreenContent(
 
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val state = viewModel.signUpState.collectAsState(initial = null)
+   // val state = viewModel.signUpState.collectAsState(initial = null)
 
 
     Column(modifier = Modifier

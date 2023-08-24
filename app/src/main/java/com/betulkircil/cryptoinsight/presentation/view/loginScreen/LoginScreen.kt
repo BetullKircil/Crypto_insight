@@ -1,8 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
 import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -20,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -55,15 +54,8 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Backgrou
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.ForgotPasswordText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginScreenContent
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginState
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import com.betulkircil.cryptoinsight.utils.Constants.ServerClient
-import com.betulkircil.cryptoinsight.utils.ShowMessageUtil.Companion.showMessage
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.android.gms.common.api.Response
 import kotlinx.coroutines.launch
 
 
@@ -74,11 +66,10 @@ fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel()
     ) {
 
-   val googleSignInState = viewModel.googleState.value
+    val loginFlow = viewModel?.loginFlow?.collectAsState()
 
 
-
-
+   /*val googleSignInState = viewModel.googleState.value
     val launcher =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
@@ -89,19 +80,18 @@ fun LoginScreen(
             } catch (it: ApiException) {
                 print(it)
             }
-        }
+        }*/
 
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val state = viewModel.signInState.collectAsState(initial = null)
+   // val state = viewModel.signInState.collectAsState(initial = null)
 
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
         Surface(modifier = Modifier.fillMaxSize()) {
             BackgroundImage()
-
             Column(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -205,16 +195,16 @@ fun LoginScreen(
                         Row(modifier = Modifier
                             .padding(20.dp)
                             .align(Alignment.CenterHorizontally), horizontalArrangement = Arrangement.Center) {
-                            Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp).clickable {
-                               val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier
+                                .padding(horizontal = 10.dp)
+                                .clickable {
+                                    /* val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                                     .requestEmail()
                                     .requestIdToken(ServerClient)
                                     .build()
-
                                 val googleSingInClient = GoogleSignIn.getClient(context, gso)
-
-                                launcher.launch(googleSingInClient.signInIntent)
-                            })
+                                launcher.launch(googleSingInClient.signInIntent)*/
+                                })
                             Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
                     }
@@ -222,11 +212,15 @@ fun LoginScreen(
                         onClick = {
                             scope.launch {
                                 if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
-                                    viewModel.loginUser(email.value, password.value)
+                                    viewModel.login(email.value, password.value)
+                                    Toast.makeText(context, "Signed in succesfully!", Toast.LENGTH_SHORT).show()
                                         navController.navigate(Screen.CoinScreen.route)
                                     }
+                                else{
+                                    //TOAS MESSAGE
                                 }
-                            },
+                            }
+                                  },
                         shape = RoundedCornerShape(40),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -242,13 +236,10 @@ fun LoginScreen(
                     }
                 }
             }
-
         }
     }
-    LoginState(showErrorMessage = { errorMessage ->
-        showMessage(context, errorMessage)
-    })
-    LaunchedEffect(key1 = state.value?.isSuccess) {
+
+  /*  LaunchedEffect(key1 = state.value?.isSuccess) {
         scope.launch {
             if (state.value?.isSuccess?.isNotEmpty() == true) {
                 val success = state.value?.isSuccess
@@ -269,6 +260,24 @@ fun LoginScreen(
         scope.launch {
             if (googleSignInState.success != null) {
                 Toast.makeText(context, "Sign In Success", Toast.LENGTH_LONG).show()
+            }
+        }
+    }*/
+    loginFlow?.value?.let {
+        when(it){
+            is com.betulkircil.cryptoinsight.utils.Response.Failure -> {
+                val context = LocalContext.current
+                Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
+            }
+                 com.betulkircil.cryptoinsight.utils.Response.Loading -> {
+                     CircularProgressIndicator()
+                 }
+            is com.betulkircil.cryptoinsight.utils.Response.Success -> {
+                LaunchedEffect(Unit){
+                    navController.navigate(Screen.CoinScreen.route){
+                        popUpTo(Screen.LoginScreen.route){inclusive = true}
+                    }
+                }
             }
         }
     }

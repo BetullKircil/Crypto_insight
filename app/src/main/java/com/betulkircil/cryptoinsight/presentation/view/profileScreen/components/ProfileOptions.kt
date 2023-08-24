@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.betulkircil.cryptoinsight.R
 
 @Composable
-fun ProfileOptions(sectionTitle: String, sectionText: String? = null, pngRes: Int) {
+fun ProfileOptions(sectionTitle: String, sectionText: String? = null, pngRes: Int, onClick: () -> Unit) {
     val painter: Painter = painterResource(id = pngRes)
     Row(modifier = Modifier
         .fillMaxWidth()

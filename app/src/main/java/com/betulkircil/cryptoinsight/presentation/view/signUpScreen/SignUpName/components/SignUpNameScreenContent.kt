@@ -127,6 +127,6 @@ fun SignUpNameScreenContent(navController: NavController) {
                 }
             }
         }
-        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.SignUpPasswordScreen.route)
+        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.CoinScreen.route)
     }
 }
