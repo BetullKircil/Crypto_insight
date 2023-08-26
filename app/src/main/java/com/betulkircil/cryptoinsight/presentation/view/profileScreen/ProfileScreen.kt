@@ -61,7 +61,7 @@ Scaffold(
                     Box(modifier = Modifier.size(90.dp)) {
                         ImagePickerComp()
                     }
-                    ProfileInfo(name = loginViewModel?.currentUser?.displayName?: "", email = loginViewModel?.currentUser?.displayName?:"", no = "23334")
+                    ProfileInfo(name = loginViewModel?.currentUser?.displayName?: "", email = loginViewModel?.currentUser?.displayName?:"", no = "05435980000")
                 }
                 Column(modifier = Modifier
                     .padding(horizontal = 20.dp, vertical = 40.dp)

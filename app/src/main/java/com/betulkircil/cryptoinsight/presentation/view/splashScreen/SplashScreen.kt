@@ -1,5 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation.view.splashScreen
 
+import android.content.Context
+import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -23,6 +25,9 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
+    val context = LocalContext.current
+   // var isLoggedIn = isLoggedIn(context)
+   // Log.d("isLoggedIn", "${isLoggedIn}")
     val scale = remember {
         Animatable(0f)
     }
@@ -30,13 +35,20 @@ fun SplashScreen(navController: NavController) {
         scale.animateTo(
             targetValue = 1f,
             animationSpec = tween(
-                durationMillis = 800,
+                durationMillis = 500,
                 easing = {
-                    OvershootInterpolator(1f).getInterpolation(it)
+                    OvershootInterpolator(0.5f).getInterpolation(it)
                 }
             )
         )
         delay(1000L)
+       /* if(isLoggedIn){
+            navController.navigate(Screen.CoinScreen.route)
+        }
+        else{
+            navController.navigate(Screen.HomeScreen.route)
+        }
+        saveLoginStatus(context, isLoggedIn)*/
         navController.navigate(Screen.HomeScreen.route)
     }
     Box(
@@ -48,4 +60,16 @@ fun SplashScreen(navController: NavController) {
         Image(painter = painterResource(id = R.drawable.logo), contentDescription = null, modifier = Modifier.scale(scale.value))
 
     }
+}
+
+fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
+    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putBoolean("isLoggedIn", isLoggedIn)
+    editor.apply()
+}
+
+fun isLoggedIn(context: Context): Boolean {
+    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
+    return sharedPreferences.getBoolean("isLoggedIn", false)
 }

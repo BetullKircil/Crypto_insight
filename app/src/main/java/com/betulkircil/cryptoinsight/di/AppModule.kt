@@ -11,6 +11,8 @@ import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
 import com.betulkircil.cryptoinsight.utils.Constants.COIN_BASE_URL
 import com.betulkircil.cryptoinsight.utils.Constants.NEWS_BASE_URL
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreSettings
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -63,5 +65,18 @@ object AppModule {
     @Singleton
     fun provideRepositoryImpl(firebaseAuth: FirebaseAuth) :AuthRepository{
         return AuthRepositoryImpl(firebaseAuth)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFirestore(): FirebaseFirestore {
+        val settings = FirebaseFirestoreSettings.Builder()
+            .setPersistenceEnabled(true)
+            .build()
+
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.firestoreSettings = settings
+
+        return firestore
     }
 }

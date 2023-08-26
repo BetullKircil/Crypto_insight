@@ -55,9 +55,9 @@ import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.AppBarSection
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BackgroundImage
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
-import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Snackbar
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components.TextFieldName
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpLinkText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
@@ -72,7 +72,6 @@ fun SignUpMailScreen(
     loginViewModel: LoginViewModel = hiltViewModel()
 ) {
     val signUpFlow = viewModel?.registerFlow?.collectAsState()
-    val showSnackbar = remember { mutableStateOf(false) }
 
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -226,7 +225,7 @@ fun SignUpMailScreen(
                                 )
                                 SignUpPasswordText()
                             }
-                            Column(
+                             Column(
                                 modifier = Modifier
                                     .fillMaxHeight()
                                     .padding(bottom = 25.dp, top = 5.dp),

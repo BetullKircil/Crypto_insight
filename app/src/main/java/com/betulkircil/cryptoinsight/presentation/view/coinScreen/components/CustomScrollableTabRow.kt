@@ -51,20 +51,5 @@ fun CustomScrollableTabRow(
                                      "NFT" -> NftScreen(navController = navController)
                                  }
                              }
-      /*  LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(1) { index ->
-                Box(modifier = Modifier.fillMaxSize()) {
-                    when (tabs[selectedTabIndex]) {
-                        "Favorites" -> LoginScreen(navController = navController)
-                        "All" -> AllCoinsScreen(navController = navController)
-                        "Metaverse" -> SignUpNameScreen(navController)
-                        "Gaming" -> LoginScreen(navController = navController)
-                        "Defi" -> HomeScreen(navController = navController)
-                        "Innovation" -> LoginScreen(navController = navController)
-                        "NFT" -> HomeScreen(navController = navController)
-                    }
-                }
-            }
-        }*/
     }
 }

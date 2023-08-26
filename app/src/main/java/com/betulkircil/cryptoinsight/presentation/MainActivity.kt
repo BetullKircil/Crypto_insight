@@ -3,6 +3,7 @@ package com.betulkircil.cryptoinsight.presentation
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresExtension
@@ -60,9 +61,9 @@ fun NavigationComponent(
 ) {
     val context = LocalContext.current
     val navController = rememberNavController()
-    var isLoggedIn = isLoggedIn(context)
+    //var isLoggedIn = isLoggedIn(context)
 
-        NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
+    NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
         composable(Screen.SplashScreen.route){
             SplashScreen(navController = navController)
         }
@@ -108,7 +109,7 @@ fun NavigationComponent(
     }
 }
 
-fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
+/*fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
     val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
     val editor = sharedPreferences.edit()
     editor.putBoolean("isLoggedIn", isLoggedIn)
@@ -118,4 +119,4 @@ fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
 fun isLoggedIn(context: Context): Boolean {
     val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
     return sharedPreferences.getBoolean("isLoggedIn", false)
-}
+}*/
