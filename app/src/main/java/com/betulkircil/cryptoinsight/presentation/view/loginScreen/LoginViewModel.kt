@@ -1,14 +1,20 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
+import com.betulkircil.cryptoinsight.utils.Resource
 import com.betulkircil.cryptoinsight.utils.Response
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,6 +45,29 @@ class LoginViewModel @Inject constructor(
     init {
         if(repository.currentUser != null){
             _loginFlow.value = Response.Success(repository.currentUser!!)
+        }
+    }
+    val _signInState = Channel<GoogleSignInState>()
+    val signInState = _signInState.receiveAsFlow()
+
+    val _googleState = mutableStateOf(GoogleSignInState())
+    val googleState: State<GoogleSignInState> = _googleState
+
+    fun googleSignIn(credential: AuthCredential) = viewModelScope.launch {
+        repository.googleSignIn(credential).collect { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _googleState.value = GoogleSignInState(success = result.data)
+                }
+                is Resource.Loading -> {
+                    _googleState.value = GoogleSignInState(loading = true)
+                }
+                is Resource.Error -> {
+                    _googleState.value = GoogleSignInState(error = result.message!!)
+                }
+            }
+
+
         }
     }
 }

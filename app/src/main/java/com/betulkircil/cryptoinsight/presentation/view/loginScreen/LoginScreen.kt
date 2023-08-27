@@ -1,6 +1,9 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -55,7 +58,12 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Password
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.ForgotPasswordText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.utils.Constants.ServerClient
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.Response
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 
@@ -69,7 +77,7 @@ fun LoginScreen(
     val loginFlow = viewModel?.loginFlow?.collectAsState()
 
 
-   /*val googleSignInState = viewModel.googleState.value
+   val googleSignInState = viewModel.googleState.value
     val launcher =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
@@ -80,7 +88,7 @@ fun LoginScreen(
             } catch (it: ApiException) {
                 print(it)
             }
-        }*/
+        }
 
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
@@ -198,12 +206,12 @@ fun LoginScreen(
                             Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier
                                 .padding(horizontal = 10.dp)
                                 .clickable {
-                                    /* val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                     val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                                     .requestEmail()
                                     .requestIdToken(ServerClient)
                                     .build()
                                 val googleSingInClient = GoogleSignIn.getClient(context, gso)
-                                launcher.launch(googleSingInClient.signInIntent)*/
+                                launcher.launch(googleSingInClient.signInIntent)
                                 })
                             Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
@@ -244,11 +252,13 @@ fun LoginScreen(
         when(it){
             is com.betulkircil.cryptoinsight.utils.Response.Failure -> {
                 Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
+                Log.d("gecmedi", "gecmedi")
             }
                  com.betulkircil.cryptoinsight.utils.Response.Loading -> {
                      CircularProgressIndicator()
                  }
             is com.betulkircil.cryptoinsight.utils.Response.Success -> {
+                Log.d("Navigation", "Success response received")
                 LaunchedEffect(Unit){
                     navController.navigate(Screen.CoinScreen.route){
                         popUpTo(Screen.LoginScreen.route){inclusive = true}
