@@ -17,8 +17,14 @@ import com.betulkircil.cryptoinsight.R
 
 @Composable
 fun AppBarText(userName: String) {
+    val greeting = getGreeting()
     Row(modifier = Modifier, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
         Text(text = " " + userName + " ", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, color = Color.White)
-        Image(painter = painterResource(id = R.drawable.sun), contentDescription = null,modifier = Modifier.size(15.dp))
+        val greetingIcon = when(greeting){
+            "Good Morning" -> R.drawable.sun
+            "Good Afternoon" -> R.drawable.noon
+            else -> R.drawable.moon
+        }
+        Image(painter = painterResource(id = greetingIcon), contentDescription = null,modifier = Modifier.size(15.dp))
     }
 }
