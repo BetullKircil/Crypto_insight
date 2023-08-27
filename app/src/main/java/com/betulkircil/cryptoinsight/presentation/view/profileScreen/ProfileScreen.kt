@@ -17,6 +17,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -38,9 +40,23 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewMo
 fun ProfileScreen(
     navController: NavController,
     loginViewModel: LoginViewModel = hiltViewModel(),
-    signUpViewModel: SignUpViewModel = hiltViewModel()
+    profileViewModel: profileViewModel = hiltViewModel()
 ) {
+    val userProfile = profileViewModel.userProfile.collectAsState().value
+
     val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        profileViewModel.fetchUserProfile()
+    }
+
+    if (userProfile != null) {
+        Log.d("hata", "hata")
+    }
+    else{
+        Log.d("cekildi", "${userProfile}")
+    }
+
 Scaffold(
         modifier = Modifier
             .fillMaxSize()
@@ -57,14 +73,21 @@ Scaffold(
                     .padding(10.dp), horizontalArrangement = Arrangement.Start) {
                     PageTitle(text = "Profile")
                 }
-                Column(modifier = Modifier.padding(vertical = 5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(modifier = Modifier.padding(vertical = 25.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Box(modifier = Modifier.size(90.dp)) {
                         ImagePickerComp()
                     }
-                    ProfileInfo(name = loginViewModel?.currentUser?.displayName?: "", email = loginViewModel?.currentUser?.displayName?:"", no = "05435980000")
+                   /* userProfile?.let {
+                        ProfileInfo(
+                            name = it.name ?: "",
+                            email = loginViewModel?.currentUser?.displayName?:"",
+                            no = it.phoneNumber ?: ""
+                        )
+                    }*/
+                   ProfileInfo(name = loginViewModel?.currentUser?.displayName?:"", email = "", no = "")
                 }
                 Column(modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = 40.dp)
+                    .padding(horizontal = 20.dp, vertical = 20.dp)
                     .padding(bottom = 60.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
                     Box(modifier = Modifier
                         .fillMaxSize()
@@ -125,7 +148,9 @@ Scaffold(
                         .fillMaxSize()
                         .clickable {
                             loginViewModel.logout()
-                            Toast.makeText(context, "Logged out successfully!", Toast.LENGTH_SHORT).show()
+                            Toast
+                                .makeText(context, "Logged out successfully!", Toast.LENGTH_SHORT)
+                                .show()
                             navController.navigate("loginScreen") {
                                 popUpTo("profileScreen") { inclusive = true }
                             }

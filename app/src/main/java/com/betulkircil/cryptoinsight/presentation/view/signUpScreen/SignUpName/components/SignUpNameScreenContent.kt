@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -14,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -29,13 +31,21 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.domain.model.UserProfile
+import com.betulkircil.cryptoinsight.domain.useCase.userProfileUseCase.saveUserProfileUseCase
 import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.presentation.view.profileScreen.profileViewModel
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackButton
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
+import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.ButtonWithIcon
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
 import com.vanpra.composematerialdialogs.rememberMaterialDialogState
@@ -43,8 +53,20 @@ import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpNameScreenContent(navController: NavController) {
-
+fun SignUpNameScreenContent(
+    navController: NavController,
+    signUpViewModel: SignUpViewModel = hiltViewModel()
+) {
+    var pickedDate = remember {
+        mutableStateOf(LocalDate.now())
+    }
+    val dateTimeDialogState = rememberMaterialDialogState()
+    var phoneNumber = remember {
+        mutableStateOf("")
+    }
+    var name = remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .padding(top = 45.dp, bottom = 25.dp)
@@ -53,12 +75,76 @@ fun SignUpNameScreenContent(navController: NavController) {
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-            var pickedDate = remember {
-                mutableStateOf(LocalDate.now())
-            }
-            val dateTimeDialogState = rememberMaterialDialogState()
             TextFieldLabel(text = stringResource(id = R.string.fullName))
-            TextFieldName()
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
+                    .border(
+                        width = 2.5.dp,
+                        color = colorResource(id = R.color.purple_protest),
+                        shape = RoundedCornerShape(22.dp)
+                    ),
+                value = name.value,
+                leadingIcon = { Row{
+                    Icon(painter = painterResource(id = R.drawable.human), contentDescription = "emailIcon", modifier = Modifier.padding(start = 15.dp), tint = Color.Gray)
+                    Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
+                    ))
+                } },
+                onValueChange = {
+                    name.value = it
+                },
+                shape = RoundedCornerShape(22.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    cursorColor = colorResource(id = R.color.purple_protest),
+                    containerColor = Color.White
+                ),keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.None,
+                    autoCorrect = true,
+                    imeAction = ImeAction.Next
+                ),
+                placeholder = { Text(text = "John Doe", style = MaterialTheme.typography.bodyMedium, color = Color.Gray) }
+            )
+            TextFieldLabel(text = stringResource(id = R.string.telephoneNumber))
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
+                    .border(
+                        width = 2.5.dp,
+                        color = colorResource(id = R.color.purple_protest),
+                        shape = RoundedCornerShape(22.dp)
+                    ),
+                value = phoneNumber.value,
+                leadingIcon = {
+                    Row(modifier = Modifier, horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
+                        Icon(painter = painterResource(id = R.drawable.country_code), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
+                        Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier
+                        )
+                    }
+                },
+                onValueChange = {
+                    phoneNumber.value = it
+                },
+                shape = RoundedCornerShape(22.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    cursorColor = colorResource(id = R.color.purple_protest),
+                    containerColor = Color.White
+                ),keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.None,
+                    autoCorrect = true,
+                    keyboardType = KeyboardType.Number,
+                    imeAction = ImeAction.Next
+                ),
+                placeholder = {
+                    Text(text = stringResource(id = R.string.numberPlaceHolder), style = MaterialTheme.typography.bodyMedium, color = Color.Gray, modifier = Modifier
+                        .padding(horizontal = 5.dp)
+                        .padding(top = 2.dp)) }
+            )
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 15.dp), horizontalArrangement = Arrangement.SpaceBetween) {
@@ -108,7 +194,9 @@ fun SignUpNameScreenContent(navController: NavController) {
                         readOnly = true,
                     )
                 }
-                Column(modifier = Modifier.width(170.dp)) {
+                Column(modifier = Modifier
+                    .width(180.dp)
+                    .padding(start = 10.dp)) {
                     Text(text = stringResource(id = R.string.gender), color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Light, modifier = Modifier.padding(horizontal = 20.dp))
                     GenderDropDownMenu(modifier = Modifier)
                 }
@@ -127,6 +215,19 @@ fun SignUpNameScreenContent(navController: NavController) {
                 }
             }
         }
-        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.CoinScreen.route)
+        //BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.CoinScreen.route)
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 25.dp)) {
+            BackButton(route = Screen.SignUpMailScreen.route, navController = navController, buttonText = stringResource(id = R.string.backButtonText), textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent)
+            ButtonWithIcon(route = Screen.CoinScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 200, onClick = {
+                val userProfile = UserProfile(
+                    name = name.value,
+                    phoneNumber = phoneNumber.value,
+                    imageUrl = null
+                )
+                signUpViewModel.saveUserProfile(userProfile)
+            })
+        }
     }
 }

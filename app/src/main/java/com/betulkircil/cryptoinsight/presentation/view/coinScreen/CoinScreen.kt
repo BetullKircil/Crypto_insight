@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.CoinScreenContent
@@ -40,15 +41,19 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppB
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitle
 import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LoginScreenContent
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun CoinScreen(navController: NavController) {
+fun CoinScreen(
+    navController: NavController,
+    loginViewModel: LoginViewModel = hiltViewModel(),
+) {
     Column(modifier = Modifier.background(color = colorResource(id = R.color.grey_black))) {
         Scaffold(
-            topBar = { NewsAppBar(greetingContent = { GreetingText(userName = "Betul Kircil") }) },
+            topBar = { NewsAppBar(greetingContent = { GreetingText(userName = loginViewModel?.currentUser?.displayName?:"") }) },
             bottomBar = { BottomNavigationBar(navController = navController) },
             content = {it
                 val scrollState = rememberScrollState()

@@ -28,7 +28,9 @@ class UserRespositoryImpl @Inject constructor(
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             val snapshot = firestore.collection("users").document(userId).get().await()
-            return snapshot.toObject(UserProfile::class.java)
+            val result = snapshot.toObject(UserProfile::class.java)
+            Log.d("fhlasdak", "${result}")
+            return result
         }
         return null
     }

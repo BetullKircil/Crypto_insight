@@ -30,12 +30,13 @@ import com.betulkircil.cryptoinsight.R
 fun ButtonWithIcon(
     route: String, navController: NavController, borderColor: Int = R.color.purple_protest, buttonText: String, textColor: Color = Color.White, backgroundColor: Color = colorResource(
         id = R.color.purple_protest
-    ), width : Int
+    ), width : Int, onClick: () -> Unit?
 ) {
     Box(modifier = Modifier.width(width = width.dp)){
         Button(
             onClick = {
                 navController.navigate(route)
+                onClick
             },
             shape = RoundedCornerShape(40),
             modifier = Modifier

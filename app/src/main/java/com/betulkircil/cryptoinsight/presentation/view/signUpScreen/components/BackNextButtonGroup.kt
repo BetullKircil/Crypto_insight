@@ -19,6 +19,6 @@ fun BackNextButtonGroup(navController : NavController, backRoute: String, nextRo
         .fillMaxWidth()
         .padding(start = 25.dp)) {
         BackButton(route = backRoute, navController = navController, buttonText = stringResource(id = R.string.backButtonText), textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent)
-        ButtonWithIcon(route = nextRoute, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 200)
+        ButtonWithIcon(route = nextRoute, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 200, onClick = {})
     }
 }
