@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.di
 
+
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
 import com.betulkircil.cryptoinsight.data.remote.NewsApi

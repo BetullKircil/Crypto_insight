@@ -61,7 +61,6 @@ fun NavigationComponent(
 ) {
     val context = LocalContext.current
     val navController = rememberNavController()
-    //var isLoggedIn = isLoggedIn(context)
 
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route){
         composable(Screen.SplashScreen.route){

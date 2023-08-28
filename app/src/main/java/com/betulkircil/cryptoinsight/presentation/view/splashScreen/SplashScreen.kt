@@ -16,18 +16,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavController) {
-    val context = LocalContext.current
-   // var isLoggedIn = isLoggedIn(context)
-   // Log.d("isLoggedIn", "${isLoggedIn}")
+fun SplashScreen(
+    navController: NavController,
+    viewModel: LoginViewModel = hiltViewModel()
+) {
     val scale = remember {
         Animatable(0f)
     }
@@ -42,14 +43,16 @@ fun SplashScreen(navController: NavController) {
             )
         )
         delay(1000L)
-       /* if(isLoggedIn){
+       if(viewModel.isLoggedIn().value){
             navController.navigate(Screen.CoinScreen.route)
+           Log.d("Coine", "Coine gidecek")
         }
         else{
             navController.navigate(Screen.HomeScreen.route)
+           Log.d("Home", "Home gidecek")
         }
-        saveLoginStatus(context, isLoggedIn)*/
-        navController.navigate(Screen.HomeScreen.route)
+        Log.d("snsf", "${viewModel.isLoggedIn().value}")
+        //navController.navigate(Screen.HomeScreen.route)
     }
     Box(
         modifier = Modifier
@@ -60,16 +63,4 @@ fun SplashScreen(navController: NavController) {
         Image(painter = painterResource(id = R.drawable.logo), contentDescription = null, modifier = Modifier.scale(scale.value))
 
     }
-}
-
-fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
-    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    editor.putBoolean("isLoggedIn", isLoggedIn)
-    editor.apply()
-}
-
-fun isLoggedIn(context: Context): Boolean {
-    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
-    return sharedPreferences.getBoolean("isLoggedIn", false)
 }

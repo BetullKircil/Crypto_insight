@@ -76,25 +76,10 @@ fun LoginScreen(
 
     val loginFlow = viewModel?.loginFlow?.collectAsState()
 
-
-   val googleSignInState = viewModel.googleState.value
-    val launcher =
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
-            val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-            try {
-                val result = account.getResult(ApiException::class.java)
-                val credentials = GoogleAuthProvider.getCredential(result.idToken, null)
-                viewModel.googleSignIn(credentials)
-            } catch (it: ApiException) {
-                print(it)
-            }
-        }
-
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-   // val state = viewModel.signInState.collectAsState(initial = null)
 
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
@@ -157,6 +142,7 @@ fun LoginScreen(
                             .padding(horizontal = 20.dp)
                             .clickable {
                                 isClicked.value = !isClicked.value
+                                Log.d("shlkfsjd", "${isClicked.value}")
                             }
                             .border(
                                 width = 2.5.dp,
@@ -206,12 +192,6 @@ fun LoginScreen(
                             Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier
                                 .padding(horizontal = 10.dp)
                                 .clickable {
-                                     val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                                    .requestEmail()
-                                    .requestIdToken(ServerClient)
-                                    .build()
-                                val googleSingInClient = GoogleSignIn.getClient(context, gso)
-                                launcher.launch(googleSingInClient.signInIntent)
                                 })
                             Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
@@ -222,10 +202,12 @@ fun LoginScreen(
                                 if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
                                     viewModel.login(email.value, password.value)
                                     Toast.makeText(context, "Signed in succesfully!", Toast.LENGTH_SHORT).show()
-                                        navController.navigate(Screen.CoinScreen.route)
+                                        navController.navigate(Screen.CoinScreen.route){
+                                            popUpTo(Screen.LoginScreen.route)
+                                        }
                                     }
                                 else{
-                                    //TOAS MESSAGE
+                                    Toast.makeText(context, "Username and password cannot be empty", Toast.LENGTH_SHORT).show()
                                 }
                             }
                                   },
@@ -251,10 +233,9 @@ fun LoginScreen(
         val context = LocalContext.current
         when(it){
             is com.betulkircil.cryptoinsight.utils.Response.Failure -> {
-                Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
-                Log.d("gecmedi", "gecmedi")
+               Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
             }
-                 com.betulkircil.cryptoinsight.utils.Response.Loading -> {
+            is com.betulkircil.cryptoinsight.utils.Response.Loading -> {
                      CircularProgressIndicator()
                  }
             is com.betulkircil.cryptoinsight.utils.Response.Success -> {

@@ -37,53 +37,6 @@ fun BottomNavigationBar(navController: NavController) {
             .fillMaxWidth()
             .height(60.dp)
     ) {
-        /*BottomNavigationItem(
-            icon = {
-                IconButton(onClick = {
-                    navController.navigate(Screen.CoinScreen.route)}) {
-                    Image(painter = painterResource(id = R.drawable.home_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
-                }
-            },
-            selected = true,
-            onClick = { /*todo*/ },
-            alwaysShowLabel = false
-        )
-        BottomNavigationItem(
-            icon = {
-                IconButton(onClick = { navController.navigate(Screen.MarketPlaceAndNewsSearchScreen.route)}) {
-                    Image(painter = painterResource(R.drawable.news_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
-                }            },
-            selected = false,
-            onClick = { navController.navigate(Screen.MarketPlaceAndNewsSearchScreen.route) },
-            alwaysShowLabel = false
-        )
-        BottomNavigationItem(
-            icon = {
-                IconButton(onClick = { navController.navigate(Screen.CategoryScreen.route) }) {
-                    Image(painter = painterResource(R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
-                }
-            },
-            selected = true,
-            onClick = { /*TODO*/ },
-        )
-        BottomNavigationItem(
-            icon = {
-                IconButton(onClick = {  }) {
-                    Image(painter = painterResource(R.drawable.saved_not_clicked), contentDescription = null, modifier = Modifier.size(20.dp))
-                }            },
-            selected = true,
-            onClick = { /*TODO*/ },
-            alwaysShowLabel = false
-        )
-        BottomNavigationItem(
-            icon = {
-                IconButton(onClick = { navController.navigate(Screen.ProfileScreen.route) }) {
-                    Image(painter = painterResource(R.drawable.profile_not_clicekd), contentDescription = null, modifier = Modifier.size(20.dp))
-                }            },
-            selected = true,
-            onClick = { /*TODO*/ },
-            alwaysShowLabel = false
-        )*/
         ToggleableIcons(navController = navController)
     }
 }
@@ -104,7 +57,9 @@ fun ToggleableIcons(navController: NavController) {
                 iconType = IconType.Home,
                 selectedIcon = selectedIcon.value,
                 onIconClick = { selectedIcon.value = it
-                    navController.navigate(Screen.CoinScreen.route)
+                    navController.navigate(Screen.CoinScreen.route){
+                        popUpTo(Screen.HomeScreen.route){inclusive = true}
+                    }
                 },
             )
         }
@@ -113,7 +68,9 @@ fun ToggleableIcons(navController: NavController) {
             iconType = IconType.News,
             selectedIcon = selectedIcon.value,
             onIconClick = { selectedIcon.value = it
-                navController.navigate(Screen.MarketPlaceAndNewsSearchScreen.route)
+                navController.navigate(Screen.MarketPlaceAndNewsSearchScreen.route){
+                    popUpTo(Screen.HomeScreen.route){inclusive = true}
+                }
             }
             )
         }
@@ -123,7 +80,9 @@ fun ToggleableIcons(navController: NavController) {
                 iconType = IconType.Search,
                 selectedIcon = selectedIcon.value,
                 onIconClick = { selectedIcon.value = it
-                    navController.navigate(Screen.CategoryScreen.route)
+                    navController.navigate(Screen.CategoryScreen.route){
+                        popUpTo(Screen.HomeScreen.route){inclusive = true}
+                    }
                 }
             )
         }
@@ -139,7 +98,9 @@ fun ToggleableIcons(navController: NavController) {
                 iconType = IconType.Profile,
                 selectedIcon = selectedIcon.value,
                 onIconClick = { selectedIcon.value = it
-                    navController.navigate(Screen.ProfileScreen.route)
+                    navController.navigate(Screen.ProfileScreen.route){
+                        popUpTo(Screen.HomeScreen.route){inclusive = true}
+                    }
                 }
             )
         }

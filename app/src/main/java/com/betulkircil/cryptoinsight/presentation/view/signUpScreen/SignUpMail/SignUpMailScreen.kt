@@ -335,14 +335,14 @@ fun SignUpMailScreen(
                             Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
                         }
 
-                        com.betulkircil.cryptoinsight.utils.Response.Loading -> {
+                       is com.betulkircil.cryptoinsight.utils.Response.Loading -> {
                             CircularProgressIndicator()
                         }
 
                         is com.betulkircil.cryptoinsight.utils.Response.Success -> {
                             LaunchedEffect(Unit) {
-                                navController.navigate("profileScreen") {
-                                    popUpTo("profileScreen") { inclusive = true }
+                                navController.navigate(Screen.ProfileScreen.route) {
+                                    popUpTo(Screen.SignUpMailScreen.route) { inclusive = true }
                                 }
                             }
                         }
