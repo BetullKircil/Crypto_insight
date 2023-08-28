@@ -52,7 +52,6 @@ fun SplashScreen(
            Log.d("Home", "Home gidecek")
         }
         Log.d("snsf", "${viewModel.isLoggedIn().value}")
-        //navController.navigate(Screen.HomeScreen.route)
     }
     Box(
         modifier = Modifier

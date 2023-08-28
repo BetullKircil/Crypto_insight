@@ -59,7 +59,9 @@ fun CategoryScreen(navController : NavController) {
             Column(modifier = Modifier
                 .fillMaxSize()
                 .background(color = colorResource(id = R.color.grey_black)), horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 30.dp, vertical = 10.dp)) {
+                Box(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 30.dp, vertical = 10.dp)) {
                     TextField(
                         value = searchQuery.value,
                         onValueChange = {
@@ -76,7 +78,7 @@ fun CategoryScreen(navController : NavController) {
                         ),
                         colors = TextFieldDefaults.textFieldColors(
                             textColor = Color.White,
-                            backgroundColor = Color.Transparent, // Arka plan rengi olarak şeffaf yaparak altındaki çizgiyi gizleyebilirsiniz
+                            backgroundColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent,
                             disabledIndicatorColor = Color.Transparent
@@ -87,7 +89,22 @@ fun CategoryScreen(navController : NavController) {
                                 width = 1.dp,
                                 shape = RoundedCornerShape(22.dp),
                                 color = colorResource(id = R.color.purple_protest)
-                            )
+                            ),
+                        placeholder = {
+                            Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+                                Image(painter = painterResource(id = R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier
+                                    .size(30.dp)
+                                    .padding(horizontal = 7.dp))
+                                androidx.compose.material3.Text(
+                                    text = "Search",
+                                    color = Color.LightGray,
+                                    modifier = Modifier.padding(
+                                        horizontal = 10.dp
+                                    ),
+                                    fontWeight = FontWeight.Light
+                                )
+                            }
+                        }
                     )
                 }
                 PageTitle(text = "Popular Topics")

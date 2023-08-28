@@ -1,6 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -61,7 +62,7 @@ fun SearchBar(
             }),
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.White,
-                backgroundColor = Color.Transparent, // Arka plan rengi olarak şeffaf yaparak altındaki çizgiyi gizleyebilirsiniz
+                backgroundColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent
@@ -79,7 +80,7 @@ fun SearchBar(
         )
 
         if(isHintDisplayed.value){
-                Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
+                Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
                     Image(painter = painterResource(id = R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier
                         .size(30.dp)
                         .padding(horizontal = 7.dp))

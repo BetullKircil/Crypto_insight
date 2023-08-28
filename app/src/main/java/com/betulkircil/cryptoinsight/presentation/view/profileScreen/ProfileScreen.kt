@@ -2,6 +2,9 @@ package com.betulkircil.cryptoinsight.presentation.view.profileScreen
 
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -137,13 +140,15 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-
+                            context.sendMail(to = "example@gmail.com", subject = "Some subject")
                         }) {
                         ProfileOptions(
                             sectionTitle = "Feedback",
                             sectionText = "Give us feedback to make your app better",
                             pngRes = R.drawable.pp_feedback,
-                            onClick = {})
+                            onClick = {
+                                Log.d("kfkldsa", "mail gonderilecek")
+                            })
                     }
                     Box(modifier = Modifier
                         .fillMaxSize()
@@ -192,4 +197,18 @@ Scaffold(
             }
         }
     )
+}
+
+fun Context.sendMail(to: String, subject: String) {
+    try {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "vnd.android.cursor.item/email" // or "message/rfc822"
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(to))
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+        startActivity(intent)
+    } catch (e: ActivityNotFoundException) {
+        // TODO: Handle case where no email app is available
+    } catch (t: Throwable) {
+        // TODO: Handle potential other type of exceptions
+    }
 }
