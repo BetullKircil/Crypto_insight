@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNavigationBar
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
@@ -118,7 +119,8 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-
+                            //Kaydedilenler sayfasina gidecek
+                            navController.navigate(Screen.AllCoinsScreen.route)
                         }) {
                         ProfileOptions(
                             sectionTitle = "Saved News",
@@ -149,17 +151,6 @@ Scaffold(
                             onClick = {
                                 Log.d("kfkldsa", "mail gonderilecek")
                             })
-                    }
-                    Box(modifier = Modifier
-                        .fillMaxSize()
-                        .clickable {
-
-                        }) {
-                        ProfileOptions(
-                            sectionTitle = "Privacy Policy",
-                            sectionText = "Privacy policy and terms of use",
-                            pngRes = R.drawable.pp_privacy_policy,
-                            onClick = {})
                     }
                     Box(modifier = Modifier
                         .fillMaxSize()
