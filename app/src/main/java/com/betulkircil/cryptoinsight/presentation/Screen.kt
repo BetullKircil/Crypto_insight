@@ -16,5 +16,4 @@ sealed class Screen(val route : String){
     object MarketPlaceAndNewsSearchScreen : Screen("marketPlaceScreen")
     object CategoryScreen : Screen("categoryScreen")
     object ProfileScreen : Screen("profileScreen")
-
 }

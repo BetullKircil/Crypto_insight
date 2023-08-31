@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.commonComponents
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,7 +34,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.data.remote.dto.Coin
+import com.betulkircil.cryptoinsight.domain.model.Coins
 import com.betulkircil.cryptoinsight.presentation.view.animations.ShimmerLoopEffect
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.AppBarCardItem
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.AllCoinsViewModel
 import kotlinx.coroutines.delay
 import java.lang.Thread.sleep
@@ -70,60 +74,9 @@ fun NewsAppBar(
                     ShimmerLoopEffect(
                         isLoading = isLoading.value,
                         contentAfterLoading = {
-                            Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-                                Row(modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(vertical = 10.dp),
-                                    horizontalArrangement = Arrangement.Center,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Image(
-                                        painter = rememberImagePainter(data = coin.image),
-                                        contentDescription = coin.name,
-                                        modifier = Modifier
-                                            .size(20.dp, 20.dp)
-                                            .clip(RoundedCornerShape(20))
-                                    )
-                                    androidx.compose.material.Text(
-                                        text = coin.symbol.uppercase(),
-                                        style = MaterialTheme.typography.titleSmall,
-                                        color = Color.White,
-                                        modifier = Modifier.padding(horizontal = 5.dp)
-                                    )
-                                    androidx.compose.material.Text(
-                                        text = "$ " + coin.currentPrice.toString().substring(0, 4),
-                                        color = if (coin.marketCapChange24Percentage < 0) Color.Red else Color.Green
-                                    )
-                                }
-                            }
+                            AppBarCardItem(coin = coin)
                         }
                     )
-                    Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-                        Row(modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 10.dp),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Image(
-                                painter = rememberImagePainter(data = coin.image),
-                                contentDescription = coin.name,
-                                modifier = Modifier
-                                    .size(20.dp, 20.dp)
-                                    .clip(RoundedCornerShape(20))
-                            )
-                            androidx.compose.material.Text(
-                                text = coin.symbol.uppercase(),
-                                style = MaterialTheme.typography.titleSmall,
-                                color = Color.White,
-                                modifier = Modifier.padding(horizontal = 5.dp)
-                            )
-                            androidx.compose.material.Text(
-                                text = "$ " + coin.currentPrice.toString().substring(0, 4),
-                                color = if (coin.marketCapChange24Percentage < 0) Color.Red else Color.Green
-                            )
-                        }
-                    }
                 }
             }
         }

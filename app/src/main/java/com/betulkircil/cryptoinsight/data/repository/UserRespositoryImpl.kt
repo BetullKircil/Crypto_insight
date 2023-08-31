@@ -27,7 +27,7 @@ class UserRespositoryImpl @Inject constructor(
     override suspend fun getUserProfile(): UserProfile? {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
-            val snapshot = firestore.collection("users").document(userId).get().await()
+            val snapshot = firestore.collection("users").document(userId?:"").get().await()
             val result = snapshot.toObject(UserProfile::class.java)
             Log.d("fhlasdak", "${result}")
             return result
