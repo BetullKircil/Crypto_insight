@@ -1,9 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresExtension
@@ -11,12 +9,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.CategoryScreen.CategoryScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
@@ -33,6 +36,8 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.S
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.SignUpPasswordScreen
 import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
+import com.google.accompanist.systemuicontroller.SystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +46,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            SetStatusBarColor()
             CryptoInsightTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -108,14 +114,11 @@ fun NavigationComponent(
     }
 }
 
-/*fun saveLoginStatus(context: Context, isLoggedIn: Boolean) {
-    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-    editor.putBoolean("isLoggedIn", isLoggedIn)
-    editor.apply()
+@Composable
+fun SetStatusBarColor() {
+    val systemUiController : SystemUiController = rememberSystemUiController()
+    val purpleProtestColor = colorResource(id = R.color.grey_black)
+    LaunchedEffect(key1 = true) {
+        systemUiController.setStatusBarColor(purpleProtestColor)
+    }
 }
-
-fun isLoggedIn(context: Context): Boolean {
-    val sharedPreferences = context.getSharedPreferences("loginPrefs", Context.MODE_PRIVATE)
-    return sharedPreferences.getBoolean("isLoggedIn", false)
-}*/

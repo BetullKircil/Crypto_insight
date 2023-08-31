@@ -150,4 +150,7 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "androidx.paging:paging-compose:3.2.0"
 
+    //Accompanist
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta"
+
 }
