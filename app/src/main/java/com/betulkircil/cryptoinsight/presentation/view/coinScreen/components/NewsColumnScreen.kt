@@ -85,7 +85,7 @@ fun NewsColumnScreen(
                         ) {
                             Row(modifier = Modifier.fillMaxWidth().clickable {
                                 val url = news.url
-                                if (url.isNotEmpty()) {
+                                if (url!= null) {
                                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                                     context.startActivity(intent)
                                 }

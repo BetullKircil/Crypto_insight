@@ -96,7 +96,7 @@ fun NewsLazyStaggeredVerticalGrid(
                     contentAfterLoading = {
                         NewsCard(news = news) {
                             val url = news.url
-                            if (url.isNotEmpty()) {
+                            if (url != null) {
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                                 context.startActivity(intent)
                             }
@@ -125,7 +125,7 @@ fun NewsCard(
         .width(300.dp),
         onClick = {
             val url = news.url
-            if (url.isNotEmpty()) {
+            if (url != null) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 context.startActivity(intent)
             }
@@ -146,7 +146,7 @@ fun NewsCard(
                     )
                 }
             }
-            val hour = news.publishedAt.substring(11, 16)
+            val hour = news.publishedAt?.substring(11, 16)
             val publishedAtDateTime = LocalDateTime.parse(news.publishedAt, DateTimeFormatter.ISO_DATE_TIME)
             val systemInstant = remember { Instant.now() }
             val duration = Duration.between(publishedAtDateTime.atZone(ZoneId.systemDefault()).toInstant(), systemInstant)
