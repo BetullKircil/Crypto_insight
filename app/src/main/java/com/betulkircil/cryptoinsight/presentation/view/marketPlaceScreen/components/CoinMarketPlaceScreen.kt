@@ -12,6 +12,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.components.CustomScrollableTabRow
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.CoinsEvent
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.NewsEvent
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.AllCoinsViewModel
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)

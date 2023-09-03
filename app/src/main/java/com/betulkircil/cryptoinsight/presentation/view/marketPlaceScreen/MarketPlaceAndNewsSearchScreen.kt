@@ -30,6 +30,7 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNa
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.AppBarContent
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.CoinMarketPlaceScreen
+import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.MarketPlaceScreenContent
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.NewsLazyStaggeredVerticalGrid
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
@@ -42,45 +43,7 @@ fun MarketPlaceAndNewsSearchScreen(
         bottomBar = { BottomNavigationBar(navController = navController) },
         content = {
             it
-            var tabIndex = remember { mutableStateOf(0) }
-            val tabs = listOf("News", "MarketPlace")
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = colorResource(id = R.color.grey_black))
-            ) {
-                TabRow(
-                    modifier = Modifier
-                        .background(color = colorResource(id = R.color.purple_protest))
-                        .height(60.dp),
-                    selectedTabIndex = tabIndex.value,
-                    backgroundColor = colorResource(id = R.color.grey_black),
-                    indicator = { tabPositions ->
-                        TabRowDefaults.Indicator(
-                            modifier = Modifier
-                                .tabIndicatorOffset(tabPositions[tabIndex.value])
-                                .fillMaxWidth()
-                                .height(1.dp),
-                            color = colorResource(id = R.color.purple_protest)
-                        )
-                    }
-                ) {
-                    tabs.forEachIndexed { index, title ->
-                        Tab(
-                            selected = tabIndex.value == index,
-                            onClick = { tabIndex.value = index }
-                        ) {
-                            Text(text = title, style = androidx.compose.material3.MaterialTheme.typography.titleMedium, color = Color.White)
-                        }
-                    }
-                }
-
-                when (tabs[tabIndex.value]) {
-                    "News" -> NewsLazyStaggeredVerticalGrid(navController)
-                    "MarketPlace" -> CoinMarketPlaceScreen(navController = navController)
-                }
-            }
+            MarketPlaceScreenContent(navController = navController)
         }
     )
 }
