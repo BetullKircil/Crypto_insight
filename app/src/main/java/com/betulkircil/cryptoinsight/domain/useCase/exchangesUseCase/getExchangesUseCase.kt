@@ -1,8 +1,6 @@
 package com.betulkircil.cryptoinsight.domain.useCase.exchangesUseCase
 
-import com.betulkircil.cryptoinsight.data.remote.dto.toCoin
 import com.betulkircil.cryptoinsight.data.remote.dto.toExchangesModel
-import com.betulkircil.cryptoinsight.domain.model.Coins
 import com.betulkircil.cryptoinsight.domain.model.ExchangesModel
 import com.betulkircil.cryptoinsight.domain.repository.ExchangesRepository
 import com.betulkircil.cryptoinsight.utils.Resource
@@ -11,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import java.io.IOException
 import javax.inject.Inject
 
-class getExchangesUse @Inject constructor(
+class getExchangesUseCase @Inject constructor(
     private val repository: ExchangesRepository
 ) {
     fun getExchanges() : Flow<Resource<List<ExchangesModel>>> = flow {

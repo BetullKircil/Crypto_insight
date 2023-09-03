@@ -41,7 +41,6 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun AllCoinsScreen(
-    navController: NavController,
     allCoinsViewModel: AllCoinsViewModel = hiltViewModel()
 ) {
     var isLoading = remember {

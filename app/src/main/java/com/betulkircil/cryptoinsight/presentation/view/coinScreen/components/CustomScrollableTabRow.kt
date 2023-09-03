@@ -12,10 +12,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PageTitle
-import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
-import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
-import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.NewsLazyStaggeredVerticalGrid
+import com.betulkircil.cryptoinsight.presentation.view.NftScreen.NftScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.ExchangesScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.MetaverseScreen
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -28,9 +27,8 @@ fun CustomScrollableTabRow(
             "Favorites",
             "All",
             "Metaverse",
-            "Gaming",
+            "Exchanges",
             "Defi",
-            "Innovation",
             "NFT"
         )
         TabRow(
@@ -43,11 +41,10 @@ fun CustomScrollableTabRow(
              .fillMaxSize()) {
                                  when (tabs[selectedTabIndex]) {
                                      "Favorites" -> FavoriteCoinsScreen(navController)
-                                     "All" -> AllCoinsScreen(navController = navController)
-                                     "Metaverse" -> NewsRowScreen(navController)
-                                     "Gaming" -> NewsLazyStaggeredVerticalGrid(navController = navController)
-                                     "Defi" -> HomeScreen(navController = navController)
-                                     "Innovation" -> LoginScreen(navController = navController)
+                                     "All" -> AllCoinsScreen()
+                                     "Metaverse" -> MetaverseScreen(navController = navController)
+                                     "Exchanges" -> ExchangesScreen(navController = navController)
+                                     "Defi" -> DefiScreen(navController = navController)
                                      "NFT" -> NftScreen(navController = navController)
                                  }
                              }

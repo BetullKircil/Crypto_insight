@@ -1,27 +1,23 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.metaverseScreen
+
 
 import android.view.ViewGroup
-import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 
 @Composable
-fun NftScreen(
+fun MetaverseScreen(
     navController: NavController,
 ) {
-    val nftUrl = "https://www.coingecko.com/tr/nft"
+    val metaverseUrl = "https://coinmarketcap.com/view/metaverse/"
     val scrollState = rememberScrollState()
     Column(modifier = Modifier.verticalScroll(scrollState)) {
         AndroidView(
@@ -33,7 +29,7 @@ fun NftScreen(
                         ViewGroup.LayoutParams.MATCH_PARENT
                     )
                     webViewClient = WebViewClient()
-                    loadUrl(nftUrl)
+                    loadUrl(metaverseUrl)
                 }
             }
         )

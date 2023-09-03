@@ -31,6 +31,7 @@ import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceAndNewsSearchScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.ExchangesScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
@@ -91,7 +92,7 @@ fun NavigationComponent(
             SignUpPasswordScreen(navController = navController)
         }
         composable(Screen.AllCoinsScreen.route){
-            AllCoinsScreen(navController = navController)
+            AllCoinsScreen()
         }
         composable(Screen.FavoriteCoinsScreen.route){
             FavoriteCoinsScreen(navController = navController)
@@ -110,6 +111,9 @@ fun NavigationComponent(
         }
         composable(Screen.ProfileScreen.route){
             ProfileScreen(navController = navController)
+        }
+        composable(Screen.ExchangesScreen.route){
+            ExchangesScreen(navController = navController)
         }
     }
 }
