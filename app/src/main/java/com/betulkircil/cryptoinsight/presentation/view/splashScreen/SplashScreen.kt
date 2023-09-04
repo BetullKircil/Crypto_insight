@@ -1,7 +1,5 @@
 package com.betulkircil.cryptoinsight.presentation.view.splashScreen
 
-import android.content.Context
-import android.util.Log
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -45,13 +43,10 @@ fun SplashScreen(
         delay(1000L)
        if(viewModel.isLoggedIn().value){
             navController.navigate(Screen.CoinScreen.route)
-           Log.d("Coine", "Coine gidecek")
         }
         else{
             navController.navigate(Screen.HomeScreen.route)
-           Log.d("Home", "Home gidecek")
         }
-        Log.d("snsf", "${viewModel.isLoggedIn().value}")
     }
     Box(
         modifier = Modifier

@@ -142,7 +142,6 @@ fun LoginScreen(
                             .padding(horizontal = 20.dp)
                             .clickable {
                                 isClicked.value = !isClicked.value
-                                Log.d("shlkfsjd", "${isClicked.value}")
                             }
                             .border(
                                 width = 2.5.dp,
@@ -157,7 +156,7 @@ fun LoginScreen(
                         },
                         leadingIcon = { Row{
                             Icon(painter = painterResource(id = R.drawable.off)
-                                , contentDescription = "emailIcon", modifier = Modifier.padding(start = 15.dp)
+                                , contentDescription = null, modifier = Modifier.padding(start = 15.dp)
                             )
                             Image(painter = painterResource(id = R.drawable.line), contentDescription = "line", modifier = Modifier.padding(horizontal = 7.dp
                             ))

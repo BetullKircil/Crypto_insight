@@ -5,14 +5,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 
@@ -20,8 +17,14 @@ import androidx.navigation.NavController
 fun NftScreen(
     navController: NavController,
 ) {
+    val context = LocalContext.current
+    val webView = WebView(context)
+    webView.settings.javaScriptEnabled = true
+    webView.settings.setSupportZoom(true)
+
     val nftUrl = "https://coinmarketcap.com/nft/"
     val scrollState = rememberScrollState()
+
     Column(modifier = Modifier.verticalScroll(scrollState)) {
         AndroidView(
             modifier = Modifier.fillMaxSize(),
