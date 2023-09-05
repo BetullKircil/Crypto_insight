@@ -52,22 +52,10 @@ fun ProfileScreen(
     val isLoggedIn = remember {
         mutableStateOf(false)
     }
-
-    fun isLoggedInCheck() : Boolean{
-        return isLoggedIn.value
-    }
-
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         profileViewModel.fetchUserProfile()
-    }
-
-    if (userProfile != null) {
-        Log.d("hata", "hata")
-    }
-    else{
-        Log.d("cekildi", "${userProfile}")
     }
 
 Scaffold(
@@ -119,7 +107,6 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-                            //Kaydedilenler sayfasina gidecek
                             navController.navigate(Screen.AllCoinsScreen.route)
                         }) {
                         ProfileOptions(
@@ -148,9 +135,7 @@ Scaffold(
                             sectionTitle = "Feedback",
                             sectionText = "Give us feedback to make your app better",
                             pngRes = R.drawable.pp_feedback,
-                            onClick = {
-                                Log.d("kfkldsa", "mail gonderilecek")
-                            })
+                            onClick = { /*todo*/})
                     }
                     Box(modifier = Modifier
                         .fillMaxSize()

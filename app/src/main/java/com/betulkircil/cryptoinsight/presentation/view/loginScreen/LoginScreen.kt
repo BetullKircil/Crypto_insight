@@ -1,9 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
-import android.util.Log
 import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -58,12 +55,6 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Password
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.ForgotPasswordText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import com.betulkircil.cryptoinsight.utils.Constants.ServerClient
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.Response
-import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 
@@ -73,7 +64,6 @@ fun LoginScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel()
     ) {
-
     val loginFlow = viewModel?.loginFlow?.collectAsState()
 
     var email = remember { mutableStateOf("") }
@@ -192,7 +182,7 @@ fun LoginScreen(
                                 .padding(horizontal = 10.dp)
                                 .clickable {
                                 })
-                            Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
+                           // Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
                     }
                     Button(
@@ -208,6 +198,7 @@ fun LoginScreen(
                                 else{
                                     Toast.makeText(context, "Username and password cannot be empty", Toast.LENGTH_SHORT).show()
                                 }
+
                             }
                                   },
                         shape = RoundedCornerShape(40),
@@ -227,7 +218,6 @@ fun LoginScreen(
             }
         }
     }
-
     loginFlow?.value?.let {
         val context = LocalContext.current
         when(it){
@@ -238,7 +228,6 @@ fun LoginScreen(
                      CircularProgressIndicator()
                  }
             is com.betulkircil.cryptoinsight.utils.Response.Success -> {
-                Log.d("Navigation", "Success response received")
                 LaunchedEffect(Unit){
                     navController.navigate(Screen.CoinScreen.route){
                         popUpTo(Screen.LoginScreen.route){inclusive = true}

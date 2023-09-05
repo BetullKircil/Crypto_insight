@@ -32,8 +32,7 @@ fun CoinCardItem(coin: Coins) {
     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
         Row(modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 10.dp)
-            .clickable { /*todo*/ },
+            .padding(vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceAround
         ) {
             Image(

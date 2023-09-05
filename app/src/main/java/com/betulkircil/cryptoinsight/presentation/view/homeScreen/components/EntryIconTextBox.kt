@@ -18,9 +18,9 @@ import com.betulkircil.cryptoinsight.R
 @Composable
 fun EntryIconTextBox() {
     Box(modifier = Modifier.padding(20.dp)) {
-        val animatableScale = remember { Animatable(1f) }
-        val targetScale = remember { mutableStateOf(1.2f) }
-        val animationDuration = 2500
+        val animatableScale = remember { Animatable(0.9f) }
+        val targetScale = remember { mutableStateOf(1.1f) }
+        val animationDuration = 2400
 
         LaunchedEffect(targetScale.value) {
             while (true) {
