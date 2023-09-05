@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -71,6 +72,7 @@ fun SignUpMailScreen(
     viewModel: SignUpViewModel = hiltViewModel(),
     loginViewModel: LoginViewModel = hiltViewModel()
 ) {
+    val specialCharacters = "!@#\$%^&*()_+[]{}|;:'\",.<>?`~"
     val signUpFlow = viewModel?.registerFlow?.collectAsState()
 
     val scope = rememberCoroutineScope()
@@ -209,6 +211,13 @@ fun SignUpMailScreen(
                                     },
                                     onValueChange = {
                                         password.value = it
+                                        if (it.length >= 7 && it.any { char -> char.isUpperCase() } && it.any { char -> specialCharacters.contains(char) }) {
+                                            Toast.makeText(context, "Strong password", Toast.LENGTH_SHORT).show()
+
+                                        }
+                                        else{
+                                            Toast.makeText(context, "Your password must be a minimum of 8 characters, contain uppercase and special characters", Toast.LENGTH_SHORT).show()
+                                        }
                                     },
                                     shape = RoundedCornerShape(22.dp),
                                     colors = TextFieldDefaults.textFieldColors(
@@ -255,11 +264,11 @@ fun SignUpMailScreen(
                                         val googleSingInClient = GoogleSignIn.getClient(context, gso)
                                         launcher.launch(googleSingInClient.signInIntent)*/
                                                 })
-                                        Image(
+                                     /*   Image(
                                             painter = painterResource(id = R.drawable.twitter),
                                             contentDescription = null,
                                             modifier = Modifier.padding(horizontal = 10.dp)
-                                        )
+                                        )*/
                                     }
                                 }
                                 Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
