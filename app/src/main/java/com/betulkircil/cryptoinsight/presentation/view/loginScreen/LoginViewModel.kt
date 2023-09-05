@@ -6,7 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
+import com.betulkircil.cryptoinsight.utils.Resource
 import com.betulkircil.cryptoinsight.utils.Response
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -22,6 +24,9 @@ class LoginViewModel @Inject constructor(
     ): ViewModel(){
 
     private val isLoggedInState = mutableStateOf(false)
+
+    val _googleState = mutableStateOf(GoogleSignInState())
+    val googleState: State<GoogleSignInState> = _googleState
 
     fun isLoggedIn(): State<Boolean> {
         return isLoggedInState
@@ -54,6 +59,24 @@ class LoginViewModel @Inject constructor(
     init {
         if(repository.currentUser != null){
             _loginFlow.value = Response.Success(repository.currentUser!!)
+        }
+    }
+
+    fun googleSignIn(credential: AuthCredential) = viewModelScope.launch {
+        repository.googleSignIn(credential).collect { result ->
+            when (result) {
+                is Resource.Success -> {
+                    _googleState.value = GoogleSignInState(success = result.data)
+                }
+                is Resource.Loading -> {
+                    _googleState.value = GoogleSignInState(loading = true)
+                }
+                is Resource.Error -> {
+                    _googleState.value = GoogleSignInState(error = result.message!!)
+                }
+            }
+
+
         }
     }
 

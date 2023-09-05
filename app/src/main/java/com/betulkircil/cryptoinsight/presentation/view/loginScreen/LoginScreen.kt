@@ -1,6 +1,8 @@
 package com.betulkircil.cryptoinsight.presentation.view.loginScreen
 
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -55,6 +57,11 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Password
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.ForgotPasswordText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.LinkText
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
+import com.betulkircil.cryptoinsight.utils.Constants.ServerClient
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 
@@ -70,6 +77,22 @@ fun LoginScreen(
     var password = remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val googleSignInState = viewModel.googleState.value
+
+    val launcher =
+        rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
+            val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            try {
+                val result = account.getResult(ApiException::class.java)
+                val credentials = GoogleAuthProvider.getCredential(result.idToken, null)
+                viewModel.googleSignIn(credentials)
+
+                navController.navigate(Screen.CoinScreen.route)
+            } catch (ex: ApiException) {
+                Toast.makeText(context, "Sign In Success", Toast.LENGTH_SHORT).show()
+                navController.navigate(Screen.CoinScreen.route)
+            }
+        }
 
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
@@ -181,6 +204,14 @@ fun LoginScreen(
                             Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier
                                 .padding(horizontal = 10.dp)
                                 .clickable {
+                                    val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                        .requestEmail()
+                                        .requestIdToken(ServerClient)
+                                        .build()
+
+                                    val googleSingInClient = GoogleSignIn.getClient(context, gso)
+
+                                    launcher.launch(googleSingInClient.signInIntent)
                                 })
                            // Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
@@ -234,6 +265,19 @@ fun LoginScreen(
                     }
                 }
             }
+        }
+    }
+    LaunchedEffect(key1 = googleSignInState.success) {
+        scope.launch {
+            if (googleSignInState.success != null) {
+                Toast.makeText(context, "Sign In Success", Toast.LENGTH_LONG).show()
+                navController.navigate(Screen.CoinScreen.route)
+            }
+        }
+    }
+    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        if (googleSignInState.loading){
+            CircularProgressIndicator()
         }
     }
 }
