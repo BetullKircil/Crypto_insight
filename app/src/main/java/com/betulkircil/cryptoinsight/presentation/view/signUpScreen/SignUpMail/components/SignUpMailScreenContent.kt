@@ -1,5 +1,8 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.components
 
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -37,22 +40,25 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
+import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.components.SignUpPasswordScreenContent
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpMailScreenContent(
-    viewModel: SignUpViewModel = hiltViewModel()
+    navController : NavController,
+    viewModel: SignUpViewModel = hiltViewModel(),
+    loginViewModel: LoginViewModel = hiltViewModel()
 ) {
-
-    val scope = rememberCoroutineScope()
-    val context = LocalContext.current
-   // val state = viewModel.signUpState.collectAsState(initial = null)
-
 
     Column(modifier = Modifier
         .padding(vertical = 20.dp)

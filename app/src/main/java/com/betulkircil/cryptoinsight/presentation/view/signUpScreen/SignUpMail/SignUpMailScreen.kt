@@ -2,6 +2,8 @@ package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail
 
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -63,6 +65,11 @@ import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewMo
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpLinkText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.components.SignUpPasswordText
+import com.betulkircil.cryptoinsight.utils.Constants
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +89,23 @@ fun SignUpMailScreen(
     val password = remember {
         mutableStateOf("")
     }
+    val googleSignInState = loginViewModel.googleState.value
+
+    val launcher =
+        rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
+            val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+            try {
+                val result = account.getResult(ApiException::class.java)
+                val credentials = GoogleAuthProvider.getCredential(result.idToken, null)
+                loginViewModel.googleSignIn(credentials)
+
+                navController.navigate(Screen.CoinScreen.route)
+            } catch (ex: ApiException) {
+                Toast.makeText(context, "Sign In Success", Toast.LENGTH_SHORT).show()
+                navController.navigate(Screen.CoinScreen.route)
+            }
+        }
+
     Scaffold(
         content = { it
             Column(
@@ -257,13 +281,15 @@ fun SignUpMailScreen(
                                             modifier = Modifier
                                                 .padding(horizontal = 10.dp)
                                                 .clickable {
-                                                    /*  val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                                            .requestEmail()
-                                            .requestIdToken(Constants.ServerClient)
-                                            .build()
-                                        val googleSingInClient = GoogleSignIn.getClient(context, gso)
-                                        launcher.launch(googleSingInClient.signInIntent)*/
-                                                })
+                                                    val gso= GoogleSignInOptions.Builder(
+                                                    GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                                    .requestEmail()
+                                                    .requestIdToken(Constants.ServerClient)
+                                                    .build()
+
+                                                    val googleSingInClient = GoogleSignIn.getClient(context, gso)
+
+                                                    launcher.launch(googleSingInClient.signInIntent) })
                                      /*   Image(
                                             painter = painterResource(id = R.drawable.twitter),
                                             contentDescription = null,
