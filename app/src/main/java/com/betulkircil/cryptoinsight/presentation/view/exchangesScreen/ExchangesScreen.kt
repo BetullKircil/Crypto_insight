@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.metaverseScreen
+package com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen
 
 
 import android.view.ViewGroup

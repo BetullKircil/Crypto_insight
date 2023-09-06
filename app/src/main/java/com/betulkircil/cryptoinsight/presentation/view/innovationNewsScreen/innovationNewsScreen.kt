@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.metaverseScreen
+package com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen
 
 import android.content.Intent
 import android.net.Uri
@@ -40,14 +40,15 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.InnovationViewModel
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.MetaverseViewModel
 import kotlinx.coroutines.delay
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun MetaverseNewsScreen(
+fun InnovationNewsScreen(
     navController: NavController,
-    viewModel: MetaverseViewModel = hiltViewModel()
+    viewModel: InnovationViewModel = hiltViewModel()
 ) {
     var isLoading = remember {
         mutableStateOf(true)

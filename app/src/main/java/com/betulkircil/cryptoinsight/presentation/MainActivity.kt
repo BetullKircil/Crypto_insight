@@ -10,9 +10,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -31,9 +29,12 @@ import com.betulkircil.cryptoinsight.presentation.view.homeScreen.HomeScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceAndNewsSearchScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.ExchangesScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.GamingNewsScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.MetaverseNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.DefiNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.ExchangesScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.GamingNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.InnovationNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.NftNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
@@ -122,6 +123,15 @@ fun NavigationComponent(
         }
         composable(Screen.GamingNewsScreen.route){
             GamingNewsScreen(navController = navController)
+        }
+        composable(Screen.DefiNewsScreen.route){
+            DefiNewsScreen(navController = navController)
+        }
+        composable(Screen.DefiNewsScreen.route){
+            NftNewsScreen(navController = navController)
+        }
+        composable(Screen.DefiNewsScreen.route){
+            InnovationNewsScreen(navController = navController)
         }
     }
 }

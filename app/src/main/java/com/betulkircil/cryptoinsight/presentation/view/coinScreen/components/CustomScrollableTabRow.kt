@@ -12,10 +12,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.betulkircil.cryptoinsight.presentation.view.NftScreen.NftScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.ExchangesScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.GamingNewsScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.MetaverseNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.DefiNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.GamingNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.InnovationNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.NftNewsScreen
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -46,9 +47,9 @@ fun CustomScrollableTabRow(
                                      "All" -> AllCoinsScreen()
                                      "Metaverse" -> MetaverseNewsScreen(navController = navController)
                                      "Gaming" -> GamingNewsScreen(navController = navController)
-                                     "Defi" -> DefiScreen(navController = navController)
-                                     "Innovation" -> AllCoinsScreen()
-                                     "NFT" -> NftScreen(navController = navController)
+                                     "Defi" -> DefiNewsScreen(navController = navController)
+                                     "Innovation" -> InnovationNewsScreen(navController = navController)
+                                     "NFT" -> NftNewsScreen(navController = navController)
                                  }
                              }
     }

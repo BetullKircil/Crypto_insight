@@ -40,14 +40,15 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
-import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.GamingViewModel
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.MetaverseViewModel
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NftViewModel
 import kotlinx.coroutines.delay
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun GamingNewsScreen(
+fun NftNewsScreen(
     navController: NavController,
-    viewModel: GamingViewModel = hiltViewModel()
+    viewModel: NftViewModel = hiltViewModel()
 ) {
     var isLoading = remember {
         mutableStateOf(true)
