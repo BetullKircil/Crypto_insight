@@ -83,7 +83,7 @@ fun NewsLazyStaggeredVerticalGrid(
             SearchBar(
                 hint = "Search",
                 onSearch = {
-                    viewModel.onEvent(NewsEvent.Search(it))
+                    viewModel.onEvent(NewsEvent.All(it))
                 })
         }
         LazyVerticalStaggeredGrid(

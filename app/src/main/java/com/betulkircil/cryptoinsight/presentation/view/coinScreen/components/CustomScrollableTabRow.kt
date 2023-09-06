@@ -27,8 +27,9 @@ fun CustomScrollableTabRow(
             "Favorites",
             "All",
             "Metaverse",
-            "Exchanges",
+            "Gaming",
             "Defi",
+            "Innovation",
             "NFT"
         )
         TabRow(
@@ -42,9 +43,10 @@ fun CustomScrollableTabRow(
                                  when (tabs[selectedTabIndex]) {
                                      "Favorites" -> FavoriteCoinsScreen(navController)
                                      "All" -> AllCoinsScreen()
-                                     "Metaverse" -> MetaverseScreen(navController = navController)
-                                     "Exchanges" -> ExchangesScreen(navController = navController)
+                                     "Metaverse" -> MetaverseNewsScreen(navController = navController)
+                                     "Gaming" -> ExchangesScreen(navController = navController)
                                      "Defi" -> DefiScreen(navController = navController)
+                                     "Innovation" -> AllCoinsScreen()
                                      "NFT" -> NftScreen(navController = navController)
                                  }
                              }

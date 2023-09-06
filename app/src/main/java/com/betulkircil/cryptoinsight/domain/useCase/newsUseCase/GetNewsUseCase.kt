@@ -15,11 +15,93 @@ class getNewsUseCase @Inject constructor(
     private val repository : NewsRepository
 ){
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    fun getBreakingNews(searchString: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+    fun getBreakingNews(key: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
         return flow {
             try {
                 emit(Resource.Loading())
-                val news =  repository.getBreakingNews(searchString)
+                val news =  repository.getBreakingNews(key)
+                emit(Resource.Success(news.toNewsModel()))
+            }
+            catch (e : IOError){
+                emit(Resource.Error(message = "No internet connection"))
+            }
+            catch (e : HttpException){
+                emit(Resource.Error(message = e.localizedMessage ?: "Error"))
+            }
+        }
+    }
+
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    fun getMetaverseNews(metaverseKey: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+        return flow {
+            try {
+                emit(Resource.Loading())
+                val news =  repository.getBreakingNews(metaverseKey)
+                emit(Resource.Success(news.toNewsModel()))
+            }
+            catch (e : IOError){
+                emit(Resource.Error(message = "No internet connection"))
+            }
+            catch (e : HttpException){
+                emit(Resource.Error(message = e.localizedMessage ?: "Error"))
+            }
+        }
+    }
+
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    fun getDefiNews(defiKey: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+        return flow {
+            try {
+                emit(Resource.Loading())
+                val news =  repository.getBreakingNews(defiKey)
+                emit(Resource.Success(news.toNewsModel()))
+            }
+            catch (e : IOError){
+                emit(Resource.Error(message = "No internet connection"))
+            }
+            catch (e : HttpException){
+                emit(Resource.Error(message = e.localizedMessage ?: "Error"))
+            }
+        }
+    }
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    fun getGamingNews(gamingKey: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+        return flow {
+            try {
+                emit(Resource.Loading())
+                val news =  repository.getBreakingNews(gamingKey)
+                emit(Resource.Success(news.toNewsModel()))
+            }
+            catch (e : IOError){
+                emit(Resource.Error(message = "No internet connection"))
+            }
+            catch (e : HttpException){
+                emit(Resource.Error(message = e.localizedMessage ?: "Error"))
+            }
+        }
+    }
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    fun getInnovationNews(innovationKey: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+        return flow {
+            try {
+                emit(Resource.Loading())
+                val news =  repository.getBreakingNews(innovationKey)
+                emit(Resource.Success(news.toNewsModel()))
+            }
+            catch (e : IOError){
+                emit(Resource.Error(message = "No internet connection"))
+            }
+            catch (e : HttpException){
+                emit(Resource.Error(message = e.localizedMessage ?: "Error"))
+            }
+        }
+    }
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    fun getNftNews(nftKey: String) : kotlinx.coroutines.flow.Flow<Resource<List<NewsModel>>>{
+        return flow {
+            try {
+                emit(Resource.Loading())
+                val news =  repository.getBreakingNews(nftKey)
                 emit(Resource.Success(news.toNewsModel()))
             }
             catch (e : IOError){

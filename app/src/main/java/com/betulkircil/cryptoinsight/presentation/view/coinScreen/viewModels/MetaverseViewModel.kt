@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-class NewsViewModel @Inject constructor(
+class MetaverseViewModel @Inject constructor(
     private val getNewsUseCase: getNewsUseCase
 ) : ViewModel() {
     private val _state = mutableStateOf(NewsState())
@@ -27,13 +27,13 @@ class NewsViewModel @Inject constructor(
     private var job: Job? = null
 
     init {
-        getNews(_state.value.all)
+        getMetaverseNews(_state.value.metaverse)
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    private fun getNews(allString: String) {
+    private fun getMetaverseNews(metaverseKey: String) {
         job?.cancel()
-        job = getNewsUseCase.getBreakingNews(key = allString).onEach {
+        job = getNewsUseCase.getBreakingNews(key = metaverseKey).onEach {
             when (it) {
                 is Resource.Success -> {
                     _state.value = NewsState(newsList = it.data ?: emptyList())
@@ -55,22 +55,22 @@ class NewsViewModel @Inject constructor(
     fun onEvent(event : NewsEvent){
         when(event){
             is NewsEvent.All -> {
-                getNews(event.allNews)
+                getMetaverseNews(event.allNews)
             }
             is NewsEvent.Defi -> {
-                getNews(event.defiNews)
+                getMetaverseNews(event.defiNews)
             }
             is NewsEvent.Gaming -> {
-                getNews(event.gamingNews)
+                getMetaverseNews(event.gamingNews)
             }
             is NewsEvent.Nft -> {
-                getNews(event.nftNews)
+                getMetaverseNews(event.nftNews)
             }
             is NewsEvent.Innovation -> {
-                getNews(event.innovationNews)
+                getMetaverseNews(event.innovationNews)
             }
             is NewsEvent.Metaverse -> {
-                getNews(event.metaverseNews)
+                getMetaverseNews(event.metaverseNews)
             }
         }
     }
