@@ -64,7 +64,7 @@ fun NewsRowScreen(
         mutableStateOf(true)
     }
     LaunchedEffect(key1 = true) {
-        delay(1400)
+        delay(2000)
         isLoading.value = false
 
     }

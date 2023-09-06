@@ -16,4 +16,24 @@ class NewsRepositoryImpl @Inject constructor(
         return newsApi.getBreakingNews(searchString = searchString)
     }
 
+    override suspend fun getMetaverseNews(metaverseKey: String): News {
+        return newsApi.getBreakingNews(searchString = metaverseKey)
+    }
+
+    override suspend fun getNftNews(nftKey: String): News {
+        return newsApi.getBreakingNews(searchString =  nftKey)
+    }
+
+    override suspend fun getGamingNews(gamingKey: String): News {
+        return newsApi.getBreakingNews(searchString = gamingKey)
+    }
+
+    override suspend fun getDefiNews(defiKey: String): News {
+        return newsApi.getBreakingNews(searchString = defiKey)
+    }
+
+    override suspend fun getInnovationNews(innovationKey: String): News {
+        return newsApi.getBreakingNews(searchString = innovationKey)
+    }
+
 }

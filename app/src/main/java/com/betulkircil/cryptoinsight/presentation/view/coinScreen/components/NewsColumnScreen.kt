@@ -67,7 +67,7 @@ fun NewsColumnScreen(
         mutableStateOf(true)
     }
     LaunchedEffect(key1 = true) {
-        delay(1600)
+        delay(2000)
         isLoading.value = false
 
     }
