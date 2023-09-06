@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.metaverseScreen
 
 import android.content.Intent
 import android.net.Uri
@@ -40,14 +40,15 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
+import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.GamingViewModel
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.MetaverseViewModel
 import kotlinx.coroutines.delay
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
-fun MetaverseNewsScreen(
+fun GamingNewsScreen(
     navController: NavController,
-    viewModel: MetaverseViewModel = hiltViewModel()
+    viewModel: GamingViewModel = hiltViewModel()
 ) {
     var isLoading = remember {
         mutableStateOf(true)
@@ -85,9 +86,6 @@ fun MetaverseNewsScreen(
                                     if (url.isNotEmpty()) {
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                                         context.startActivity(intent)
-                                        /* WebViewComposable(context, url = url, onBackClick = {
-                                             navController.navigate(Screen.CoinScreen.route)
-                                         })*/
                                     }
                                 }, horizontalArrangement = Arrangement.SpaceBetween) {
                                 Column(modifier = Modifier.width(270.dp)) {

@@ -14,7 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.NftScreen.NftScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.ExchangesScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.MetaverseScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.GamingNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.metaverseScreen.MetaverseNewsScreen
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -44,7 +45,7 @@ fun CustomScrollableTabRow(
                                      "Favorites" -> FavoriteCoinsScreen(navController)
                                      "All" -> AllCoinsScreen()
                                      "Metaverse" -> MetaverseNewsScreen(navController = navController)
-                                     "Gaming" -> ExchangesScreen(navController = navController)
+                                     "Gaming" -> GamingNewsScreen(navController = navController)
                                      "Defi" -> DefiScreen(navController = navController)
                                      "Innovation" -> AllCoinsScreen()
                                      "NFT" -> NftScreen(navController = navController)
