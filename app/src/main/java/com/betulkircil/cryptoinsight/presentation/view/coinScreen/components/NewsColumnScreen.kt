@@ -55,6 +55,7 @@ import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NewsViewModel
+import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsColumnContent
 import com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.SavedNewsViewModel
 import kotlinx.coroutines.delay
 
@@ -87,89 +88,7 @@ fun NewsColumnScreen(
             NewsColumnShimmerEffect(
                 isLoading = isLoading.value,
                 contentAfterLoading = {
-                    Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
-                        Row(modifier = Modifier.fillMaxWidth().padding(top =5.dp), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
-                            Image(painter = painterResource(id = R.drawable.saved), contentDescription = null, modifier = Modifier
-                                .size(20.dp)
-                                .clickable {
-                                    savedNewsViewModel.saveFavoriteNews(news)
-                                    Toast
-                                        .makeText(
-                                            context,
-                                            "News saved succesfully!",
-                                            Toast.LENGTH_SHORT
-                                        )
-                                        .show()
-                                })
-                            Image(painter = painterResource(id = R.drawable.share), contentDescription = null, modifier = Modifier
-                                .size(27.dp)
-                                .padding(horizontal = 5.dp)
-                                .clickable {
-                                    savedNewsViewModel.saveFavoriteNews(news)
-                                    Toast
-                                        .makeText(
-                                            context,
-                                            "Shared succesfully!",
-                                            Toast.LENGTH_SHORT
-                                        )
-                                        .show()
-                                })
-                        }
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 10.dp)
-                                .clickable { /*todo*/ },
-                            horizontalArrangement = Arrangement.SpaceAround
-                        ) {
-                            Row(modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    val url = news.url ?: ""
-                                    if (url.isNotEmpty()) {
-                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                                        context.startActivity(intent)
-                                    }
-                                }, horizontalArrangement = Arrangement.SpaceBetween) {
-                                Column(modifier = Modifier.width(270.dp).padding(top = 5.dp)) {
-                                    androidx.compose.material3.Text(
-                                        text = news.title ?: "",
-                                        modifier = Modifier.padding(horizontal = 10.dp),
-                                        style = MaterialTheme.typography.titleSmall,
-                                        lineHeight = 18.sp,
-                                        color = Color.White,
-                                        fontWeight = FontWeight.Bold,
-                                        maxLines = 2,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
-                                    androidx.compose.material3.Text(
-                                        text = news.description?: "",
-                                        color = Color.White,
-                                        modifier = Modifier.padding(horizontal = 10.dp),
-                                        fontWeight = FontWeight.Light,
-                                        style = MaterialTheme.typography.bodySmall,
-                                        maxLines = 2,
-                                        overflow = TextOverflow.Ellipsis,
-                                        fontSize = 10.sp
-                                    )
-                                }
-                                Image(
-                                    painter = rememberImagePainter(data = news.urlToImage),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(100.dp)
-                                        .clip(RoundedCornerShape(20.dp))
-                                )
-                            }
-                        }
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(0.8.dp)
-                                .background(color = colorResource(id = R.color.purple_protest))
-                        )
-
-                    }
+                    NewsColumnContent(item = news)
                 }
             )
         }

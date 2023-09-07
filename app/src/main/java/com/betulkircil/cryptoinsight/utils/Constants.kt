@@ -12,8 +12,6 @@ object Constants {
     const val API_KEY = "0685e2c571b9424cb002c1a1ced2ee42"
     const val NEWS_BASE_URL = "https://newsapi.org/"
     const val NEWS_END_POINT = "v2/everything"
-    const val NFT_END_POINT = "nfts/list"
-    const val EXCHANGES_END_POINT = "exchanges"
     const val ServerClient = "623821793257-ug0mjriq9d39vraqb0lqdkel03fjkfao.apps.googleusercontent.com"
 }
 

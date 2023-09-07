@@ -30,7 +30,6 @@ import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginScreen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.MarketPlaceAndNewsSearchScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.DefiNewsScreen
-import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.ExchangesScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.GamingNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.InnovationNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
@@ -115,9 +114,6 @@ fun NavigationComponent(
         }
         composable(Screen.ProfileScreen.route){
             ProfileScreen(navController = navController)
-        }
-        composable(Screen.ExchangesScreen.route){
-            ExchangesScreen(navController = navController)
         }
         composable(Screen.MetaverseNewsScreen.route){
             MetaverseNewsScreen(navController = navController)

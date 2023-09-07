@@ -6,15 +6,12 @@ import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteNewsDao
 import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteNewsDatabase
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
-import com.betulkircil.cryptoinsight.data.remote.ExchangesApi
 import com.betulkircil.cryptoinsight.data.remote.NewsApi
-import com.betulkircil.cryptoinsight.data.repository.ExchangesRepositoryImpl
 import com.betulkircil.cryptoinsight.data.repository.NewsRepositoryImpl
 import com.betulkircil.cryptoinsight.data.repository.UserRespositoryImpl
 import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepositoryImpl
-import com.betulkircil.cryptoinsight.domain.repository.ExchangesRepository
 import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
 import com.betulkircil.cryptoinsight.domain.repository.UserRepository
 import com.betulkircil.cryptoinsight.utils.Constants.COIN_BASE_URL
@@ -93,22 +90,6 @@ object AppModule {
     @Singleton
     fun provideuserRepository(firestore: FirebaseFirestore) :  UserRepository{
         return UserRespositoryImpl(firestore)
-    }
-
-    @Provides
-    @Singleton
-    fun provideExchangesApi(): ExchangesApi {
-        return Retrofit.Builder()
-            .baseUrl(NEWS_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ExchangesApi::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideExchangesRepository(exchangesApi: ExchangesApi) :  ExchangesRepository{
-        return ExchangesRepositoryImpl(exchangesApi)
     }
 
     @Provides

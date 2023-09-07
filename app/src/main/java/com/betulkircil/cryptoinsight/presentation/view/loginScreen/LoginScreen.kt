@@ -75,6 +75,9 @@ fun LoginScreen(
 
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
+    var isClicked = remember { mutableStateOf(false) }
+    var passwordVisibility = remember { mutableStateOf(false) }
+
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
     val googleSignInState = viewModel.googleState.value
@@ -111,8 +114,6 @@ fun LoginScreen(
                 Column(modifier = Modifier
                     , horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center
                 ) {
-                    var isClicked = remember { mutableStateOf(false) }
-                    var passwordVisibility = remember { mutableStateOf(false) }
                     TextFieldLabel(text = stringResource(id = R.string.email))
                     TextField(
                         modifier = Modifier
@@ -213,7 +214,6 @@ fun LoginScreen(
 
                                     launcher.launch(googleSingInClient.signInIntent)
                                 })
-                           // Image(painter = painterResource(id = R.drawable.twitter), contentDescription = null, modifier = Modifier.padding(horizontal = 10.dp))
                         }
                     }
                     Button(
