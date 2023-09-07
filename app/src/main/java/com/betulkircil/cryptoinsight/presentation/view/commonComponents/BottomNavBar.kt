@@ -90,7 +90,11 @@ fun ToggleableIcons(navController: NavController) {
             IconToggleButton(
                 iconType = IconType.Saved,
                 selectedIcon = selectedIcon.value,
-                onIconClick = { selectedIcon.value = it }
+                onIconClick = { selectedIcon.value = it
+                    navController.navigate(Screen.SavedScreen.route){
+                        popUpTo(Screen.HomeScreen.route){inclusive = true}
+                    }
+                }
             )
         }
         Box(modifier = Modifier.size(23.dp)) {

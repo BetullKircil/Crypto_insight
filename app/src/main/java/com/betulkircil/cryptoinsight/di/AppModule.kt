@@ -1,6 +1,9 @@
 package com.betulkircil.cryptoinsight.di
 
 
+import android.content.Context
+import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteNewsDao
+import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteNewsDatabase
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
 import com.betulkircil.cryptoinsight.data.remote.ExchangesApi
@@ -22,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -59,8 +63,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(api : NewsApi) : NewsRepository{
-        return NewsRepositoryImpl(api)
+    fun provideNewsRepository(api : NewsApi, newsDb: FavoriteNewsDatabase) : NewsRepository{
+        return NewsRepositoryImpl(api, newsDb)
     }
 
     @Provides
@@ -105,5 +109,17 @@ object AppModule {
     @Singleton
     fun provideExchangesRepository(exchangesApi: ExchangesApi) :  ExchangesRepository{
         return ExchangesRepositoryImpl(exchangesApi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteNewsDatabase(@ApplicationContext context: Context): FavoriteNewsDatabase {
+        return FavoriteNewsDatabase(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteNewsDao(database: FavoriteNewsDatabase): FavoriteNewsDao {
+        return database.getFavoriteNewsDao()
     }
 }

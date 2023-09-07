@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.webkit.WebView
+import android.widget.Toast
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,7 +14,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -43,6 +43,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -52,16 +53,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
-import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NewsViewModel
+import com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.SavedNewsViewModel
 import kotlinx.coroutines.delay
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
 fun NewsColumnScreen(
     navController: NavController,
-    viewModel: NewsViewModel = hiltViewModel()
+    newsViewModel: NewsViewModel = hiltViewModel(),
+    savedNewsViewModel: SavedNewsViewModel = hiltViewModel()
 ) {
     var isLoading = remember {
         mutableStateOf(true)
@@ -72,7 +74,7 @@ fun NewsColumnScreen(
 
     }
     val context = LocalContext.current
-    val state = viewModel.state.value
+    val state = newsViewModel.state.value
     var visibleNewsCount = remember { mutableStateOf(5) }
 
     LazyColumn(
@@ -86,6 +88,33 @@ fun NewsColumnScreen(
                 isLoading = isLoading.value,
                 contentAfterLoading = {
                     Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
+                        Row(modifier = Modifier.fillMaxWidth().padding(top =5.dp), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+                            Image(painter = painterResource(id = R.drawable.saved), contentDescription = null, modifier = Modifier
+                                .size(20.dp)
+                                .clickable {
+                                    savedNewsViewModel.saveFavoriteNews(news)
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "News saved succesfully!",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                })
+                            Image(painter = painterResource(id = R.drawable.share), contentDescription = null, modifier = Modifier
+                                .size(27.dp)
+                                .padding(horizontal = 5.dp)
+                                .clickable {
+                                    savedNewsViewModel.saveFavoriteNews(news)
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Shared succesfully!",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                })
+                        }
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -99,13 +128,10 @@ fun NewsColumnScreen(
                                     val url = news.url ?: ""
                                     if (url.isNotEmpty()) {
                                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                                         context.startActivity(intent)
-                                       /* WebViewComposable(context, url = url, onBackClick = {
-                                            navController.navigate(Screen.CoinScreen.route)
-                                        })*/
+                                        context.startActivity(intent)
                                     }
                                 }, horizontalArrangement = Arrangement.SpaceBetween) {
-                                Column(modifier = Modifier.width(270.dp)) {
+                                Column(modifier = Modifier.width(270.dp).padding(top = 5.dp)) {
                                     androidx.compose.material3.Text(
                                         text = news.title ?: "",
                                         modifier = Modifier.padding(horizontal = 10.dp),

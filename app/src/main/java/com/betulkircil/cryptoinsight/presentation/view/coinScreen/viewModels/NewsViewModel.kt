@@ -6,14 +6,20 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.betulkircil.cryptoinsight.data.remote.dto.Article
+import com.betulkircil.cryptoinsight.domain.model.NewsModel
+import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
 import com.betulkircil.cryptoinsight.domain.useCase.newsUseCase.getNewsUseCase
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenEvents.NewsEvent
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.screenStates.NewsState
 import com.betulkircil.cryptoinsight.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.internal.artificialFrame
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
