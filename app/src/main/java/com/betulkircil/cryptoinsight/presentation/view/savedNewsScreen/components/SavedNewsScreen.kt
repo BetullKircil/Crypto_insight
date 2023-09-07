@@ -1,8 +1,9 @@
-package com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen
+package com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.components
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresExtension
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,11 +25,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -41,6 +46,7 @@ import com.betulkircil.cryptoinsight.domain.model.NewsModel
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNavigationBar
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.AppBarContent
+import com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.SavedNewsViewModel
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -53,8 +59,6 @@ fun SavedNewsScreen(
     Column(modifier = Modifier.background(color = colorResource(id = R.color.grey_black))) {
         Scaffold(
             modifier = Modifier.background(colorResource(id = R.color.grey_black)),
-            topBar = { NewsAppBar(greetingContent = { AppBarContent("Saved", R.drawable.saved_sc) }) },
-            bottomBar = { BottomNavigationBar(navController = navController) },
             content = {
                 it
                 Column(
@@ -63,6 +67,22 @@ fun SavedNewsScreen(
                         .background(color = colorResource(id = R.color.grey_black))
                         .verticalScroll(rememberScrollState())) {
                         savedNews.forEach { news ->
+                            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
+                                Image(painter = painterResource(id = R.drawable.delete), contentDescription = null, modifier = Modifier
+                                    .size(50.dp)
+                                    .clickable {
+                                        viewModel.deleteSavedNews(news)
+                                        Toast
+                                            .makeText(
+                                                context,
+                                                "News deleted succesfully!",
+                                                Toast.LENGTH_SHORT
+                                            )
+                                            .show()
+                                    }
+                                    .padding(horizontal = 10.dp)
+                                )
+                            }
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -78,7 +98,7 @@ fun SavedNewsScreen(
                                             context.startActivity(intent)
                                         }
                                     }, horizontalArrangement = Arrangement.SpaceBetween) {
-                                    Column(modifier = Modifier.width(270.dp)) {
+                                    Column(modifier = Modifier.width(270.dp).padding(top = 10.dp)) {
                                         Text(
                                             text = news.title ?: "",
                                             modifier = Modifier.padding(horizontal = 10.dp),
@@ -106,6 +126,7 @@ fun SavedNewsScreen(
                                         modifier = Modifier
                                             .size(100.dp)
                                             .clip(RoundedCornerShape(20.dp))
+                                            .padding(bottom = 15.dp)
                                     )
                                 }
                             }
