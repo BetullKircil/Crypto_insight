@@ -1,6 +1,5 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail
 
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -60,7 +59,6 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.Backgrou
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.PasswordVisibilityToggle
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.LoginViewModel
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components.TextFieldName
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpLinkText
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.SignUpText
@@ -89,8 +87,6 @@ fun SignUpMailScreen(
     val password = remember {
         mutableStateOf("")
     }
-    val googleSignInState = loginViewModel.googleState.value
-
     val launcher =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
             val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
@@ -121,8 +117,6 @@ fun SignUpMailScreen(
                     ) {
                         AppBarSection(navController, "homeScreen", "signUpMailScreen")
                         SignUpText()
-
-
                         Column(
                             modifier = Modifier
                                 .padding(vertical = 20.dp)
@@ -290,11 +284,6 @@ fun SignUpMailScreen(
                                                     val googleSingInClient = GoogleSignIn.getClient(context, gso)
 
                                                     launcher.launch(googleSingInClient.signInIntent) })
-                                     /*   Image(
-                                            painter = painterResource(id = R.drawable.twitter),
-                                            contentDescription = null,
-                                            modifier = Modifier.padding(horizontal = 10.dp)
-                                        )*/
                                     }
                                 }
                                 Column(modifier = Modifier, verticalArrangement = Arrangement.Center) {
@@ -319,8 +308,11 @@ fun SignUpMailScreen(
                                                     }
                                                     navController.navigate(Screen.SignUpNameScreen.route)
                                                 } else {
-                                                    // Kullanıcıya snackbar göster
-                                                    //showSnackbar.value = true
+                                                    Toast.makeText(
+                                                        context,
+                                                        "Account create failed!",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
                                                 }
                                             },
                                             shape = RoundedCornerShape(40),

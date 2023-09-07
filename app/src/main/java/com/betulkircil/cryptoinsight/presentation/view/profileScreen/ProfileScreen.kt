@@ -46,17 +46,11 @@ import org.w3c.dom.Text
 fun ProfileScreen(
     navController: NavController,
     loginViewModel: LoginViewModel = hiltViewModel(),
-    profileViewModel: profileViewModel = hiltViewModel()
 ) {
-    val userProfile = profileViewModel.userProfile.collectAsState().value
     val isLoggedIn = remember {
         mutableStateOf(false)
     }
     val context = LocalContext.current
-
-    LaunchedEffect(Unit) {
-        profileViewModel.fetchUserProfile()
-    }
 
 Scaffold(
         modifier = Modifier
@@ -78,13 +72,6 @@ Scaffold(
                     Box(modifier = Modifier.size(90.dp)) {
                         ImagePickerComp()
                     }
-                   /* userProfile?.let {
-                        ProfileInfo(
-                            name = it.name ?: "",
-                            email = loginViewModel?.currentUser?.displayName?:"",
-                            no = it.phoneNumber ?: ""
-                        )
-                    }*/
                    ProfileInfo(name = loginViewModel?.currentUser?.displayName?:"", email = "", no = "")
                     if(loginViewModel.currentUser != null){
                         isLoggedIn.value = true
@@ -140,6 +127,17 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
+
+                        }) {
+                        ProfileOptions(
+                            sectionTitle = "Privacy Policy",
+                            sectionText = "Privacy policy and terms of use",
+                            pngRes = R.drawable.pp_privacy_policy,
+                            onClick = {})
+                    }
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .clickable {
                             val alertDialogBuilder = AlertDialog.Builder(context)
                             alertDialogBuilder.setTitle("Warning")
                             alertDialogBuilder.setMessage("Are you sure you would like to log out?")
@@ -183,8 +181,8 @@ fun Context.sendMail(to: String, subject: String) {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject)
         startActivity(intent)
     } catch (e: ActivityNotFoundException) {
-        // TODO: Handle case where no email app is available
+        Log.d("Error",e.message.toString())
     } catch (t: Throwable) {
-        // TODO: Handle potential other type of exceptions
+        Log.d("Error",t.message.toString())
     }
 }

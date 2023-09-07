@@ -1,6 +1,5 @@
 package com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.components
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,10 +37,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.domain.model.UserProfile
-import com.betulkircil.cryptoinsight.domain.useCase.userProfileUseCase.saveUserProfileUseCase
 import com.betulkircil.cryptoinsight.presentation.Screen
 import com.betulkircil.cryptoinsight.presentation.view.loginScreen.components.TextFieldLabel
-import com.betulkircil.cryptoinsight.presentation.view.profileScreen.profileViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpViewModel
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackButton
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.components.BackNextButtonGroup
@@ -215,19 +212,6 @@ fun SignUpNameScreenContent(
                 }
             }
         }
-        //BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.CoinScreen.route)
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 25.dp)) {
-            BackButton(route = Screen.SignUpMailScreen.route, navController = navController, buttonText = stringResource(id = R.string.backButtonText), textColor = colorResource(id = R.color.purple_protest), backgroundColor = Color.Transparent)
-            ButtonWithIcon(route = Screen.CoinScreen.route, navController = navController, buttonText = stringResource(id = R.string.nextButtonText), width = 200, onClick = {
-                val userProfile = UserProfile(
-                    name = name.value,
-                    phoneNumber = phoneNumber.value,
-                    imageUrl = null
-                )
-                signUpViewModel.saveUserProfile(userProfile)
-            })
-        }
+        BackNextButtonGroup(navController = navController, backRoute = Screen.SignUpMailScreen.route, nextRoute = Screen.CoinScreen.route)
     }
 }

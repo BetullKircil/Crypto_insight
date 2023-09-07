@@ -8,12 +8,10 @@ import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
 import com.betulkircil.cryptoinsight.data.remote.NewsApi
 import com.betulkircil.cryptoinsight.data.repository.NewsRepositoryImpl
-import com.betulkircil.cryptoinsight.data.repository.UserRespositoryImpl
 import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepositoryImpl
 import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
-import com.betulkircil.cryptoinsight.domain.repository.UserRepository
 import com.betulkircil.cryptoinsight.utils.Constants.COIN_BASE_URL
 import com.betulkircil.cryptoinsight.utils.Constants.NEWS_BASE_URL
 import com.google.firebase.auth.FirebaseAuth
@@ -86,12 +84,6 @@ object AppModule {
 
         return firestore
     }
-    @Provides
-    @Singleton
-    fun provideuserRepository(firestore: FirebaseFirestore) :  UserRepository{
-        return UserRespositoryImpl(firestore)
-    }
-
     @Provides
     @Singleton
     fun provideFavoriteNewsDatabase(@ApplicationContext context: Context): FavoriteNewsDatabase {

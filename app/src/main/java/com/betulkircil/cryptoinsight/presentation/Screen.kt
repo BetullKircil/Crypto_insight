@@ -15,12 +15,12 @@ sealed class Screen(val route : String){
     object MarketPlaceAndNewsSearchScreen : Screen("marketPlaceScreen")
     object CategoryScreen : Screen("categoryScreen")
     object ProfileScreen : Screen("profileScreen")
-    object ExchangesScreen : Screen("exchangnesScreen")
     object MetaverseNewsScreen : Screen("metaverseNewsScreen")
     object GamingNewsScreen : Screen("gamingNewsScreen")
     object DefiNewsScreen : Screen("defiNewsScreen")
     object NftNewsScreen : Screen("nftNewsScreen")
     object InnovationNewsScreen : Screen("innovationNewsScreen")
     object SavedScreen : Screen("savedScreen")
+
 
 }

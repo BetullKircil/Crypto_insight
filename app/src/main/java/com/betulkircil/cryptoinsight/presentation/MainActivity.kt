@@ -35,7 +35,7 @@ import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.Innov
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.NftNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
-import com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.SavedScreen
+import com.betulkircil.cryptoinsight.presentation.view.savedScreen.SavedScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpName.SignUpNameScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.signUpPassword.SignUpPasswordScreen

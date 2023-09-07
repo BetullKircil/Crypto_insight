@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.model.UserProfile
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
-import com.betulkircil.cryptoinsight.domain.useCase.userProfileUseCase.saveUserProfileUseCase
 import com.betulkircil.cryptoinsight.utils.Response
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val repository: AuthRepository,
-    private val saveUserProfileUseCase: saveUserProfileUseCase,
 ): ViewModel() {
     private val _registerFlow = MutableStateFlow<Response<FirebaseUser>?>(null)
     val registerFlow : StateFlow<Response<FirebaseUser>?> = _registerFlow
@@ -32,11 +30,6 @@ class SignUpViewModel @Inject constructor(
     init {
         if(repository.currentUser != null){
             _registerFlow.value = Response.Success(repository.currentUser!!)
-        }
-    }
-    fun saveUserProfile(userProfile: UserProfile) {
-        viewModelScope.launch {
-            saveUserProfileUseCase(userProfile)
         }
     }
 }

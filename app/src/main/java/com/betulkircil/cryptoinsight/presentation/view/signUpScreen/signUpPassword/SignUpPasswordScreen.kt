@@ -39,10 +39,6 @@ fun SignUpPasswordScreen(
     navController: NavController,
     viewModel: SignUpViewModel = hiltViewModel()
 ) {
-    val scope = rememberCoroutineScope()
-    val context = LocalContext.current
-   // val state = viewModel.signUpState.collectAsState(initial = null)
-
     Column(modifier = Modifier
         .fillMaxSize(), verticalArrangement = Arrangement.Center) {
         Surface(modifier = Modifier.fillMaxSize()) {

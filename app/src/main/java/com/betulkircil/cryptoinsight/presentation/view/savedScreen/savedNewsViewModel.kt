@@ -1,12 +1,10 @@
-package com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen
+package com.betulkircil.cryptoinsight.presentation.view.savedScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
-import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

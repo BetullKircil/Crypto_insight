@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.components
+package com.betulkircil.cryptoinsight.presentation.view.savedScreen.components
 
 import android.content.Intent
 import android.net.Uri
@@ -25,8 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -43,10 +41,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
-import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNavigationBar
-import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
-import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.AppBarContent
-import com.betulkircil.cryptoinsight.presentation.view.savedNewsScreen.SavedNewsViewModel
+import com.betulkircil.cryptoinsight.presentation.view.savedScreen.SavedNewsViewModel
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
