@@ -2,7 +2,9 @@ package com.betulkircil.cryptoinsight.di
 
 
 import android.content.Context
+import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteCoinsDao
 import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteNewsDao
+import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteCoinsDatabase
 import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteNewsDatabase
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
@@ -94,5 +96,16 @@ object AppModule {
     @Singleton
     fun provideFavoriteNewsDao(database: FavoriteNewsDatabase): FavoriteNewsDao {
         return database.getFavoriteNewsDao()
+    }
+    @Provides
+    @Singleton
+    fun provideFavoriteCoinsDatabase(@ApplicationContext context: Context): FavoriteCoinsDatabase {
+        return FavoriteCoinsDatabase(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFavoriteCoinsDao(database: FavoriteCoinsDatabase): FavoriteCoinsDao {
+        return database.getFavoriteCoinsDao()
     }
 }
