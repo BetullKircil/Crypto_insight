@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels
+package com.betulkircil.cryptoinsight.presentation.view.innovationNewsScreen
 
 import android.os.Build
 import androidx.annotation.RequiresExtension
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-class MetaverseViewModel @Inject constructor(
+class InnovationViewModel @Inject constructor(
     private val getNewsUseCase: getNewsUseCase
 ) : ViewModel() {
     private val _state = mutableStateOf(NewsState())
@@ -27,13 +27,13 @@ class MetaverseViewModel @Inject constructor(
     private var job: Job? = null
 
     init {
-        getMetaverseNews(_state.value.metaverse)
+        getInnovationNews(_state.value.innovation)
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    private fun getMetaverseNews(metaverseKey: String) {
+    private fun getInnovationNews(innovationKey: String) {
         job?.cancel()
-        job = getNewsUseCase.getBreakingNews(key = metaverseKey).onEach {
+        job = getNewsUseCase.getBreakingNews(key = innovationKey).onEach {
             when (it) {
                 is Resource.Success -> {
                     _state.value = NewsState(newsList = it.data ?: emptyList())
@@ -55,22 +55,22 @@ class MetaverseViewModel @Inject constructor(
     fun onEvent(event : NewsEvent){
         when(event){
             is NewsEvent.All -> {
-                getMetaverseNews(event.allNews)
+                getInnovationNews(event.allNews)
             }
             is NewsEvent.Defi -> {
-                getMetaverseNews(event.defiNews)
+                getInnovationNews(event.defiNews)
             }
             is NewsEvent.Gaming -> {
-                getMetaverseNews(event.gamingNews)
+                getInnovationNews(event.gamingNews)
             }
             is NewsEvent.Nft -> {
-                getMetaverseNews(event.nftNews)
+                getInnovationNews(event.nftNews)
             }
             is NewsEvent.Innovation -> {
-                getMetaverseNews(event.innovationNews)
+                getInnovationNews(event.innovationNews)
             }
             is NewsEvent.Metaverse -> {
-                getMetaverseNews(event.metaverseNews)
+                getInnovationNews(event.metaverseNews)
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels
+package com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen
 
 import android.os.Build
 import androidx.annotation.RequiresExtension
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-class NftViewModel @Inject constructor(
+class MetaverseViewModel @Inject constructor(
     private val getNewsUseCase: getNewsUseCase
 ) : ViewModel() {
     private val _state = mutableStateOf(NewsState())
@@ -27,13 +27,13 @@ class NftViewModel @Inject constructor(
     private var job: Job? = null
 
     init {
-        getNftNews(_state.value.nft)
+        getMetaverseNews(_state.value.metaverse)
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    private fun getNftNews(nftKey: String) {
+    private fun getMetaverseNews(metaverseKey: String) {
         job?.cancel()
-        job = getNewsUseCase.getBreakingNews(key = nftKey).onEach {
+        job = getNewsUseCase.getBreakingNews(key = metaverseKey).onEach {
             when (it) {
                 is Resource.Success -> {
                     _state.value = NewsState(newsList = it.data ?: emptyList())
@@ -55,22 +55,22 @@ class NftViewModel @Inject constructor(
     fun onEvent(event : NewsEvent){
         when(event){
             is NewsEvent.All -> {
-                getNftNews(event.allNews)
+                getMetaverseNews(event.allNews)
             }
             is NewsEvent.Defi -> {
-                getNftNews(event.defiNews)
+                getMetaverseNews(event.defiNews)
             }
             is NewsEvent.Gaming -> {
-                getNftNews(event.gamingNews)
+                getMetaverseNews(event.gamingNews)
             }
             is NewsEvent.Nft -> {
-                getNftNews(event.nftNews)
+                getMetaverseNews(event.nftNews)
             }
             is NewsEvent.Innovation -> {
-                getNftNews(event.innovationNews)
+                getMetaverseNews(event.innovationNews)
             }
             is NewsEvent.Metaverse -> {
-                getNftNews(event.metaverseNews)
+                getMetaverseNews(event.metaverseNews)
             }
         }
     }

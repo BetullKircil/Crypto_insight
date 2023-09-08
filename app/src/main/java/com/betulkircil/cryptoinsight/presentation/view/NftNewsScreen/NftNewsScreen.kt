@@ -12,12 +12,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
-import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NftViewModel
+import com.betulkircil.cryptoinsight.presentation.view.NftNewsScreen.NftViewModel
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsColumnContent
 import kotlinx.coroutines.delay
 

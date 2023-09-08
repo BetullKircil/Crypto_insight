@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
-import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.DefiViewModel
+import com.betulkircil.cryptoinsight.presentation.view.defiNewsScreen.DefiViewModel
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsColumnContent
 import kotlinx.coroutines.delay
 
