@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -70,7 +71,7 @@ fun SavedCoins(
                                     Toast
                                         .makeText(
                                             context,
-                                            "Coin deleted succesfully!",
+                                            "${coins.symbol.toUpperCase()} deleted succesfully!",
                                             Toast.LENGTH_SHORT
                                         )
                                         .show()

@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberImagePainter
@@ -42,7 +43,7 @@ fun CoinCardItem(
         Toast
             .makeText(
                 context,
-                "Coins saved succesfully!",
+                "${coin.symbol.toUpperCase()} saved succesfully!",
                 Toast.LENGTH_SHORT
             )
             .show()
