@@ -27,7 +27,6 @@ import com.betulkircil.cryptoinsight.presentation.view.commonComponents.BottomNa
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.NewsAppBar
 import com.betulkircil.cryptoinsight.presentation.view.commonComponents.TabRowContent
 import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.AppBarContent
-import com.betulkircil.cryptoinsight.presentation.view.marketPlaceScreen.components.CoinMarketPlaceScreen
 import com.betulkircil.cryptoinsight.presentation.view.savedScreen.components.SavedCoins
 import com.betulkircil.cryptoinsight.presentation.view.savedScreen.components.SavedNewsScreen
 

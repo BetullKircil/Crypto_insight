@@ -11,8 +11,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -41,7 +43,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
-import com.betulkircil.cryptoinsight.presentation.view.savedScreen.SavedNewsViewModel
+import com.betulkircil.cryptoinsight.presentation.view.savedScreen.viewmodels.SavedNewsViewModel
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @Composable
@@ -93,7 +95,9 @@ fun SavedNewsScreen(
                                             context.startActivity(intent)
                                         }
                                     }, horizontalArrangement = Arrangement.SpaceBetween) {
-                                    Column(modifier = Modifier.width(270.dp).padding(top = 10.dp)) {
+                                    Column(modifier = Modifier
+                                        .width(270.dp)
+                                        .padding(top = 10.dp)) {
                                         Text(
                                             text = news.title ?: "",
                                             modifier = Modifier.padding(horizontal = 10.dp),
@@ -126,6 +130,7 @@ fun SavedNewsScreen(
                                 }
                             }
                         }
+                    Spacer(modifier = Modifier.height(70.dp))
                 }
             }
         )

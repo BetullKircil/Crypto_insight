@@ -111,7 +111,6 @@ fun NewsRowScreen(
                                             )
                                         }
                                     }
-                                    val hour = news.publishedAt?.substring(11, 16)
                                     val publishedAtDateTime = LocalDateTime.parse(news.publishedAt, DateTimeFormatter.ISO_DATE_TIME)
                                     val systemInstant = remember { Instant.now() }
                                     val duration = Duration.between(publishedAtDateTime.atZone(ZoneId.systemDefault()).toInstant(), systemInstant)

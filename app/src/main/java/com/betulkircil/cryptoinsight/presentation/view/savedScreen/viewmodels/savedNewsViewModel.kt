@@ -1,4 +1,4 @@
-package com.betulkircil.cryptoinsight.presentation.view.savedScreen
+package com.betulkircil.cryptoinsight.presentation.view.savedScreen.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

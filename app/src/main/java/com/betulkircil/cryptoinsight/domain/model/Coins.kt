@@ -9,6 +9,7 @@ import java.io.Serializable
 )
 data class Coins(
     @PrimaryKey(autoGenerate = true)
+    var dbId: Int? = null,
     val id: String,
     val image: String,
     val symbol: String,
