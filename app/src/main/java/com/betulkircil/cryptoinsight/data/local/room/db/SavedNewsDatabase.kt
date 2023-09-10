@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteNewsDao
+import com.betulkircil.cryptoinsight.data.local.room.dao.SavedNewsDao
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
 import com.betulkircil.cryptoinsight.utils.Converters
 
@@ -14,12 +14,12 @@ import com.betulkircil.cryptoinsight.utils.Converters
     version = 1
 )
 @TypeConverters(Converters::class)
-abstract class FavoriteNewsDatabase : RoomDatabase(){
-    abstract fun getFavoriteNewsDao() : FavoriteNewsDao
+abstract class SavedNewsDatabase : RoomDatabase(){
+    abstract fun getSavedNewsDao() : SavedNewsDao
 
     companion object{
         @Volatile
-        private var instance : FavoriteNewsDatabase? = null
+        private var instance : SavedNewsDatabase? = null
         private val LOCK = Any()
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK){
             instance ?: createDatabase(context).also { instance = it }
@@ -27,7 +27,7 @@ abstract class FavoriteNewsDatabase : RoomDatabase(){
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                FavoriteNewsDatabase::class.java,
+                SavedNewsDatabase::class.java,
                 "favoriteNewsDb.db"
             ).build()
     }

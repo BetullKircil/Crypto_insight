@@ -2,10 +2,10 @@ package com.betulkircil.cryptoinsight.di
 
 
 import android.content.Context
-import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteCoinsDao
-import com.betulkircil.cryptoinsight.data.local.room.dao.FavoriteNewsDao
-import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteCoinsDatabase
-import com.betulkircil.cryptoinsight.data.local.room.db.FavoriteNewsDatabase
+import com.betulkircil.cryptoinsight.data.local.room.dao.SavedCoinsDao
+import com.betulkircil.cryptoinsight.data.local.room.dao.SavedNewsDao
+import com.betulkircil.cryptoinsight.data.local.room.db.SavedCoinsDatabase
+import com.betulkircil.cryptoinsight.data.local.room.db.SavedNewsDatabase
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
 import com.betulkircil.cryptoinsight.data.remote.NewsApi
@@ -44,7 +44,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCoinRepository(api : CoinsApi, coinsDb: FavoriteCoinsDatabase) : CoinRepository{
+    fun provideCoinRepository(api : CoinsApi, coinsDb: SavedCoinsDatabase) : CoinRepository{
         return CoinRepositoryImpl(api, coinsDb)
     }
 
@@ -60,7 +60,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsRepository(api : NewsApi, newsDb: FavoriteNewsDatabase) : NewsRepository{
+    fun provideNewsRepository(api : NewsApi, newsDb: SavedNewsDatabase) : NewsRepository{
         return NewsRepositoryImpl(api, newsDb)
     }
 
@@ -88,24 +88,24 @@ object AppModule {
     }
     @Provides
     @Singleton
-    fun provideFavoriteNewsDatabase(@ApplicationContext context: Context): FavoriteNewsDatabase {
-        return FavoriteNewsDatabase(context)
+    fun provideSavedNewsDatabase(@ApplicationContext context: Context): SavedNewsDatabase {
+        return SavedNewsDatabase(context)
     }
 
     @Provides
     @Singleton
-    fun provideFavoriteNewsDao(database: FavoriteNewsDatabase): FavoriteNewsDao {
-        return database.getFavoriteNewsDao()
+    fun provideSavedNewsDao(database: SavedNewsDatabase): SavedNewsDao {
+        return database.getSavedNewsDao()
     }
     @Provides
     @Singleton
-    fun provideFavoriteCoinsDatabase(@ApplicationContext context: Context): FavoriteCoinsDatabase {
-        return FavoriteCoinsDatabase(context)
+    fun provideSavedCoinsDatabase(@ApplicationContext context: Context): SavedCoinsDatabase {
+        return SavedCoinsDatabase(context)
     }
 
     @Provides
     @Singleton
-    fun provideFavoriteCoinsDao(database: FavoriteCoinsDatabase): FavoriteCoinsDao {
-        return database.getFavoriteCoinsDao()
+    fun provideSavedCoinsDao(database: SavedCoinsDatabase): SavedCoinsDao {
+        return database.getSavedCoinsDao()
     }
 }
