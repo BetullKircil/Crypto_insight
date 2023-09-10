@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -45,6 +46,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.domain.model.NewsModel
 import com.betulkircil.cryptoinsight.presentation.view.animations.NewsColumnShimmerEffect
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.viewModels.NewsViewModel
 import com.betulkircil.cryptoinsight.presentation.view.savedScreen.viewmodels.SavedNewsViewModel
@@ -104,15 +106,15 @@ fun NewsColumnScreen(
                                 .size(20.dp))
                             Spacer(modifier = Modifier.size(5.dp))
                             Image(painter = painterResource(id = R.drawable.share), contentDescription = null, modifier = Modifier.clickable {
-                                //will be  shared
+                                shareNews(news, context)
                             }.size(18.dp))
                         }
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(vertical = 10.dp)
                                 .clickable { /*todo*/ },
-                            horizontalArrangement = Arrangement.SpaceAround
+                            horizontalArrangement = Arrangement.SpaceAround,
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             Row(modifier = Modifier
                                 .fillMaxWidth()
@@ -194,5 +196,6 @@ fun NewsColumnScreen(
         }
     }
 }
+
 
 

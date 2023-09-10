@@ -63,7 +63,7 @@ Scaffold(
                     .padding(10.dp), horizontalArrangement = Arrangement.Start) {
                     PageTitle(text = "Profile")
                 }
-                Column(modifier = Modifier.padding(vertical = 25.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(modifier = Modifier.padding(vertical = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Box(modifier = Modifier.size(90.dp)) {
                         ImagePickerComp()
                     }
@@ -73,7 +73,7 @@ Scaffold(
                     }
                 }
                 Column(modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = 20.dp)
+                    .padding(horizontal = 20.dp)
                     .padding(bottom = 60.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
                     Box(modifier = Modifier
                         .fillMaxSize()
@@ -89,10 +89,10 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-                            navController.navigate(Screen.AllCoinsScreen.route)
+                            navController.navigate(Screen.SavedScreen.route)
                         }) {
                         ProfileOptions(
-                            sectionTitle = "Saved News",
+                            sectionTitle = "Saved News/Coins",
                             sectionText = "Your previously saved news",
                             pngRes = R.drawable.pp_saved,
                             onClick = {})
