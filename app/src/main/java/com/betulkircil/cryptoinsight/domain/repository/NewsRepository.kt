@@ -1,6 +1,5 @@
 package com.betulkircil.cryptoinsight.domain.repository
 
-import com.betulkircil.cryptoinsight.data.remote.dto.Article
 import com.betulkircil.cryptoinsight.data.remote.dto.News
 import com.betulkircil.cryptoinsight.domain.model.NewsModel
 import kotlinx.coroutines.flow.Flow

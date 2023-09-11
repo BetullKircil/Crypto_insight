@@ -26,7 +26,7 @@ class SavedNewsViewModel @Inject constructor(
         }
     }
 
-    fun saveFavoriteNews(news: NewsModel) = viewModelScope.launch {
+    fun saveNews(news: NewsModel) = viewModelScope.launch {
         newsRepository.upsert(news)
     }
 

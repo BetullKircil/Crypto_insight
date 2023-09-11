@@ -11,15 +11,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,9 +24,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.utils.Constants.BLOCKCHAIN_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.COINS_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.DAO_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.FINANCE_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.METAVERSE_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.NFT_CATEGORY_URL
+import com.betulkircil.cryptoinsight.utils.Constants.WEB3_CATEGORY_URL
 
 @Composable
 fun LazyVerticalGridDemo(searchQuery : String) {
@@ -47,13 +50,15 @@ fun LazyVerticalGridDemo(searchQuery : String) {
         R.drawable.finance
     )
     val urls = listOf(
-        "https://economictimes.indiatimes.com/markets/cryptocurrency",
-        "https://economictimes.indiatimes.com/topic/blockchain-technology",
-        "https://timesofindia.indiatimes.com/topic/nft/news",
-        "https://economictimes.indiatimes.com/topic/web3",
-        "https://economictimes.indiatimes.com/topic/metaverse-tech",
-        "https://economictimes.indiatimes.com/topic/decentralized-autonomous-organization-dao",
-        "https://timesofindia.indiatimes.com/business"
+        COINS_CATEGORY_URL,
+        BLOCKCHAIN_CATEGORY_URL,
+        NFT_CATEGORY_URL,
+        WEB3_CATEGORY_URL,
+        METAVERSE_CATEGORY_URL,
+        DAO_CATEGORY_URL,
+        FINANCE_CATEGORY_URL,
+
+
     )
 
     LazyVerticalGrid(

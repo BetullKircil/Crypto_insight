@@ -26,7 +26,7 @@ class SavedCoinsViewModel @Inject constructor(
         }
     }
 
-    fun saveFavoriteCoins(coins: Coins) = viewModelScope.launch {
+    fun saveCoins(coins: Coins) = viewModelScope.launch {
         coinRepository.upsert(coins)
     }
 

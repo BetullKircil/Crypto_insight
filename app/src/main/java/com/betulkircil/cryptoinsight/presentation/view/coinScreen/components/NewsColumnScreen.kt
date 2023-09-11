@@ -94,7 +94,7 @@ fun NewsColumnScreen(
                             .padding(top = 5.dp), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
                             Image(painter = painterResource(id = currentPainter.value), contentDescription = null, modifier = Modifier
                                 .clickable {
-                                    savedNewsViewModel.saveFavoriteNews(news)
+                                    savedNewsViewModel.saveNews(news)
                                     Toast
                                         .makeText(
                                             context,

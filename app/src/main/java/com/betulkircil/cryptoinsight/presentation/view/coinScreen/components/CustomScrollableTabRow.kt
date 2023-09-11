@@ -43,13 +43,13 @@ fun CustomScrollableTabRow(
          Column(modifier = Modifier
              .fillMaxSize()) {
                                  when (tabs[selectedTabIndex]) {
-                                     "Favorites" -> FavoriteCoinsScreen(navController)
-                                     "All" -> AllCoinsScreen()
-                                     "Metaverse" -> MetaverseNewsScreen(navController = navController)
-                                     "Gaming" -> GamingNewsScreen(navController = navController)
-                                     "Defi" -> DefiNewsScreen(navController = navController)
-                                     "Innovation" -> InnovationNewsScreen(navController = navController)
-                                     "NFT" -> NftNewsScreen(navController = navController)
+                                     tabs[0] -> FavoriteCoinsScreen(navController)
+                                     tabs[1] -> AllCoinsScreen()
+                                     tabs[2] -> MetaverseNewsScreen(navController = navController)
+                                     tabs[3] -> GamingNewsScreen(navController = navController)
+                                     tabs[4] -> DefiNewsScreen(navController = navController)
+                                     tabs[5] -> InnovationNewsScreen(navController = navController)
+                                     tabs[6] -> NftNewsScreen(navController = navController)
                                  }
                              }
     }

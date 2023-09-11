@@ -39,7 +39,7 @@ fun CoinCardItem(
 ) {
     val context = LocalContext.current
     Column(modifier = Modifier.clickable {
-        savedCoinsViewModel.saveFavoriteCoins(coin)
+        savedCoinsViewModel.saveCoins(coin)
         Toast
             .makeText(
                 context,

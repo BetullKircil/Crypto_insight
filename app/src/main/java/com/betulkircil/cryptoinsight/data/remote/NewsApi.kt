@@ -1,6 +1,5 @@
 package com.betulkircil.cryptoinsight.data.remote
 
-import com.betulkircil.cryptoinsight.data.remote.dto.Article
 import com.betulkircil.cryptoinsight.data.remote.dto.News
 import com.betulkircil.cryptoinsight.utils.Constants.API_KEY
 import com.betulkircil.cryptoinsight.utils.Constants.NEWS_END_POINT

@@ -54,7 +54,7 @@ fun NewsColumnContent(
             .padding(horizontal = 3.dp).padding(top = 10.dp), horizontalArrangement = Arrangement.End, verticalAlignment = Alignment.CenterVertically) {
             Image(painter = painterResource(id = currentPainter.value), contentDescription = null, modifier = Modifier
                 .clickable {
-                    savedNewsViewModel.saveFavoriteNews(item)
+                    savedNewsViewModel.saveNews(item)
                     Toast
                         .makeText(
                             context,

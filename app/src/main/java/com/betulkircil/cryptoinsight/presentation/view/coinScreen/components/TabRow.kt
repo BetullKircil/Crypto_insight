@@ -1,6 +1,5 @@
 package com.betulkircil.cryptoinsight.presentation.view.coinScreen.components
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ScrollableTabRow
 import androidx.compose.material.Tab
