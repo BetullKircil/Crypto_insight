@@ -26,13 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.betulkircil.cryptoinsight.R
-import com.betulkircil.cryptoinsight.utils.Constants.BLOCKCHAIN_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.COINS_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.DAO_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.FINANCE_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.METAVERSE_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.NFT_CATEGORY_URL
-import com.betulkircil.cryptoinsight.utils.Constants.WEB3_CATEGORY_URL
 
 @Composable
 fun LazyVerticalGridDemo(searchQuery : String) {
@@ -50,17 +43,21 @@ fun LazyVerticalGridDemo(searchQuery : String) {
         R.drawable.finance
     )
     val urls = listOf(
-        COINS_CATEGORY_URL,
-        BLOCKCHAIN_CATEGORY_URL,
-        NFT_CATEGORY_URL,
-        WEB3_CATEGORY_URL,
-        METAVERSE_CATEGORY_URL,
-        DAO_CATEGORY_URL,
-        FINANCE_CATEGORY_URL,
-
-
+        "https://economictimes.indiatimes.com/markets/cryptocurrency",
+        "https://economictimes.indiatimes.com/topic/blockchain-technology",
+        "https://timesofindia.indiatimes.com/topic/nft/news",
+        "https://economictimes.indiatimes.com/topic/web3",
+        "https://economictimes.indiatimes.com/topic/metaverse-tech",
+        "https://economictimes.indiatimes.com/topic/decentralized-autonomous-organization-dao",
+        "https://timesofindia.indiatimes.com/business"
     )
 
+    val filteredImages = imageResIds.filterIndexed { index, _ ->
+        list[index].contains(searchQuery, ignoreCase = true)
+    }
+    val filteredUrls = urls.filterIndexed { index, _ ->
+        list[index].contains(searchQuery, ignoreCase = true)
+    }
     LazyVerticalGrid(
         columns = GridCells.Adaptive(150.dp),
         modifier = Modifier.background(color = colorResource(id = R.color.grey_black)),
@@ -70,7 +67,7 @@ fun LazyVerticalGridDemo(searchQuery : String) {
         ),
         content = {
             items(filteredList.size) { index ->
-                val url = urls[index]
+                val url = filteredUrls[index]
                 Card(
                     modifier = Modifier
                         .padding(15.dp)
@@ -89,7 +86,7 @@ fun LazyVerticalGridDemo(searchQuery : String) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Image(
-                            painter = painterResource(id = imageResIds[index]),
+                            painter = painterResource(id = filteredImages[index]),
                             contentDescription = null
                         )
                         Text(

@@ -24,31 +24,5 @@
     <string name="pickDate">Pick a Date</string>
     <string name="ok">Ok</string>
     <string name="cansel">Cansel</string>
-    <string name="newsDeletedToastMessage">News deleted succesfully!</string>
-    <string name="coinDeletedToastMessage">Coin deleted succesfully!</string>
-    <string name="newsSavedToastMessage">News saved succesfully!</string>
-    <string name="coins">Coins</string>
-    <string name="blockchain">Blockchain</string>
-    <string name="nft">NFTs</string>
-    <string name="web3">WEB3</string>
-    <string name="metaverse">Metaverse</string>
-    <string name="dao">DAO</string>
-    <string name="finance">Finance</string>
-    <string name="goodMorning">Good Morning</string>
-    <string name="goodAfternoon">Good Afternoon</string>
-    <string name="goodEvening">Good Evening</string>
-    <string name="importantNewsTitle">Important News</string>
-    <string name="newsTitle">News -></string>
-    <string name="coinName">Name</string>
-    <string name="coinPrice">Price</string>
-    <string name="coinVolume">24h Change</string>
-    <string name="favoritesTabRow">Favorites</string>
-    <string name="allTabRow">All</string>
-    <string name="metaverseTabRow">Metaverse</string>
-    <string name="gamingTabRow">Gaming</string>
-    <string name="defiTabRow">Defi</string>
-    <string name="innovationTabRow">Innovation</string>
-    <string name="nftTabRow">NFT</string>
-    <string name="seeMore">See More</string>
 
 </resources>
