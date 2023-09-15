@@ -1,5 +1,8 @@
 package com.betulkircil.cryptoinsight.domain.manager
 
-interface LocalUserManager {
+import kotlinx.coroutines.flow.Flow
 
+interface LocalUserManager {
+    suspend fun saveAppEntry()
+    fun readAppEntry(): Flow<Boolean>
 }

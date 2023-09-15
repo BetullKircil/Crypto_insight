@@ -20,6 +20,8 @@ object Constants {
     const val METAVERSE_CATEGORY_URL = "https://economictimes.indiatimes.com/topic/metaverse-tech"
     const val DAO_CATEGORY_URL = "https://economictimes.indiatimes.com/topic/decentralized-autonomous-organization-dao"
     const val FINANCE_CATEGORY_URL = "https://timesofindia.indiatimes.com/business"
+    const val USER_SETTINGS = "userSettings"
+    const val APP_ENTRY = "appEntry"
 }
 
 

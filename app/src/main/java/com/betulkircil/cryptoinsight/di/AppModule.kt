@@ -6,10 +6,12 @@ import com.betulkircil.cryptoinsight.data.local.room.dao.SavedCoinsDao
 import com.betulkircil.cryptoinsight.data.local.room.dao.SavedNewsDao
 import com.betulkircil.cryptoinsight.data.local.room.db.SavedCoinsDatabase
 import com.betulkircil.cryptoinsight.data.local.room.db.SavedNewsDatabase
+import com.betulkircil.cryptoinsight.data.manager.LocalUserManagerImpl
 import com.betulkircil.cryptoinsight.data.repository.CoinRepositoryImpl
 import com.betulkircil.cryptoinsight.data.remote.CoinsApi
 import com.betulkircil.cryptoinsight.data.remote.NewsApi
 import com.betulkircil.cryptoinsight.data.repository.NewsRepositoryImpl
+import com.betulkircil.cryptoinsight.domain.manager.LocalUserManager
 import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepositoryImpl
@@ -107,5 +109,11 @@ object AppModule {
     @Singleton
     fun provideSavedCoinsDao(database: SavedCoinsDatabase): SavedCoinsDao {
         return database.getSavedCoinsDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalUserManager(context: Context) : LocalUserManager{
+        return LocalUserManagerImpl(context = context)
     }
 }
