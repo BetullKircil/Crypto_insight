@@ -34,6 +34,7 @@ import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.Gamin
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.InnovationNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.NftNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.onBoardingScreen.OnBoardingScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
 import com.betulkircil.cryptoinsight.presentation.view.savedScreen.SavedScreen
 import com.betulkircil.cryptoinsight.presentation.view.signUpScreen.SignUpMail.SignUpMailScreen
@@ -132,6 +133,9 @@ fun NavigationComponent(
         }
         composable(Screen.SavedScreen.route){
             SavedScreen(navController = navController)
+        }
+        composable(Screen.OnBoardingScreen.route){
+            OnBoardingScreen(navController = navController)
         }
     }
 }

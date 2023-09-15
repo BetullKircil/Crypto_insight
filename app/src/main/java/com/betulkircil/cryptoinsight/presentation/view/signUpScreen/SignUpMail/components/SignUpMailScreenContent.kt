@@ -108,9 +108,6 @@ fun SignUpMailScreenContent(
         val password = remember {
             mutableStateOf("")
         }
-        val passwordAgain = remember {
-            mutableStateOf("")
-        }
         Column(modifier = Modifier
             .padding(vertical = 20.dp)
             .padding(top = 25.dp)

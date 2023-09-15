@@ -1,6 +1,7 @@
 package com.betulkircil.cryptoinsight.presentation.view.onBoardingScreen.components
 
 import androidx.annotation.DrawableRes
+import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 
 data class Page(
@@ -11,18 +12,18 @@ data class Page(
 
 val pages = listOf<Page>(
     Page(
-        title = "title1",
-        description = "description1",
-        image = R.drawable.moon
+        title = "Welcome",
+        description = "Explore the latest in crypto and blockchain news, track your favorite coins, and stay ahead in the world of digital currencies.",
+        image = R.drawable.onboarding1
     ),
     Page(
-        title = "title2",
-        description = "description2",
-        image = R.drawable.noon
+        title = "Stay Informed",
+        description = "Discover up-to-date news articles covering the dynamic world of cryptocurrencies and blockchain technology. Save, share, and come back to your favorite stories.",
+        image = R.drawable.onboarding2
     ),
     Page(
-        title = "title3",
-        description = "description3",
-        image = R.drawable.profile_clicked
+        title = "Manage Your Portfolio",
+        description = "Keep an eye on the crypto market. Add and track your preferred coins in your personal watchlist for easy monitoring.",
+        image = R.drawable.onboarding3
     )
 )
