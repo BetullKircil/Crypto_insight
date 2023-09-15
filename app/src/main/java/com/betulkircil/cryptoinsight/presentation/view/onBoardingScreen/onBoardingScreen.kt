@@ -46,7 +46,7 @@ fun OnBoardingScreen(
                 .fillMaxHeight()
                 .background(color = colorResource(id = R.color.grey_black)), verticalArrangement = Arrangement.SpaceAround) {
                 androidx.compose.foundation.pager.HorizontalPager(state = pagerState) {index ->
-                    OnBoardingPage(page = pages[index], navController = navController)
+                    OnBoardingPage(page = pages[index], navController = navController, pagerState = pagerState)
                 }
             }},
         bottomBar = {

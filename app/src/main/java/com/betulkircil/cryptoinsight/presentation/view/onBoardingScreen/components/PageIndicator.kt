@@ -29,7 +29,7 @@ fun PageIndicator(
     unselectedColor : Color = Color.Gray
 ) {
    Row(modifier = Modifier, horizontalArrangement = Arrangement.SpaceBetween) {
-       repeat(pagerState.pageCount){ page ->
+       repeat(pageSize){ page ->
            Spacer(modifier = Modifier.width(3.dp))
            Box(
                modifier = Modifier.size(18.dp, 3.dp).clip(CircleShape)
