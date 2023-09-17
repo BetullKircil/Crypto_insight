@@ -32,11 +32,8 @@ fun SplashScreen(
     val context =  LocalContext.current
     val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
     val onBoardingShownKey = "onBoardingShown"
-    val userLoggedInKey = "userLoggedIn"
-
     val onBoardingShown = sharedPreferences.getBoolean(onBoardingShownKey, false)
 
-    val userLoggedIn = sharedPreferences.getBoolean(userLoggedInKey, false)
     val scale = remember {
         Animatable(0f)
     }
@@ -61,12 +58,6 @@ fun SplashScreen(
                 navController.navigate(Screen.HomeScreen.route)
             }
         }
-       /*if(viewModel.isLoggedIn().value){
-            navController.navigate(Screen.CoinScreen.route)
-        }
-        else{
-            navController.navigate(Screen.HomeScreen.route)
-        }*/
     }
     Box(
         modifier = Modifier
