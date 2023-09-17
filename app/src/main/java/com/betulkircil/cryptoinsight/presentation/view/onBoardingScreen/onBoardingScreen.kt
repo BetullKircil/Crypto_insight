@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.betulkircil.cryptoinsight.R
 import com.betulkircil.cryptoinsight.presentation.Screen
@@ -36,6 +37,7 @@ import kotlinx.coroutines.launch
 )
 @Composable
 fun OnBoardingScreen(
+    event: (OnBoardingEvent) -> Unit,
     navController : NavController
 ) {
     val pagerState = androidx.compose.foundation.pager.rememberPagerState(initialPage = 0, pageCount = {pages.size})
@@ -57,6 +59,7 @@ fun OnBoardingScreen(
                     }
                 } else {
                     navController.navigate(Screen.HomeScreen.route)
+                    event(OnBoardingEvent.SaveAppEntry)
                 }
             })
         }

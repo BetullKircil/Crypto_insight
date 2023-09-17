@@ -1,6 +1,7 @@
 package com.betulkircil.cryptoinsight.di
 
 
+import android.app.Application
 import android.content.Context
 import com.betulkircil.cryptoinsight.data.local.room.dao.SavedCoinsDao
 import com.betulkircil.cryptoinsight.data.local.room.dao.SavedNewsDao
@@ -16,6 +17,9 @@ import com.betulkircil.cryptoinsight.domain.repository.CoinRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepository
 import com.betulkircil.cryptoinsight.domain.repository.AuthRepositoryImpl
 import com.betulkircil.cryptoinsight.domain.repository.NewsRepository
+import com.betulkircil.cryptoinsight.domain.useCase.appEntryUseCase.AppEntryUseCases
+import com.betulkircil.cryptoinsight.domain.useCase.appEntryUseCase.ReadAppEntry
+import com.betulkircil.cryptoinsight.domain.useCase.appEntryUseCase.SaveAppEntry
 import com.betulkircil.cryptoinsight.utils.Constants.COIN_BASE_URL
 import com.betulkircil.cryptoinsight.utils.Constants.NEWS_BASE_URL
 import com.google.firebase.auth.FirebaseAuth
@@ -113,7 +117,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalUserManager(context: Context) : LocalUserManager{
-        return LocalUserManagerImpl(context = context)
-    }
+    fun provideLocalUserManager(application: Application) : LocalUserManager = LocalUserManagerImpl(application)
+    @Provides
+    @Singleton
+    fun appEntryUsesCases(
+        localUserManager: LocalUserManager
+    ) = AppEntryUseCases(
+        readAppEntry = ReadAppEntry(localUserManager),
+        saveAppEntry = SaveAppEntry(localUserManager)
+    )
 }

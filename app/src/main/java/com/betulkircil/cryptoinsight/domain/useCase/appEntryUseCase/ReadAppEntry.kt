@@ -4,10 +4,10 @@ import com.betulkircil.cryptoinsight.domain.manager.LocalUserManager
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class ReadAppEntry @Inject constructor(
+class ReadAppEntry(
     private val localUserManager: LocalUserManager
 ) {
-    suspend fun invoke() : Flow<Boolean>{
+    suspend operator fun invoke() : Flow<Boolean>{
         return localUserManager.readAppEntry()
     }
 }

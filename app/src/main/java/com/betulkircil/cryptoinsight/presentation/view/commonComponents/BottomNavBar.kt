@@ -57,7 +57,7 @@ fun ToggleableIcons(navController: NavController) {
                 iconType = IconType.Home,
                 selectedIcon = selectedIcon.value,
                 onIconClick = { selectedIcon.value = it
-                    navController.navigate(Screen.OnBoardingScreen.route){
+                    navController.navigate(Screen.CoinScreen.route){
                         popUpTo(Screen.HomeScreen.route){inclusive = true}
                     }
                 },

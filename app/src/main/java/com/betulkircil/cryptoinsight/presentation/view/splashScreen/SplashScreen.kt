@@ -1,5 +1,6 @@
 package com.betulkircil.cryptoinsight.presentation.view.splashScreen
 
+import android.content.Context
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
@@ -14,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -27,6 +29,14 @@ fun SplashScreen(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
+    val context =  LocalContext.current
+    val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+    val onBoardingShownKey = "onBoardingShown"
+    val userLoggedInKey = "userLoggedIn"
+
+    val onBoardingShown = sharedPreferences.getBoolean(onBoardingShownKey, false)
+
+    val userLoggedIn = sharedPreferences.getBoolean(userLoggedInKey, false)
     val scale = remember {
         Animatable(0f)
     }
@@ -41,12 +51,22 @@ fun SplashScreen(
             )
         )
         delay(1000L)
-       if(viewModel.isLoggedIn().value){
+        if (viewModel.isLoggedIn().value) {
+            navController.navigate(Screen.CoinScreen.route)
+        } else {
+            if (!onBoardingShown) {
+                navController.navigate(Screen.OnBoardingScreen.route)
+                sharedPreferences.edit().putBoolean(onBoardingShownKey, true).apply()
+            } else {
+                navController.navigate(Screen.HomeScreen.route)
+            }
+        }
+       /*if(viewModel.isLoggedIn().value){
             navController.navigate(Screen.CoinScreen.route)
         }
         else{
             navController.navigate(Screen.HomeScreen.route)
-        }
+        }*/
     }
     Box(
         modifier = Modifier

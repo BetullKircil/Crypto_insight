@@ -1,7 +1,9 @@
 package com.betulkircil.cryptoinsight.presentation
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresExtension
@@ -14,10 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.betulkircil.cryptoinsight.R
+import com.betulkircil.cryptoinsight.domain.useCase.appEntryUseCase.AppEntryUseCases
 import com.betulkircil.cryptoinsight.presentation.ui.theme.CryptoInsightTheme
 import com.betulkircil.cryptoinsight.presentation.view.CategoryScreen.CategoryScreen
 import com.betulkircil.cryptoinsight.presentation.view.coinScreen.CoinScreen
@@ -34,6 +38,7 @@ import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.Gamin
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.InnovationNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.MetaverseNewsScreen
 import com.betulkircil.cryptoinsight.presentation.view.metaverseNewsScreen.NftNewsScreen
+import com.betulkircil.cryptoinsight.presentation.view.onBoardingScreen.OnBoardinfScreenViewmodel
 import com.betulkircil.cryptoinsight.presentation.view.onBoardingScreen.OnBoardingScreen
 import com.betulkircil.cryptoinsight.presentation.view.profileScreen.ProfileScreen
 import com.betulkircil.cryptoinsight.presentation.view.savedScreen.SavedScreen
@@ -44,12 +49,21 @@ import com.betulkircil.cryptoinsight.presentation.view.splashScreen.SplashScreen
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var useCases: AppEntryUseCases
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycleScope.launch {
+            useCases.readAppEntry().collect{
+                Log.d("Test",it.toString())
+            }
+        }
         setContent {
             SetStatusBarColor()
             CryptoInsightTheme {
@@ -135,7 +149,9 @@ fun NavigationComponent(
             SavedScreen(navController = navController)
         }
         composable(Screen.OnBoardingScreen.route){
-            OnBoardingScreen(navController = navController)
+            val viewmodel : OnBoardinfScreenViewmodel = hiltViewModel()
+            OnBoardingScreen(navController = navController,
+            event = {viewmodel::onEvent})
         }
     }
 }
