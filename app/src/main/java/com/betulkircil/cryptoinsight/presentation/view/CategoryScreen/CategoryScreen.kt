@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -61,6 +62,7 @@ fun CategoryScreen(navController : NavController) {
                 .background(color = colorResource(id = R.color.grey_black)), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
+                    .height(80.dp)
                     .padding(horizontal = 30.dp, vertical = 10.dp)) {
                     TextField(
                         value = searchQuery.value,
@@ -93,13 +95,13 @@ fun CategoryScreen(navController : NavController) {
                         placeholder = {
                             Row(modifier = Modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
                                 Image(painter = painterResource(id = R.drawable.search_not_clicked), contentDescription = null, modifier = Modifier
-                                    .size(30.dp)
-                                    .padding(horizontal = 7.dp))
+                                    .size(25.dp)
+                                    .padding(horizontal = 5.dp))
                                 androidx.compose.material3.Text(
                                     text = "Search",
                                     color = Color.LightGray,
                                     modifier = Modifier.padding(
-                                        horizontal = 10.dp
+                                        horizontal = 5.dp
                                     ),
                                     fontWeight = FontWeight.Light
                                 )
