@@ -297,7 +297,10 @@ fun SignUpMailScreen(
                                     Box(modifier = Modifier) {
                                         Button(
                                             onClick = {
-                                                if (email.value.isNotBlank() && password.value.isNotBlank()) {
+                                                if (email.value.isNotBlank() && password.value.isNotBlank() &&
+                                                    password.value.length >= 8 &&
+                                                    password.value.any { char -> char.isUpperCase() } &&
+                                                    password.value.any { char -> specialCharacters.contains(char) }) {
                                                     scope.launch {
                                                         viewModel.register(email.value, password.value)
                                                         Toast.makeText(
@@ -310,7 +313,7 @@ fun SignUpMailScreen(
                                                 } else {
                                                     Toast.makeText(
                                                         context,
-                                                        "Account create failed!",
+                                                        "Account create failed! Please fill all the fields and meet the conditions!",
                                                         Toast.LENGTH_SHORT
                                                     ).show()
                                                 }
