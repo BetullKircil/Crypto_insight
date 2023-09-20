@@ -62,8 +62,8 @@ fun CategoryScreen(navController : NavController) {
                 .background(color = colorResource(id = R.color.grey_black)), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(modifier = Modifier
                     .fillMaxWidth()
-                    .height(80.dp)
-                    .padding(horizontal = 30.dp, vertical = 10.dp)) {
+                    .height(70.dp)
+                    .padding(horizontal = 30.dp)) {
                     TextField(
                         value = searchQuery.value,
                         onValueChange = {
@@ -100,9 +100,7 @@ fun CategoryScreen(navController : NavController) {
                                 androidx.compose.material3.Text(
                                     text = "Search",
                                     color = Color.LightGray,
-                                    modifier = Modifier.padding(
-                                        horizontal = 5.dp
-                                    ),
+                                    modifier = Modifier,
                                     fontWeight = FontWeight.Light
                                 )
                             }
