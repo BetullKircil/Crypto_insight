@@ -8,12 +8,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -108,6 +111,7 @@ fun LoginScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AppBarSection(navController, "homeScreen", "loginScreen")
+                Spacer(modifier = Modifier.height(30.dp))
                 LinkText(firstText = stringResource(id = R.string.notMemberText), linkText = stringResource(
                     id = R.string.createAccountText
                 ), navController = navController, route = Screen.SignUpMailScreen.route)
@@ -205,7 +209,8 @@ fun LoginScreen(
                             Image(painter = painterResource(id = R.drawable.google), contentDescription = null, modifier = Modifier
                                 .padding(horizontal = 10.dp)
                                 .clickable {
-                                    val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                    val gso = GoogleSignInOptions
+                                        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                                         .requestEmail()
                                         .requestIdToken(ServerClient)
                                         .build()
@@ -220,22 +225,23 @@ fun LoginScreen(
                         onClick = {
                             scope.launch {
                                 if (email.value.isNotEmpty() && password.value.isNotEmpty()) {
-                                    viewModel.login(email.value, password.value)
-                                    Toast.makeText(context, "Signed in succesfully!", Toast.LENGTH_SHORT).show()
-                                        navController.navigate(Screen.CoinScreen.route){
-                                            popUpTo(Screen.LoginScreen.route)
+                                    val loginResult = viewModel.login(email.value, password.value)
+                                    if (loginResult is com.betulkircil.cryptoinsight.utils.Response.Success<*>) {
+                                        Toast.makeText(context, "Signed in successfully!", Toast.LENGTH_SHORT).show()
+                                        navController.navigate(Screen.CoinScreen.route) {
+                                            popUpTo(Screen.LoginScreen.route) { inclusive = true }
                                         }
                                     }
-                                else{
+                                } else {
                                     Toast.makeText(context, "Username and password cannot be empty", Toast.LENGTH_SHORT).show()
                                 }
-
                             }
                                   },
                         shape = RoundedCornerShape(40),
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(23.dp, 9.dp)
+                            .padding(horizontal = 23.dp)
+                            .padding(top = 25.dp)
                             .height(50.dp),
                         border = BorderStroke(2.dp, colorResource(id = R.color.purple_protest)),
                         colors = ButtonDefaults.elevatedButtonColors(containerColor = colorResource(
@@ -256,10 +262,15 @@ fun LoginScreen(
                Toast.makeText(context, it.e.message, Toast.LENGTH_LONG).show()
             }
             is com.betulkircil.cryptoinsight.utils.Response.Loading -> {
-                     CircularProgressIndicator()
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .size(60.dp), contentAlignment = Alignment.Center){
+                    CircularProgressIndicator()
+                    }
                  }
             is com.betulkircil.cryptoinsight.utils.Response.Success -> {
                 LaunchedEffect(Unit){
+                    Toast.makeText(context, "Sign In Success", Toast.LENGTH_LONG).show()
                     navController.navigate(Screen.CoinScreen.route){
                         popUpTo(Screen.LoginScreen.route){inclusive = true}
                     }
@@ -277,8 +288,12 @@ fun LoginScreen(
     }
     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
         if (googleSignInState.loading){
-            CircularProgressIndicator()
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .size(60.dp), contentAlignment = Alignment.Center){
+                CircularProgressIndicator()
+            }
+        }
         }
     }
-}
 
