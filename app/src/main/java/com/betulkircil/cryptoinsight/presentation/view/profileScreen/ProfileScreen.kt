@@ -100,7 +100,7 @@ Scaffold(
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-
+                            navController.navigate(Screen.CategoryScreen.route)
                         }) {
                         ProfileOptions(
                             sectionTitle = "News Sources",
