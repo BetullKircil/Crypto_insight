@@ -3,9 +3,3 @@ I would like to tell you my CryptoInsight App. With CryptoInsight, you can keep 
 
 # App Screenshots
 ![Uploading Screenshot 2023-09-21 173044.png…]()
-
-![Uploading Screenshot 2023-09-21 173105.png…]()
-
-![Uploading Screenshot 2023-09-21 173126.png…]()
-
-![Uploading Screenshot 2023-09-21 173201.png…]()
