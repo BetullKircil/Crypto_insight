@@ -1,4 +1,5 @@
 # Crypto_insight
+Screenshots:
 ![Screenshot 2023-09-19 211011](https://github.com/BetullKircil/Crypto_insight/assets/92184238/8302ecda-d10d-42c5-924d-43bf183b89b1) ![Screenshot 2023-09-19 211047](https://github.com/BetullKircil/Crypto_insight/assets/92184238/0541dc20-dafc-4db1-b310-a8246a6b2324)
 
 ![Screenshot 2023-09-19 211027](https://github.com/BetullKircil/Crypto_insight/assets/92184238/b883d1d8-1d19-4cab-bdd3-66cd73c5a6a3)![Screenshot 2023-09-19 210725](https://github.com/BetullKircil/Crypto_insight/assets/92184238/971da513-b580-460f-b155-7d56ad4a3316)
