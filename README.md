@@ -1,4 +1,3 @@
-Clean arthitecture, Jetpack Compose, Dagger-hilt, Retrofit, Room, Firebase, Flow/Coroutines, Coil
 # Crypto_insight
 I would like to tell you my CryptoInsight App. With CryptoInsight, you can keep your finger on the pulse of the metaverse, dao blockchain and web3 world and be instantly informed about the latest news, thanks to its user-friendly interface.
 
