@@ -21,5 +21,4 @@ Crypto News: Stay up to date with the latest crypto news and analysis. Learn Bit
 
 📚 Resources and Favorites: Easily save news and projects that interest you and always have access to information.
 
-# App Video
 
